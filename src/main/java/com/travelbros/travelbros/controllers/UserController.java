@@ -26,6 +26,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
+        // needs proper path for travelbros
         return "user/registration";
     }
 
@@ -34,6 +35,7 @@ public class UserController {
     public String registerUser(@ModelAttribute User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         usersDao.save(user);
+        // need to figure out correct path for travelbros
         return "redirect:/posts/create";
     }
 }
