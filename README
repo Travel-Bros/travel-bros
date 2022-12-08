@@ -1,0 +1,9 @@
+Git instruction:
+*Start on your own Branch*
+1) add and commit from your branch\
+2) git push origin (Branch-name)
+3) Go on github and open pull request/ team-mate approves merge
+4) Everyone checks out to main
+5) Everyone git pull from Main
+6) Check-out to individual Branch
+7) In your branch, git merge main
