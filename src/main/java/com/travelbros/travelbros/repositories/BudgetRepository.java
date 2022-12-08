@@ -1,4 +1,4 @@
 package com.travelbros.travelbros.repositories;
 
-public class BudgetRepository {
+public interface BudgetRepository {
 }
