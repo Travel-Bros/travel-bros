@@ -1,3 +1,14 @@
+.navButtonWrapper {
+    display: flex;
+    margin: 0 5px;
+}
+
+.stretch-wrapper {
+    width: max-content;
+    flex-grow: 1;
+    padding: 0;
+}
+
 .loginWrapperDN {
     display: flex;
     justify-content: end;
@@ -6,22 +17,32 @@
     width: 100px;
     padding: 0.3125rem 0;
 }
-.signInButton {
+.signInButton, .navButton {
     width: 100px;
     padding: 0.3125rem 0;
+    margin-bottom: 3px;
 }
 /*Iphone*/
 @media only screen and (max-width: 412px){
+    .loginWrapperDN>ul {
+        width: 100%;
+    }
+
     .loginWrapperDN {
         display: flex;
         justify-content: center;
-        width: 100%;
+        /*width: 100%;*/
     }
     .joinNowButton {
         margin-bottom: 3px;
+        width: 100%;
     }
-    .signInButton {
-
+    .signInButton, .navButton {
+        width: 100%;
+    }
+    .nav-item {
+        width: 100%;
+        padding: 0;
     }
 
 }
