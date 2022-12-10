@@ -1,3 +1,10 @@
-#loggingInfoDN {
-    padding-left: 40px;
+.loginWrapperDN {
+    display: flex;
+    justify-content: end;
+}
+/*Iphone*/
+@media only screen and (min-width: 500px){
+}
+/* Desktop */
+@media screen and (min-width: 1440px){
 }
