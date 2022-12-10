@@ -1,0 +1,31 @@
+.loginWrapperDN {
+    display: flex;
+    justify-content: end;
+}
+.joinNowButton {
+    width: 100px;
+    padding: 0.3125rem 0;
+}
+.signInButton {
+    width: 100px;
+    padding: 0.3125rem 0;
+}
+/*Iphone*/
+@media only screen and (max-width: 412px){
+    .loginWrapperDN {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .joinNowButton {
+        margin-bottom: 3px;
+    }
+    .signInButton {
+
+    }
+
+}
+/* Desktop */
+@media screen and (max-width: 1440px){
+
+}

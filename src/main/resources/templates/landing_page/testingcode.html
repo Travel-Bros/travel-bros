@@ -3,17 +3,24 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Landing Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NavBar</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../static/css/navbar_partials.css">
     </head>
-    <body>
-    <div class="splash-page-wrapper">
-        <div class="row">
-        </div>
-        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-        <h1>This is the splash page</h1>
+    <div class="navigation-wrapper">
+        <input id="toggleCheck" type="checkbox"/>
+        <label for="toggleCheck">
+            <div class="button" id="menuBtn"><i class="fa fa-bars fa-2x"></i></div>
+        </label>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Info</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
