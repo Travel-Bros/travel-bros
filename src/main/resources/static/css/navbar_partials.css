@@ -2,9 +2,19 @@
     display: flex;
     justify-content: end;
 }
+.joinNowButton {
+    width: 100px;
+    padding: 3px 0;
+}
+.signInButton {
+    width: 100px;
+    padding: 3px 0;
+}
 /*Iphone*/
-@media only screen and (min-width: 500px){
+@media only screen and (min-width: 390px){
+
 }
 /* Desktop */
 @media screen and (min-width: 1440px){
+
 }

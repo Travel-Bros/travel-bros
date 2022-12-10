@@ -1,6 +1,6 @@
 package com.travelbros.travelbros.repositories;
 
-<<<<<<< HEAD
+6<<<<<<< HEAD
 import com.travelbros.travelbros.models.Trip;
 import org.springframework.data.jpa.repository.JpaRepository;
 
