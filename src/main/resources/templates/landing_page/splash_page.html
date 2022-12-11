@@ -21,72 +21,74 @@
     <!--    </div>-->
     <body>
     <div class="page-wrapper">
-    <nav th:fragment="site-bar"class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand">
-                <img src="../../static/img/Travel-Bros-Logo.png">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse container navbar-collapse loginWrapperDN" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row">
+        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
 
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-outline-success joinNowButton">Join Now</button>
-                            </li>
-                        </div>
-                    </div> <!-- End "Join Now" navButtonWrapper -->
+<!--        <nav th:fragment="site-bar"class="navbar navbar-expand-lg custom-navbar">-->
+<!--        <div class="container-fluid">-->
+<!--            <a class="navbar-brand">-->
+<!--                <img src="../../static/img/Travel-Bros-Logo.png">-->
+<!--            </a>-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse container navbar-collapse loginWrapperDN" id="navbarNavDropdown">-->
+<!--                <ul class="navbar-nav">-->
+<!--                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row">-->
 
-                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row">
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary signInButton">Sign In</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" navButtonWrapper wrapper -->
-                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary navButton">Profile</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
-                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary navButton">Trips</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
-                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary navButton">Vehicles</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
-                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary navButton">Settings</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
-                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
-                        <div class="stretch-wrapper col-12">
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-primary navButton">Logout</button>
-                            </li>
-                        </div>
-                    </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
-                </ul> <!-- End UL -->
-            </div>
-        </div> <!-- End of Container -->
-    </nav> <!-- END OF NAV BAR -->
-    </div>
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-outline-success joinNowButton">Join Now</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; End "Join Now" navButtonWrapper &ndash;&gt;-->
+
+<!--                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row">-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary signInButton">Sign In</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" navButtonWrapper wrapper &ndash;&gt;-->
+<!--                    <div sec:authorize="isAnonymous()" class="navButtonWrapper row"> &lt;!&ndash; Profile navBarWrapper &ndash;&gt;-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary navButton">Profile</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" profile navBarWrapper wrapper &ndash;&gt;-->
+<!--                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> &lt;!&ndash; Profile navBarWrapper &ndash;&gt;-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary navButton">Trips</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" profile navBarWrapper wrapper &ndash;&gt;-->
+<!--                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> &lt;!&ndash; Profile navBarWrapper &ndash;&gt;-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary navButton">Vehicles</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" profile navBarWrapper wrapper &ndash;&gt;-->
+<!--                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> &lt;!&ndash; Profile navBarWrapper &ndash;&gt;-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary navButton">Settings</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" profile navBarWrapper wrapper &ndash;&gt;-->
+<!--                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> &lt;!&ndash; Profile navBarWrapper &ndash;&gt;-->
+<!--                        <div class="stretch-wrapper col-12">-->
+<!--                            <li class="nav-item">-->
+<!--                                <button type="button" class="btn btn-primary navButton">Logout</button>-->
+<!--                            </li>-->
+<!--                        </div>-->
+<!--                    </div> &lt;!&ndash; end "Sign In" profile navBarWrapper wrapper &ndash;&gt;-->
+<!--                </ul> &lt;!&ndash; End UL &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div> &lt;!&ndash; End of Container &ndash;&gt;-->
+<!--    </nav> &lt;!&ndash; END OF NAV BAR &ndash;&gt;-->
+    </div> <!-- END OF PAGE WRAPPER -->
         <div class="col-6">
                 <h1>Your adventure awaits</h1>
                 <div class="vertical-center">
@@ -94,10 +96,10 @@
                     <p>Let's plan your next adventure <strong>together!</strong></p>
                     </div>
                 </div>
-        </div>
+                <div class="kingKaiPlanet">
+                    <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>
+                </div>
 <!--        <div class="col-6 col-sm-12">-->
-        <div class="">
-            <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='260' height='300'></iframe>
         </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
