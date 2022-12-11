@@ -1,0 +1,31 @@
+.worldSpinner{
+    justify-content: space-around;
+}
+#canvas3d{
+    width: 20%;
+    height: 20%;
+}
+.center {
+    display: block;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    text-align: center;
+}
+
+.vertical-center {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 412px) {
+
+
+}
+@media screen and (max-width: 1440px){
+
+}
