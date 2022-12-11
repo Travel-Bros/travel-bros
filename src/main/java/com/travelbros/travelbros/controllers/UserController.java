@@ -23,19 +23,19 @@ public class UserController {
     }
 
     // Get method to show registration.html with empty user object added to model
-    @GetMapping("/register")
-    public String showRegisterForm(Model model) {
-        model.addAttribute("user", new User());
-        // needs proper path for travelbros
-        return "user/registration";
-    }
+//    @GetMapping("/register")
+//    public String showRegisterForm(Model model) {
+//        model.addAttribute("user", new User());
+//        // needs proper path for travelbros
+//        return "user/registration";
+//    }
 
     // Post method to save new user to database after hashing password
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        usersDao.save(user);
-        // need to figure out correct path for travelbros
-        return "redirect:/posts/create";
-    }
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        usersDao.save(user);
+//        // need to figure out correct path for travelbros
+//        return "redirect:/posts/create";
+//    }
 }

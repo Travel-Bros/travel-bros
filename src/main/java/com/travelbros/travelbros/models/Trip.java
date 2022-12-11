@@ -1,5 +1,5 @@
 package com.travelbros.travelbros.models;
-
+import com.travelbros.travelbros.repositories.*;
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +10,8 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(mappedBy = "trip")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "budget_id")
     private Budget tripBudget;
 
     @Column(nullable = false)
@@ -27,5 +28,67 @@ public class Trip {
 
     @Column(nullable = false)
     private int numPpl;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Budget getTripBudget() {
+        return tripBudget;
+    }
+
+    public void setTripBudget(Budget tripBudget) {
+        this.tripBudget = tripBudget;
+    }
+
+    public String getStartPoint() {
+        return startPoint;
+    }
+
+    public void setStartPoint(String startPoint) {
+        this.startPoint = startPoint;
+    }
+
+    public String getEndPoint() {
+        return endPoint;
+    }
+
+    public void setEndPoint(String endPoint) {
+        this.endPoint = endPoint;
+    }
+
+    public int getStops() {
+        return stops;
+    }
+
+    public void setStops(int stops) {
+        this.stops = stops;
+    }
+
+    public int getNumPpl() {
+        return numPpl;
+    }
+
+    public void setNumPpl(int numPpl) {
+        this.numPpl = numPpl;
+    }
+
+    public Trip(){}
+
+
+
+    public Trip(long id, Budget tripBudget, String startPoint, String endPoint, int stops, int numPpl) {
+        this.id = id;
+        this.tripBudget = tripBudget;
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.stops = stops;
+        this.numPpl = numPpl;
+    }
+
 
 }

@@ -9,7 +9,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     Vehicle findByYear(String year);
     Vehicle findByMake(String make);
     Vehicle findByModel(String model);
-    Vehicle findByTankSize(int tank_size);
+    Vehicle findByTankSize(int tankSize);
     Vehicle findByMpg(double mpg);
 
 

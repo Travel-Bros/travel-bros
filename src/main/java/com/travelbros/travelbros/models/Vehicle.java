@@ -1,10 +1,9 @@
 package com.travelbros.travelbros.models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "vehicles")
 public class Vehicle {
 
 // Properties
@@ -22,7 +21,7 @@ public class Vehicle {
     private String model;
 
     @Column(nullable = false)
-    private int tank_size;
+    private int tankSize;
 
     @Column(nullable = false)
     private double mpg;
@@ -63,11 +62,11 @@ public class Vehicle {
     }
 
     public int getTank_size() {
-        return tank_size;
+        return tankSize;
     }
 
-    public void setTank_size(int tank_size) {
-        this.tank_size = tank_size;
+    public void setTank_size(int tankSize) {
+        this.tankSize = tankSize;
     }
 
     public double getMpg() {
@@ -84,20 +83,20 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String year, String make, String model, int tank_size, double mpg) {
+    public Vehicle(String year, String make, String model, int tankSize, double mpg) {
         this.year = year;
         this.make = make;
         this.model = model;
-        this.tank_size = tank_size;
+        this.tankSize = tankSize;
         this.mpg = mpg;
     }
 
-    public Vehicle(long id, String year, String make, String model, int tank_size, double mpg) {
+    public Vehicle(long id, String year, String make, String model, int tankSize, double mpg) {
         this.id = id;
         this.year = year;
         this.make = make;
         this.model = model;
-        this.tank_size = tank_size;
+        this.tankSize = tankSize;
         this.mpg = mpg;
     }
 }
