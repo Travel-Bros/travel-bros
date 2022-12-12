@@ -35,7 +35,7 @@ public class VehicleController {
     public String allVehicles(Model model){
         List<Vehicle> allVehicles = vehicleDao.findAll();
         model.addAttribute("allTrips", allVehicles);
-        return "vehicles/index";
+        return "vehicle/index";
     }
 
 
@@ -44,7 +44,7 @@ public class VehicleController {
     public String oneVehicle(@PathVariable long id, Model model){
         Vehicle vehicle = vehicleDao.findById(id);
         model.addAttribute("vehicle", vehicle);
-        return "vehicles/show";
+        return "vehicle/show";
     }
 
 
@@ -52,7 +52,7 @@ public class VehicleController {
     @GetMapping("/create")
     public String createVehicle(Model model) {
         model.addAttribute("vehicle", new Vehicle());
-        return "vehicles/create";
+        return "vehicle/add_vehicle";
     }
 
 
