@@ -1,6 +1,7 @@
 package com.travelbros.travelbros.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "vehicles")
@@ -10,9 +11,6 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(nullable = false)
-    private String year;
 
     @Column(nullable = false, length = 50)
     private String make;
@@ -25,6 +23,23 @@ public class Vehicle {
 
     @Column(nullable = false)
     private double mpg;
+
+    @Column(nullable = false)
+    private String year;
+
+
+    // User joining
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    // Trip joining
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicleId")
+    List <Trip> tripVehicles;
+
+
+
+
 
 
 // Getters & Setters
