@@ -1,6 +1,21 @@
 .kingKaiPlanet {
     display: flex;
+    position: absolute;
 
+}
+.testButton {
+    margin-top: 540px;
+    margin-left: 400px;
+    display: flex;
+    position: relative;
+    z-index: 3;
+    height: 80px;
+    width: 1000px;
+    padding-right: 56px;
+    padding-left: 0px;
+    /*border: black;*/
+    background-color: #ffff;
+    color: black;
 }
 .iframe {
     width: 600px;
