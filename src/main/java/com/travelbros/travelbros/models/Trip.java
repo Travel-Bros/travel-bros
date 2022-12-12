@@ -29,6 +29,10 @@ public class Trip {
     @Column(nullable = false)
     private int numPpl;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public long getId() {
         return id;
     }
@@ -77,12 +81,21 @@ public class Trip {
         this.numPpl = numPpl;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Trip(){}
 
 
 
-    public Trip(long id, Budget tripBudget, String startPoint, String endPoint, int stops, int numPpl) {
+    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, int numPpl) {
         this.id = id;
+        this.user = user;
         this.tripBudget = tripBudget;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
