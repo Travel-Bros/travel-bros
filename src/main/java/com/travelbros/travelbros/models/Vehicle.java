@@ -92,8 +92,31 @@ public class Vehicle {
         this.mpg = mpg;
     }
 
+    public User getUser() {
+        return user;
+    }
 
-// Constructors
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getTankSize() {
+        return tankSize;
+    }
+
+    public void setTankSize(int tankSize) {
+        this.tankSize = tankSize;
+    }
+
+    public List<Trip> getTripVehicles() {
+        return tripVehicles;
+    }
+
+    public void setTripVehicles(List<Trip> tripVehicles) {
+        this.tripVehicles = tripVehicles;
+    }
+
+    // Constructors
 
     public Vehicle() {
     }

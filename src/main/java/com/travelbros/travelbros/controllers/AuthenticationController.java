@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AuthenticationController {
+
     @GetMapping("/login")
     public String showLoginForm() {
         return "user_profile/login_page";
@@ -18,4 +19,8 @@ public class AuthenticationController {
 
     @GetMapping("/logout")
     public String logout(){return "redirect:/login?logout";}
+
 }
+
+
+
