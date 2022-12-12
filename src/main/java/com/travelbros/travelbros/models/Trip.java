@@ -10,6 +10,7 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    // trip joining
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "budget_id")
     private Budget tripBudget;
@@ -23,15 +24,21 @@ public class Trip {
     @Column(nullable = false)
     private int stops;
 
-    // Need to add @ManyToOne for Trip => User
-    // User needs @OneToMany User => Trip
+    // User joining
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    // Vehicle joining
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicleId;
 
     @Column(nullable = false)
     private int numPpl;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
+    // vehicle joining
 
     public long getId() {
         return id;
