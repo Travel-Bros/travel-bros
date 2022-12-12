@@ -9,7 +9,7 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login_page/login_page";
+        return "user_profile/login_page";
     }
 
     @PostMapping("/login")
@@ -19,28 +19,8 @@ public class AuthenticationController {
 
     @GetMapping("/logout")
     public String logout(){return "redirect:/login?logout";}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
