@@ -15,12 +15,20 @@ public class User {
     @Column(nullable = false, length = 50, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 60)
-    private String email;
-
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, length = 60)
+    private String email;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Trip> trips;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comments> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Vehicle> userVehicles;
 
 // Getters & Setters
 
