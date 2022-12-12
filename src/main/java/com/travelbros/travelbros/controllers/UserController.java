@@ -37,10 +37,8 @@ public class UserController {
     public String registerUser(@ModelAttribute User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         usersDao.save(user);
-        return "redirect:/posts/create";
+        return "redirect:/login";
     }
 
 
-
-    /////////////////// Getters Setters ///////////////////
 }
