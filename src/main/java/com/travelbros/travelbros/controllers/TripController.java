@@ -60,6 +60,48 @@ public class TripController {
     }
 
 
+// Get method to show edit.html view with post object added to model
+@GetMapping("/{id}/edit")
+    public String showEditTripForm(@PathVariable long id, Model model) {
+        User user = userDao.findById(Utils.currentUserId());
+        Trip trip = tripDao.findById(id);
+        // redirects back to all posts if user is not the owner of the post
+        if(!user.equals(trip.getUser())) {
+            return "redirect:/posts";
+        }
+        model.addAttribute("trip", trip);
+        return "/trips/edit";
+    }
+
+
+    // Post method to receive post object and save to database
+    @PostMapping("/{id}/edit")
+    public String editTrip(@ModelAttribute Trip trip, @PathVariable long id) {
+        User user = userDao.findById(Utils.currentUserId());
+        Trip currentTrip = tripDao.findById(id);
+        // Only edits post if correct user sending post request
+        if(user.equals(currentTrip.getUser())){
+            trip.setUser(user);
+            tripDao.save(trip);
+        }
+        trip.setUser(user);
+        tripDao.save(trip);
+        return "redirect:/trips";
+    }
+
+
+// Get method to delete post from database
+    @GetMapping("/{id}/delete")
+    public String deletePost(@PathVariable long id) {
+        User user = userDao.findById(Utils.currentUserId());
+        Trip trip = tripDao.findById(id);
+        // Only deletes post if correct user sending post request
+        if (user.getId() == trip.getUser().getId()) {
+            tripDao.delete(trip);
+        }
+        return "redirect:/trips";
+    }
+
 
 
 }
