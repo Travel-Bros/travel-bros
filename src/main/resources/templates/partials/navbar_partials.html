@@ -7,13 +7,13 @@
         <title>NavBar</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../static/css/navbar_partials.css">
+        <link rel="stylesheet" th:href="@{/css/navbar_partials.css}">
     </head>
     <!--    NAV BAR START -->
     <nav th:fragment="site-bar"class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand">
-                <img th:href="@{../../static/img/Travel-Bros-Logo.png}">
+                <img th:src="@{/img/Travel-Bros-Logo.png}">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

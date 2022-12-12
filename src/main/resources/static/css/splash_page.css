@@ -1,4 +1,6 @@
 .kingKaiPlanet {
+    display: flex;
+
 }
 .iframe {
     width: 600px;
@@ -22,14 +24,6 @@
 }
 
 @media only screen and (max-width: 412px) {
-    .iframe {
-        display: flex;
-        position: absolute;
-      width: 400px;
-      height: 400px;
-    }
-
-
 }
 @media screen and (max-width: 1440px){
 
