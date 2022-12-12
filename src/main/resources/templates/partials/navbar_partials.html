@@ -24,7 +24,7 @@
 
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-outline-success joinNowButton">Join Now</button>
+                                    <button id="registerButton" type="button" class="btn btn-outline-success joinNowButton">Join Now</button>
                                 </li>
                             </div>
                         </div> <!-- End "Join Now" navButtonWrapper -->
@@ -32,42 +32,42 @@
                     <div sec:authorize="isAnonymous()" class="navButtonWrapper row">
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary signInButton">Sign In</button>
+                                    <button id="signInButton" type="button" class="btn btn-primary signInButton">Sign In</button>
                                 </li>
                             </div>
                     </div> <!-- end "Sign In" navButtonWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary navButton">Profile</button>
+                                    <button id="profileButton" type="button" class="btn btn-primary navButton">Profile</button>
                                 </li>
                             </div>
                         </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary navButton">Trips</button>
+                                    <button id="tripsButton" type="button" class="btn btn-primary navButton">Trips</button>
                                 </li>
                             </div>
                         </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary navButton">Vehicles</button>
+                                    <button id="vehicleButton" type="button" class="btn btn-primary navButton">Vehicles</button>
                                 </li>
                             </div>
                         </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary navButton">Settings</button>
+                                    <button id="settingsButton" type="button" class="btn btn-primary navButton">Settings</button>
                                 </li>
                             </div>
                         </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
                                 <li class="nav-item">
-                                    <button type="button" class="btn btn-primary navButton">Logout</button>
+                                    <button id="logoutButton" type="button" class="btn btn-primary navButton">Logout</button>
                                 </li>
                             </div>
                         </div> <!-- end "Sign In" profile navBarWrapper wrapper -->
