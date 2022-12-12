@@ -102,6 +102,10 @@ public class TripController {
         return "redirect:/trips";
     }
 
-
+    // Testing trip planner template view
+    @GetMapping("trips/testing")
+    public String testingTripPlannerView() {
+        return "trip_planner/trip_planner";
+    }
 
 }
