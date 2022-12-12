@@ -11,15 +11,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     // Bean to configure filter chain and set which pages must be authorized to view
+//    @Bean
+//    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+//        http.authorizeHttpRequests()
+//                .antMatchers("/posts/create", "/posts/{id}/edit").authenticated()
+//                .antMatchers("/", "/register", "/login", "/posts", "/posts/{id}").permitAll()
+//                .and().formLogin().loginPage("/login").defaultSuccessUrl("/posts")
+//                .and().logout()
+//                .and().httpBasic();
+//
+//        return http.build();
+//    }
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/posts/create", "/posts/{id}/edit").authenticated()
-                .antMatchers("/", "/posts", "/posts/{id}").permitAll()
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/posts")
+                .antMatchers("/login", "/", "/posts", "/posts/{id}(id=${post.id})", "/register").permitAll()
+                .antMatchers("/posts/create", "/posts/{id}/edit", "/posts/", "/dashboard", "/allUsers").authenticated()
+                // sets the url success page
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard")
                 .and().logout()
                 .and().httpBasic();
-
         return http.build();
     }
 
