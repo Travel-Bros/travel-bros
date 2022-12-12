@@ -7,16 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "budget")
 public class Budget {
-    //////////////////// Constructors ////////////////////
-
-    // No args
-    public Budget(){}
-
-    public Budget(long id, double maxBudget, double gas) {
-        this.id = id;
-        this.maxBudget = maxBudget;
-        this.gas = gas;
-    }
 
     //////////////////// Properties ////////////////////
 
@@ -35,6 +25,16 @@ public class Budget {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "tripBudget")
     private Trip trip;
 
+    //////////////////// Constructors ////////////////////
+
+    // No args
+    public Budget(){}
+
+    public Budget(long id, double maxBudget, double gas) {
+        this.id = id;
+        this.maxBudget = maxBudget;
+        this.gas = gas;
+    }
 
     //////////////////// Getters & Setters ////////////////////
 
