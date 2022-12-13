@@ -39,6 +39,26 @@
 }
 
 @media only screen and (max-width: 412px) {
+    .loginWrapperDN>ul {
+        width: 100%;
+    }
+
+    .loginWrapperDN {
+        display: flex;
+        justify-content: center;
+        /*width: 100%;*/
+    }
+    .joinNowButton {
+        margin-bottom: 3px;
+        width: 100%;
+    }
+    .signInButton, .navButton {
+        width: 100%;
+    }
+    .nav-item {
+        width: 100%;
+        padding: 0;
+    }
 }
 @media screen and (max-width: 1440px){
 
