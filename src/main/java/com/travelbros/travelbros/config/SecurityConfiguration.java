@@ -30,7 +30,8 @@ public class SecurityConfiguration {
                 .antMatchers("/posts/create", "/posts/{id}/edit", "/posts/", "/dashboard", "/allUsers").authenticated()
                 // sets the url success page
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard")
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true)
+//                .and().logout().logoutSuccessUrl("/splash?logout")
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/?logout").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                 .and().httpBasic();
         return http.build();
     }
