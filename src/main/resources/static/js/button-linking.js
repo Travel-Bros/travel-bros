@@ -20,6 +20,7 @@ $(document).ready(function () {
         // alert("profile coming soon");
     });
 });
+
 // THIS LINKS TO TRIPS //
 $(document).ready(function () {
     $("#tripsButton").on('click', function (e){
@@ -30,13 +31,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#vehicleButton").on('click', function (e){
-        alert("vehicles!");
+        window.location.href = "/vehicles";
     });
 });
 
 $(document).ready(function () {
     $("#settingsButton").on('click', function (e){
-        alert("settings!");
+        window.location.href = "/settings";
     });
 });
 
