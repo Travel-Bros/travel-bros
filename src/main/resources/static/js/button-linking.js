@@ -16,7 +16,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#profileButton").on('click', function (e){
-        alert("profile coming soon");
+        window.location.replace(`/profile/${$(this).attr("data-id")}`);
+        // alert("profile coming soon");
     });
 });
 
