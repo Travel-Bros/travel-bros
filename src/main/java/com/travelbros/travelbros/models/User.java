@@ -64,8 +64,31 @@ public class User {
         this.password = password;
     }
 
+    public List<Trip> getTrips() {
+        return trips;
+    }
 
-// Constructors
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
+    public List<Vehicle> getUserVehicles() {
+        return userVehicles;
+    }
+
+    public void setUserVehicles(List<Vehicle> userVehicles) {
+        this.userVehicles = userVehicles;
+    }
+
+    // Constructors
 
     public User() {
     }
@@ -83,6 +106,14 @@ public class User {
         this.password = password;
     }
 
-
+    public User(long id, String username, String password, String email, List<Trip> trips, List<Comments> comments, List<Vehicle> userVehicles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.trips = trips;
+        this.comments = comments;
+        this.userVehicles = userVehicles;
+    }
 }
 
