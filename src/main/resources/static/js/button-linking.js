@@ -19,10 +19,11 @@ $(document).ready(function () {
         alert("profile coming soon");
     });
 });
-
+// THIS LINKS TO TRIPS //
 $(document).ready(function () {
     $("#tripsButton").on('click', function (e){
-        alert("trips coming soon!");
+        // alert("trips coming soon!");
+        window.location.href = "/trips";
     });
 });
 
