@@ -30,11 +30,11 @@
                         </div> <!-- End "Join Now" navButtonWrapper -->
 
                     <div sec:authorize="isAnonymous()" class="navButtonWrapper row">
-                            <div class="stretch-wrapper col-12">
-                                <li class="nav-item">
-                                    <button id="signInButton" type="button" class="btn btn-primary signInButton">Sign In</button>
-                                </li>
-                            </div>
+                        <div class="stretch-wrapper col-12">
+                            <li class="nav-item">
+                                <button id="signInButton" type="button" class="btn btn-primary signInButton">Sign In</button>
+                            </li>
+                        </div>
                     </div> <!-- end "Sign In" navButtonWrapper wrapper -->
                         <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                             <div class="stretch-wrapper col-12">
