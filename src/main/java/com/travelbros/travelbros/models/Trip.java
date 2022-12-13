@@ -24,6 +24,9 @@ public class Trip {
     @Column(nullable = false)
     private int stops;
 
+    @Column(nullable = false)
+    private double distance;
+
     // User joining
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -96,6 +99,16 @@ public class Trip {
         this.user = user;
     }
 
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+
     public Vehicle getVehicleId() {
         return vehicleId;
     }
@@ -108,14 +121,16 @@ public class Trip {
 
 
 
-    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, int numPpl) {
+    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl) {
         this.id = id;
         this.user = user;
         this.tripBudget = tripBudget;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.stops = stops;
+        this.distance = distance;
         this.numPpl = numPpl;
+
     }
 
 
