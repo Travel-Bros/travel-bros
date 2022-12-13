@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfiguration {
@@ -29,7 +30,7 @@ public class SecurityConfiguration {
                 .antMatchers("/posts/create", "/posts/{id}/edit", "/posts/", "/dashboard", "/allUsers").authenticated()
                 // sets the url success page
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard")
-                .and().logout()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").deleteCookies("JSESSIONID").invalidateHttpSession(true)
                 .and().httpBasic();
         return http.build();
     }
