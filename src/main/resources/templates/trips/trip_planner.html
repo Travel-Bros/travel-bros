@@ -28,7 +28,8 @@
         <!-- this div is for our inputs  -->
         <div style="flex-grow: 6">
 
-            <form onsubmit="return false" method="post" th:action="@{/trips/testing}" th:object="${createTrip}">
+<!--            <form onsubmit="return false" th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">-->
+            <form th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">
 
 
 
@@ -67,5 +68,6 @@
 </script>
 <!--<script src="/js/google_maps_api.js"></script>-->
 <script th:src="@{/js/google_maps_api.js}"></script>
+<script th:src="@{/js/edit.js}"></script>
 </body>
 </html>
