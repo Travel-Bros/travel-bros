@@ -99,6 +99,7 @@ public class Trip {
         this.user = user;
     }
 
+
     public double getDistance() {
         return distance;
     }
@@ -106,6 +107,7 @@ public class Trip {
     public void setDistance(double distance) {
         this.distance = distance;
     }
+
 
     public Vehicle getVehicleId() {
         return vehicleId;
