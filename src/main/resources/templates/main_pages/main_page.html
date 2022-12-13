@@ -6,13 +6,23 @@
         <title>Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" th:href="@{css/navbar_partials.css}">
-
-
+        <link rel="icon" type="img/x-icon" th:href="@{img/Travel-Bros-Logo.png}">
     </head>
     <body>
-    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-    <h1> This is the DASHBOARD!!!</h1>
-
+    <div class="page-wrapper">
+        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <h3>Plan your next adventure!</h3><br>
+                    <button>Add Trip</button>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <img th:src="@{img/Travel-Bros-Big-Logo.png}">
+                </div>
+            </div>
+        </div>
+    </div> <!-- END OF PAGE WRAPPER -->
     <div th:replace="partials/scripts-partials :: scripts"></div>
     </body>
 </html>
