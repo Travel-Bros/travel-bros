@@ -1,12 +1,16 @@
 package com.travelbros.travelbros.controllers;
 
 
+import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.utils.Utils;
+import jdk.jshell.execution.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -25,6 +29,23 @@ public class ProfileController {
 
     }
 
+//    @GetMapping
+//    public String showAllProfileTrips(Model model) {
+//        User user = userDao.findById(Utils.currentUserId());
+//        model.addAttribute("currentUser", user);
+//
+//        return "/user_profile/user_previous_trips";
+//    }
+
+    @GetMapping
+    public String showPreviousTrips(Model model) {
+        User currentUser = userDao.findById(Utils.currentUserId());
+
+        model.addAttribute("currentUser", currentUser);
+
+
+        return "user_profile/user_previous_trips";
+    }
 
 // Get method to show edit.html view with trip object added to model
     @GetMapping("/{id}/edit")
