@@ -1,4 +1,4 @@
-// alert("yo");
+
 
 
 ///////////////////////////////////////////////
@@ -30,7 +30,7 @@ const [getvalue, setValue] =useState({
     startLocation: "",
     endLocation: "",
     tripDistance: 0,
-    tripTime: 0,
+    tripTime: "",
 })
 
 const locationsFromUser = getvalue()
@@ -123,7 +123,7 @@ function initMap() {
         e.preventDefault
 
         // object made for saving state
-        const locationInfo = getvalue()
+        let locationInfo = getvalue()
         console.log(locationInfo)
         service.getDistanceMatrix(
             {
@@ -136,29 +136,45 @@ function initMap() {
 
         function callback(response, status) {
             console.log(response)
-            if (status == 'OK') {
-                var origins = response.originAddresses;
-                var destinations = response.destinationAddresses;
 
-                for (var i = 0; i < origins.length; i++) {
-                    var results = response.rows[i].elements;
-                    for (var j = 0; j < results.length; j++) {
-                        var element = results[j];
-                        var distance = element.distance.text;
-                        var duration = element.duration.text;
-                        locationInfo.tripDistance = distance;
-                        locationInfo.tripTime = duration;
-                        setValue(locationInfo)
-                        var from = origins[i];
-                        var to = destinations[j];
-                    }
-                }
+            if (status == 'OK') {
+                console.log(response.rows[0].elements[0].distance
+                    .value)
+                console.log(response.rows[0].elements[0].duration
+                    .text)
+                locationInfo.tripDistance = response.rows[0].elements[0].distance
+                    .value;
+                locationInfo.tripTime = response.rows[0].elements[0].duration
+                    .text;
+                console.log(locationInfo)
+                setValue(locationInfo)
+                console.log(getvalue())
+
+                console.log(locationInfo)
+                let travelInput = document.querySelector('#totalDistance');
+                travelInput.value = locationInfo.tripDistance;
+                // var origins = response.originAddresses;
+                // var destinations = response.destinationAddresses;
+
+                // for (var i = 0; i < origins.length; i++) {
+                //     var results = response.rows[i].elements;
+                //     for (var j = 0; j < results.length; j++) {
+                //         var element = results[j];
+                //         var distance = element.distance.text;
+                //         var duration = element.duration.text;
+                //         locationInfo.tripDistance = distance;
+                //         locationInfo.tripTime = duration;
+                //         setValue(locationInfo)
+                //         var from = origins[i];
+                //         var to = destinations[j];
+                //      }
+                //  }
             }
         }
 
         console.log(getvalue());
         let directionsService = new google.maps.DirectionsService();
-        directionsDisplay = new google.maps.DirectionsRenderer({
+        let directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
         });
 
@@ -176,6 +192,11 @@ function initMap() {
                 window.alert('Directions request failed due to ' + status);
             }
         });
+
+
+
+
+
 
     })
 
