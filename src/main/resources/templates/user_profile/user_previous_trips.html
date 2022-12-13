@@ -5,6 +5,29 @@
 </head>
 <body>
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+    <div sec:authorize="isAuthenticated()">Welcome &nbsp;
+        <h1 th:text="${#authentication.principal.username}"></h1>
+    </div>
+    <h1>HOIIIIIII</h1>
+
+    <div th:each="trip : ${currentUser.trips}">
+        <h1>Start Point:&nbsp;<span th:text="${trip.getStartPoint()}"></span></h1>
+        <h1>End Point:&nbsp;<span th:text="${trip.getEndPoint()}"></span></h1>
+        <h1>Budget:&nbsp;$<span th:text="${trip.tripBudget.maxBudget}"></span></h1>
+        <h1>Number of Stops:&nbsp;<span th:text="${trip.getStops()}"></span></h1>
+        <h1>Number of People:&nbsp;<span th:text="${trip.getNumPpl()}"></span></h1>
+        <ul>
+            <h1>Used Vehicle For <span th:text="${trip.getEndPoint()}"> Trip</span></h1>
+            <li>Make: <h3><span th:text="${trip.vehicleId.make}"></span></h3> </li>
+            <li>Model: <h3><span th:text="${trip.vehicleId.model}"></span></h3> </li>
+            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>
+
+        </ul>
+
+
+
+    </div>
+
 
     <div th:replace="partials/scripts-partials.html :: scripts" th:remove="tag">
     </div>

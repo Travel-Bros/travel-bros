@@ -96,6 +96,14 @@ public class Trip {
         this.user = user;
     }
 
+    public Vehicle getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Vehicle vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
     public Trip(){}
 
 

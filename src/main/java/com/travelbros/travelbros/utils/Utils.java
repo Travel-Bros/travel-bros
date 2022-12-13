@@ -16,6 +16,10 @@ public class Utils {
         this.tripsDao = tripsDao;
     }
 
+//    public static User currentUser() {
+//        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    }
+
     public static long currentUserId() {
         return ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
     }
