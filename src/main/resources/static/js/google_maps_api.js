@@ -117,7 +117,7 @@ function initMap() {
 
 
     const directionsService = new google.maps.DirectionsService();
-    const button = document.getElementById("submit-btn");
+    const button = document.getElementById("planYourTrip");
     button.addEventListener("click", (e)=>{
         e.preventDefault
 
