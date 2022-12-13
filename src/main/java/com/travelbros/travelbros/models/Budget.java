@@ -25,6 +25,11 @@ public class Budget {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "tripBudget")
     private Trip trip;
 
+    // User joining
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     //////////////////// Constructors ////////////////////
 
     // No args

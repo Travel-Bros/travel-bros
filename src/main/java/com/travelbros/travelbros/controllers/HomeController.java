@@ -13,6 +13,9 @@ public class HomeController {
         return "landing_page/splash_page";
     }
 
+    @GetMapping("/splash")
+    public String showSplashPageTest() {return "landing_page/splash_page"; }
+
     ////////////////// User's Authenticated Dashboard //////////////////
     @GetMapping("/dashboard")
     public String showDashBoard() {
