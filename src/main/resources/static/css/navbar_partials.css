@@ -16,6 +16,7 @@
 .joinNowButton {
     width: 100px;
     padding: 0.3125rem 0;
+    margin-right: 5px;
 }
 .signInButton, .navButton {
     width: 100px;
