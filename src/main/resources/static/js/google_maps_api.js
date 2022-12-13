@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
         startValue = e.target.value;
         locationsFromUser.startLocation = startValue;
         setValue(locationsFromUser)
-        console.log(getvalue())
     });
 
     endInput.addEventListener('keyup',function(e){
@@ -138,21 +137,29 @@ function initMap() {
             console.log(response)
 
             if (status == 'OK') {
-                console.log(response.rows[0].elements[0].distance
-                    .value)
-                console.log(response.rows[0].elements[0].duration
-                    .text)
+
+                //////////////////// Setting the trip distance, and trip time  ///////////////////
                 locationInfo.tripDistance = response.rows[0].elements[0].distance
                     .value;
                 locationInfo.tripTime = response.rows[0].elements[0].duration
                     .text;
-                console.log(locationInfo)
+
+                ////////////////////  Setting javascript object  ///////////////////////
                 setValue(locationInfo)
                 console.log(getvalue())
 
+                ////////////  Setting the value of the travel input and trip distance //////////
                 console.log(locationInfo)
                 let travelInput = document.querySelector('#totalDistance');
                 travelInput.value = locationInfo.tripDistance;
+
+
+                //////////////  Display the result on the page  /////////////////
+                let miles = ((locationInfo.tripDistance/1000)/1.609)
+                let milesRound = miles.toFixed(1)
+                document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${milesRound} mi`;
+                document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
+
                 // var origins = response.originAddresses;
                 // var destinations = response.destinationAddresses;
 
