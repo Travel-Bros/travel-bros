@@ -28,19 +28,21 @@
         <!-- this div is for our inputs  -->
         <div style="flex-grow: 6">
 
-            <form onsubmit="return false">
+            <form onsubmit="return false" method="post" th:action="@{/trips/testing}" th:object="${createTrip}">
+
+
 
                 <label for="budget">Enter your Budget:</label>
-                <input type="text" id="budget" name="budget"><br><br>
+                <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget"><br><br>
 
                 <label for="startLocation">Start Location:</label>
-                <input type="text" id="startLocation" name="fname"><br><br>
+                <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname"><br><br>
 
                 <label for="endLocation">End Location:</label>
-                <input type="text" id="endLocation" name="fname"><br><br>
+                <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname"><br><br>
 
                 <label for="totalDistance"> Distance Traveled</label>
-                <input type="text" id="totalDistance" name="fname"><br><br>
+                <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname"><br><br>
 
                 <button type="submit" value="Submit" id="submit-btn">Your travel</button>
             </form>
