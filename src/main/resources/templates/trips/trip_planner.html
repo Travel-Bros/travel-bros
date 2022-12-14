@@ -17,7 +17,7 @@
                         <!-- this div is for our inputs  -->
                         <div class="inputForm col-6 col-sm-6">
                             <!--            <form onsubmit="return false" th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">-->
-                            <form th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">
+                            <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}">
                                 <label for="budget">Enter your Budget:</label>
                                 <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
                                 <br>
