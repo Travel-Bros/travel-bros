@@ -55,7 +55,7 @@
         margin-bottom: 3px;
         width: 100%;
     }
-    .signInButton, .navButton {
+    .signInButton, .navButton, .profileButton, tripsButton {
         width: 100%;
     }
     .nav-item {
