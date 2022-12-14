@@ -54,7 +54,7 @@ public class TripController {
         Trip trip = tripDao.findById(id);
         // redirects back to all posts if user is not the owner of the post
         if(!user.equals(trip.getUser())) {
-            return "redirect:/posts";
+            return "redirect:/profile";
         }
         model.addAttribute("trip", trip);
         return "/trips/edit";
@@ -73,7 +73,7 @@ public class TripController {
         }
         trip.setUser(user);
         tripDao.save(trip);
-        return "redirect:/trips";
+        return "redirect:/profile";
     }
 
 
@@ -90,15 +90,29 @@ public class TripController {
     }
 
 
-    // Testing trip planner template view
     // Get method to show create.html view with empty trip object added to model
     @GetMapping("/create")
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        return "trips/trip_planner";
+        return "/trips/trip_planner";
     }
 
+    @PostMapping("/create")
+    public String postTrip(@ModelAttribute Trip trip) {
+        User user = userDao.findById(Utils.currentUserId());
+        trip.setUser(user);
+        tripDao.save(trip);
+        return "redirect:/dashboard";
+    }
+
+// Testing trip planner template view
+    @GetMapping("/testing")
+    public String tripMapTest(Model model) {
+        User currentUser = userDao.findById(Utils.currentUserId());
+        model.addAttribute("createTrip", new Trip());
+        return "/trips/test-trip-planner";
+    }
 
 // Post method to receive post trip and save to database
     @PostMapping("/testing")
