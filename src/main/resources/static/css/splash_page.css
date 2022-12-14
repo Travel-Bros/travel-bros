@@ -29,7 +29,10 @@
     padding: 10px;
     text-align: center;
 }
-
+.logoutMessage {
+    display: flex;
+    justify-content: end;
+}
 .vertical-center {
     margin: 0;
     position: relative;
