@@ -7,5 +7,6 @@ html, body {
     padding: 0;
 }
 .flex-container, .container {
-    height: 50%;
+    /*height: 50%;*/
+    height: 100%;
 }
