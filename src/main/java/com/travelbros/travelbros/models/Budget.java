@@ -22,7 +22,7 @@ public class Budget {
     private double gas;
 
     // Instance Variables
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "tripBudget")
+    @OneToOne(mappedBy = "tripBudget")
     private Trip trip;
 
     // User joining
