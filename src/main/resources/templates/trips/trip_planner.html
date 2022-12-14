@@ -40,12 +40,14 @@
                 <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname"><br><br>
 
                 <label for="endLocation">End Location:</label>
-                <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname"><br><br>
+                <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname"><br>
+                <button type="button"  id="planYourTrip">Your trip</button>
+                <br>
 
                 <label for="totalDistance"> Distance Traveled</label>
                 <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname"><br><br>
 
-                <button type="submit" value="Submit" id="submit-btn">Your travel</button>
+                <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
             </form>
 
         </div>
