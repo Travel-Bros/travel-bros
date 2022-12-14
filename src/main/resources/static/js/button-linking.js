@@ -46,4 +46,9 @@ $(document).ready(function () {
         window.location.href = "/logout";
     })
 });
-
+// THIS LINKS TRIPS BUTTON //
+$(document).ready(function () {
+    $(".addTripButton").on('click', function (e) {
+        window.location.href = "/trips/create";
+    })
+});
