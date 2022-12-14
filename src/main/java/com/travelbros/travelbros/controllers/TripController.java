@@ -54,7 +54,7 @@ public class TripController {
         Trip trip = tripDao.findById(id);
         // redirects back to all posts if user is not the owner of the post
         if(!user.equals(trip.getUser())) {
-            return "redirect:/posts";
+            return "redirect:/profile";
         }
         model.addAttribute("trip", trip);
         return "/trips/edit";
@@ -73,7 +73,7 @@ public class TripController {
         }
         trip.setUser(user);
         tripDao.save(trip);
-        return "redirect:/trips";
+        return "redirect:/profile";
     }
 
 
