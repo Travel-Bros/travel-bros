@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
+<head th:replace="partials/head-partials :: head ('Trip Planner')">
+</head>
+<body>
+<div class="page-wrapper" style="height: 100%">
+  <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+  <div class="container">
+
+  <!-- ROW 1 -->
+    <div class="d-flex row">
+      <h1 class="text-center"> Let's plan your Trip! </h1>
+    </div>
+
+  <!-- ROW 2 -->
+    <div class="row">
+      <div class="flex-container" style=" display: flex; flex-direction: row; ">
+        <!-- this div is for our inputs  -->
+        <div class="inputForm col-6 col-sm-6">
+          <!--            <form onsubmit="return false" th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">-->
+          <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}">
+            <div class="col-6">
+              <label for="budget">Enter your Budget:</label>
+              <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
+            </div>
+
+            <div class="col-6">
+              <label for="startLocation">Start Location:</label>
+              <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname">
+            </div>
+
+            <div class="col-6">
+              <label for="endLocation">End Location:</label>
+              <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
+            </div>
+
+            <div class="col-6">
+              <label for="totalDistance"> Distance Traveled</label>
+              <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
+            </div>
+
+            <div class="col-12">
+
+              <button type="button"  id="planYourTrip">Your trip</button>
+
+              <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
+            </div>
+          </form>
+        </div><!-- END OF inputForm -->
+      </div><!-- END OF form-row -->
+    <!-- End row 1 -->
+    </div>
+
+    <!--  -->
+
+    <div class="col-6 col-sm-6" style="height: 100%; width: 35%; flex-grow: 6">
+      <!--                        <div style="height: 100%; flex-grow: 6">-->
+<!--      <div style="height: 100%;" id="map"></div>-->
+      <div id="distance">
+        <h3 id="yourTripDistance"></h3>
+        <h3 id="yourTravelDistance"></h3>
+      </div>
+    </div>
+
+  </div>
+</div> <!-- End page-wrapper -->
+
+<script
+        async defer
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBD6bONTHh3O1h_nspMirxxFCkXp13j9QI&callback=initMap" >
+</script>
+<!--<script src="/js/google_maps_api.js"></script>-->
+<script th:src="@{/js/google_maps_api.js}"></script>
+<script th:src="@{/js/edit.js}"></script>
+<div th:replace="partials/scripts-partials.html :: scripts"></div>
+</body>
+</html>

@@ -90,15 +90,29 @@ public class TripController {
     }
 
 
-    // Testing trip planner template view
     // Get method to show create.html view with empty trip object added to model
     @GetMapping("/create")
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        return "trips/trip_planner";
+        return "/trips/test-trip-planner";
     }
 
+    @PostMapping("/create")
+    public String postTrip(@ModelAttribute Trip trip) {
+        User user = userDao.findById(Utils.currentUserId());
+        trip.setUser(user);
+        tripDao.save(trip);
+        return "redirect:/dashboard";
+    }
+
+// Testing trip planner template view
+    @GetMapping("/testing")
+    public String tripMapTest(Model model) {
+        User currentUser = userDao.findById(Utils.currentUserId());
+        model.addAttribute("createTrip", new Trip());
+        return "/trips/test-trip-planner";
+    }
 
 // Post method to receive post trip and save to database
     @PostMapping("/testing")
