@@ -8,7 +8,7 @@
     <div sec:authorize="isAuthenticated()">Welcome &nbsp;
         <h1 th:text="${currentUser.username}"></h1>
     </div>
-    <h1>HOIIIIIII</h1>
+
 
     <div th:each="trip : ${currentUser.trips}">
         <h1>Start Point:&nbsp;<span th:text="${trip.getStartPoint()}"></span></h1>
