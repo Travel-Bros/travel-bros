@@ -27,7 +27,7 @@ public class SecurityConfiguration {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/login", "/", "/register").permitAll()
-                .antMatchers("/dashboard", "/allUsers", "/profile", "/trips", "/trips/create", "/trips/testing", "/vehicles/create").authenticated()
+                .antMatchers("/dashboard", "/allUsers", "/profile", "/trips", "/trips/create", "/trips/testing", "/vehicles/create", "/trips/{id}/edit").authenticated()
                 // sets the url success page
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard")
 //                .and().logout().logoutSuccessUrl("/splash?logout")
@@ -44,3 +44,5 @@ public class SecurityConfiguration {
 
 
 }
+
+
