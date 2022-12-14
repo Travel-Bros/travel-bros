@@ -6,21 +6,21 @@
 <body>
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
     <div sec:authorize="isAuthenticated()">Welcome &nbsp;
-        <h1 th:text="${#authentication.principal.username}"></h1>
+        <h1 th:text="${currentUser.username}"></h1>
     </div>
     <h1>HOIIIIIII</h1>
 
     <div th:each="trip : ${currentUser.trips}">
         <h1>Start Point:&nbsp;<span th:text="${trip.getStartPoint()}"></span></h1>
         <h1>End Point:&nbsp;<span th:text="${trip.getEndPoint()}"></span></h1>
-        <h1>Budget:&nbsp;$<span th:text="${trip.tripBudget.maxBudget}"></span></h1>
+<!--        <h1>Budget:&nbsp;$<span th:text="${trip.tripBudget.maxBudget}"></span></h1>-->
         <h1>Number of Stops:&nbsp;<span th:text="${trip.getStops()}"></span></h1>
         <h1>Number of People:&nbsp;<span th:text="${trip.getNumPpl()}"></span></h1>
         <ul>
-            <h1>Used Vehicle For <span th:text="${trip.getEndPoint()}"> Trip</span></h1>
-            <li>Make: <h3><span th:text="${trip.vehicleId.make}"></span></h3> </li>
-            <li>Model: <h3><span th:text="${trip.vehicleId.model}"></span></h3> </li>
-            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>
+<!--            <h1>Used Vehicle For <span th:text="${trip.getEndPoint()}"> Trip</span></h1>-->
+<!--&lt;!&ndash;            <li>Make: <h3><span th:text="${trip.vehicleId.make}"></span></h3> </li>&ndash;&gt;-->
+<!--            <li>Model: <h3><span th:text="${trip.vehicleId.model}"></span></h3> </li>-->
+<!--            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>-->
 
         </ul>
 

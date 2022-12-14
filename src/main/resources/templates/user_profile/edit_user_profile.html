@@ -16,19 +16,23 @@
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
 
     <main>
-        <h1 class="text-center" id="form-title">Edit Post</h1>
+        <h1 class="text-center" id="form-title">Edit Profile</h1>
         <div class="form-wrapper">
-            <form th:action="@{|/profile/${id}/edit|}" th:method="post" class="w-100 mx-auto" th:object="${post}">
+            <form th:action="@{|/profile/${id}/edit|}" th:method="post" class="w-100 mx-auto" th:object="${user}">
                 <div class="w-100">
-                    <label for="title" class="form-label">Title</label>
-                    <input th:field="*{title}" id="title" name="title" type="text" class="form-control w-100 shadow-none focus-field" autocomplete="off">
+                    <label for="username" class="form-label">Username</label>
+                    <input th:field="*{username}" id="username" name="username" type="text" class="form-control w-100 shadow-none focus-field" autocomplete="off">
                 </div>
                 <div class="w-100">
-                    <label for="body" class="form-label">Body</label>
-                    <textarea th:field="*{body}" id="body" name="body" rows="10" class="form-control w-100 shadow-none"></textarea>
+                    <label for="email" class="form-label">email</label>
+                    <textarea th:field="*{email}" id="email" name="email" rows="1" class="form-control w-100 shadow-none"></textarea>
+                </div>
+                <div class="w-100">
+                    <label for="password" class="form-label">password</label>
+                    <textarea th:field="*{password}" id="password" name="password" rows="1" class="form-control w-100 shadow-none"></textarea>
                 </div>
                 <div class="w-100 mt-4">
-                    <input type="submit" value="Submit" class="form-control w-100 text-white shadow-none" id="btn">
+                    <input type="submit" value="Submit" class="form-control w-100 shadow-none" id="btn">
                 </div>
             </form>
         </div>
