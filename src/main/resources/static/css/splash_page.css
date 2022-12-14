@@ -32,6 +32,7 @@
 .logoutMessage {
     display: flex;
     justify-content: end;
+    margin-right: 60px;
 }
 .vertical-center {
     margin: 0;
