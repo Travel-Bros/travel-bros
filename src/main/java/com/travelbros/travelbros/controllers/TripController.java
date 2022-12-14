@@ -95,7 +95,7 @@ public class TripController {
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        return "/trips/test-trip-planner";
+        return "/trips/trip_planner";
     }
 
     @PostMapping("/create")
