@@ -1,16 +1,12 @@
 package com.travelbros.travelbros.controllers;
 
 
-import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.utils.Utils;
-import jdk.jshell.execution.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @Controller
@@ -29,21 +25,12 @@ public class ProfileController {
 
     }
 
-//    @GetMapping
-//    public String showAllProfileTrips(Model model) {
-//        User user = userDao.findById(Utils.currentUserId());
-//        model.addAttribute("currentUser", user);
-//
-//        return "/user_profile/user_previous_trips";
-//    }
 
     @GetMapping
     public String showPreviousTrips(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
-
         model.addAttribute("currentUser", currentUser);
-
-        return "user_profile/user_previous_trips";
+        return "/user_profile/profile_page";
     }
 
 // Get method to show edit.html view with trip object added to model
@@ -55,7 +42,7 @@ public class ProfileController {
             return "redirect:/profile";
         }
         model.addAttribute("user", user);
-        return "/profile/edit";
+        return "/user_profile/edit_user_profile";
     }
 
 
@@ -63,11 +50,10 @@ public class ProfileController {
     @PostMapping("/{id}/edit")
     public String editProfile(@ModelAttribute User user, @PathVariable long id) {
         User currentUser = userDao.findById(Utils.currentUserId());
-        if(user.equals(currentUser)){
-            userDao.save(user);
+        userDao.save(user);
 //            return "redirect:/profile?user-saved";
 // ^ use this once the view is created so that you can include a div that says "profile successfully updated"
-        }
+//        }
         return "redirect:/profile";
     }
 
