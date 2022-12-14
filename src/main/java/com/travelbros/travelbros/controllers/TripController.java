@@ -43,23 +43,6 @@ public class TripController {
     }
 
 
-// Get method to show create.html view with empty trip object added to model
-    @GetMapping("/create")
-    public String createTrip(Model model) {
-        model.addAttribute("trip", new Trip());
-        return "trips/create";
-    }
-
-// Post method to receive post trip and save to database
-    @PostMapping("/create")
-    public String submitTrip(@ModelAttribute Trip trip) {
-        User user = userDao.findById(Utils.currentUserId());
-        trip.setUser(user);
-        tripDao.save(trip);
-        return "redirect:/trips";
-    }
-
-
 // Get method to show edit.html view with trip object added to model
 @GetMapping("/{id}/edit")
     public String showEditTripForm(@PathVariable long id, Model model) {
@@ -102,14 +85,18 @@ public class TripController {
         return "redirect:/trips";
     }
 
+
     // Testing trip planner template view
-    @GetMapping("/testing")
-    public String testingTripPlannerView(Model model) {
+    // Get method to show create.html view with empty trip object added to model
+    @GetMapping("/create")
+    public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
         return "trips/trip_planner";
     }
 
+
+// Post method to receive post trip and save to database
     @PostMapping("/testing")
     public String postingTrip(@ModelAttribute Trip trip) {
         User user = userDao.findById(Utils.currentUserId());
