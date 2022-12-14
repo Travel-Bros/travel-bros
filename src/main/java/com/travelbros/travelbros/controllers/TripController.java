@@ -2,6 +2,7 @@ package com.travelbros.travelbros.controllers;
 
 import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
+import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.utils.Utils;
@@ -19,10 +20,13 @@ public class TripController {
     private final TripRepository tripDao;
     private final UserRepository userDao;
 
+    private final BudgetRepository budgetDao;
+
 // Constructor
-    public TripController(TripRepository tripDao, UserRepository userDao) {
+    public TripController(TripRepository tripDao, UserRepository userDao, BudgetRepository budgetDao) {
         this.tripDao = tripDao;
         this.userDao = userDao;
+        this.budgetDao = budgetDao;
     }
 
 // Get method to show index.html view with all trips added to model
@@ -80,9 +84,9 @@ public class TripController {
         Trip trip = tripDao.findById(id);
         // Only deletes post if correct user sending post request
         if (user.getId() == trip.getUser().getId()) {
-            tripDao.delete(trip);
+            tripDao.deleteById(trip.getId());
         }
-        return "redirect:/trips";
+        return "redirect:/profile";
     }
 
 

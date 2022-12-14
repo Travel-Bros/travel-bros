@@ -32,13 +32,13 @@
 .logoutMessage {
     display: flex;
     justify-content: end;
+    margin-right: 60px;
 }
 .vertical-center {
     margin: 0;
     position: relative;
     top: 50%;
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 @media only screen and (max-width: 412px) {
@@ -55,7 +55,7 @@
         margin-bottom: 3px;
         width: 100%;
     }
-    .signInButton, .navButton {
+    .signInButton, .navButton, .profileButton, tripsButton {
         width: 100%;
     }
     .nav-item {

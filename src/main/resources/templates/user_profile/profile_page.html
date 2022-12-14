@@ -23,7 +23,15 @@
 <!--            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>-->
 
         </ul>
-
+        <p>
+            <button th:data-id="${trip.id}" class="editButton btn btn-danger">Edit</button>
+        </p>
+        <p>
+            <button th:data-id="${trip.id}" class="deleteButton btn btn-danger">Delete</button>
+        </p>
+        <p>
+            <button th:data-id="${trip.id}" class="commentsButton btn btn-danger">Comment</button>
+        </p>
 
 
     </div>
