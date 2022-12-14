@@ -15,13 +15,12 @@
     <body>
     <div class="page-wrapper">
         <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-<!--        <div th:if="${param.logout}" class="logoutMessage">You been logged out</div>-->
+        <div th:if="${param.logout}" class="logoutMessage">You been logged out</div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
-                        <h3>Your adventure awaits Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, error, ex facere modi numquam quo quod, saepe sapiente soluta temporibus veniam vitae. Aspernatur consequuntur necessitatibus nemo nihil odit quibusdam quidem.</h3>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque dignissimos distinctio enim et fugiat fugit modi molestiae nemo quaerat. Ab, ad aperiam dolores eos ex nulla pariatur provident vel.</h3>
-                        <br>
+                    <h3>Your adventure awaits Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, error, ex facere modi numquam quo quod, saepe sapiente soluta temporibus veniam vitae. Aspernatur consequuntur necessitatibus nemo nihil odit quibusdam quidem.</h3>
+                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque dignissimos distinctio enim et fugiat fugit modi molestiae nemo quaerat. Ab, ad aperiam dolores eos ex nulla pariatur provident vel.</h3>
                 </div>
                 <div class="col-sm-12 col-lg-6">
                     <div class="kingKaiPlanet">
@@ -32,10 +31,6 @@
             </div>
         </div>
     </div> <!-- END OF PAGE WRAPPER -->
-    <!-- JavaScript Bundle with Popper -->
-<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">-->
-<!--    </script>-->
-<!--    <div th:replace="partials/scripts-partials.html :: scripts"></div>-->
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
     </body>
 </html>
