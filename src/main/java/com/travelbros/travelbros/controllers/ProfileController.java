@@ -43,7 +43,6 @@ public class ProfileController {
 
         model.addAttribute("currentUser", currentUser);
 
-
         return "user_profile/user_previous_trips";
     }
 
