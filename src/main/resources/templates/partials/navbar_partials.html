@@ -46,6 +46,13 @@
                     <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
                         <div class="stretch-wrapper col-12">
                             <li class="nav-item">
+                                <button id="homeButton" type="button" class="btn btn-primary navButton">Home</button>
+                            </li>
+                        </div>
+                    </div> <!-- end "homeButton" profile navBarWrapper wrapper -->
+                    <div sec:authorize="isAuthenticated()" class="navButtonWrapper row"> <!-- Profile navBarWrapper -->
+                        <div class="stretch-wrapper col-12">
+                            <li class="nav-item">
                                 <button id="tripsButton" type="button" class="btn btn-primary navButton">Trips</button>
                             </li>
                         </div>

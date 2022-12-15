@@ -6,10 +6,13 @@ import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.CommentsRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.utils.Utils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.xml.stream.events.Comment;
 
 @Controller
 @RequestMapping("/comments")
@@ -33,7 +36,7 @@ public class CommentsController {
         Trip trip = tripDao.findById(id);
         model.addAttribute("trip", trip);
         model.addAttribute("comment", new Comments());
-        return "trips/comment";
+        return "user_profile/comments";
     }
 
     // Post method to save comment to database
@@ -45,7 +48,45 @@ public class CommentsController {
         Trip trip = tripDao.findById(id);
         Comments newComment = new Comments(comment.getBody(), user, trip);
         commentsDao.save(newComment);
-        return "redirect:/trips";
+        return "redirect:/profile";
+    }
+
+//    @GetMapping("/{id}/edit")
+//    public String showEditCommentForm(@PathVariable long id, Model model) {
+//        User user = usersDao.findById(Utils.currentUserId());
+//        Comments comments = commentsDao.findById(id);
+//        // redirects back to all posts if user is not the owner of the post
+//        if(!user.equals(comments.getUser())) {
+//            return "redirect:/profile";
+//        }
+//        model.addAttribute("comments", comments);
+//        return "user_profile/comments";
+//    }
+//
+//    @PostMapping("/{id}/edit")
+//    public String editComment(@ModelAttribute Comments comment, @PathVariable long id) {
+//        User user = usersDao.findById(Utils.currentUserId());
+//        Comments currentComment = commentsDao.findById(id);
+//        // Only edits post if correct user sending post request
+//        if(user.equals(currentComment.getUser())){
+//            comment.setUser(user);
+//            commentsDao.save(comment);
+//        }
+//        comment.setUser(user);
+//        commentsDao.save(comment);
+//        return "redirect:/profile";
+//    }
+
+// Get method to delete comment from database
+    @GetMapping("/{id}/delete")
+    public String deleteTrip(@PathVariable long id) {
+        User user = usersDao.findById(Utils.currentUserId());
+        Comments comments = commentsDao.findById(id);
+        // Only deletes post if correct user sending post request
+        if (user.getId() == comments.getUser().getId()) {
+            commentsDao.deleteById(comments.getId());
+        }
+        return "redirect:/profile";
     }
 
 }
