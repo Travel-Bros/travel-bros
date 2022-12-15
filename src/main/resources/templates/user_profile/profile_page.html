@@ -9,13 +9,15 @@
         <h1 th:text="${currentUser.username}"></h1>
     </div>
 
+<!--    <span th:text="${#lists.sort(currentUser.id, reverse)}"/>-->
 
-    <div th:each="trip : ${currentUser.trips}">
-        <h1>Start Point:&nbsp;<span th:text="${trip.getStartPoint()}"></span></h1>
-        <h1>End Point:&nbsp;<span th:text="${trip.getEndPoint()}"></span></h1>
-<!--        <h1>Budget:&nbsp;$<span th:text="${trip.tripBudget.maxBudget}"></span></h1>-->
-        <h1>Number of Stops:&nbsp;<span th:text="${trip.getStops()}"></span></h1>
-        <h1>Number of People:&nbsp;<span th:text="${trip.getNumPpl()}"></span></h1>
+    </div>
+    <div th:each="i : ${#numbers.sequence(currentUser.trips.size() - 1, 0, -1)}">
+        <h1>Start Point:&nbsp;<span th:text="${currentUser.trips[i].getStartPoint()}"></span></h1>
+        <h1>End Point:&nbsp;<span th:text="${currentUser.trips[i].getEndPoint()}"></span></h1>
+<!--        <h1>Budget:&nbsp;$<span th:text="${currentUser.trips[i].tripBudget.maxBudget}"></span></h1>-->
+        <h1>Number of Stops:&nbsp;<span th:text="${currentUser.trips[i].getStops()}"></span></h1>
+        <h1>Number of People:&nbsp;<span th:text="${currentUser.trips[i].getNumPpl()}"></span></h1>
         <ul>
 <!--            <h1>Used Vehicle For <span th:text="${trip.getEndPoint()}"> Trip</span></h1>-->
 <!--&lt;!&ndash;            <li>Make: <h3><span th:text="${trip.vehicleId.make}"></span></h3> </li>&ndash;&gt;-->
@@ -30,13 +32,13 @@
             </p>
         </div>
         <p>
-            <button th:data-id="${trip.id}" class="editButton btn btn-danger">Edit</button>
+            <button th:data-id="${currentUser.trips[i].id}" class="editButton btn btn-danger">Edit</button>
         </p>
         <p>
-            <button th:data-id="${trip.id}" class="deleteButton btn btn-danger">Delete</button>
+            <button th:data-id="${currentUser.trips[i].id}" class="deleteButton btn btn-danger">Delete</button>
         </p>
         <p>
-            <button th:data-id="${trip.id}" class="commentsButton btn btn-danger">Comment</button>
+            <button th:data-id="${currentUser.trips[i].id}" class="commentsButton btn btn-danger">Comment</button>
         </p>
 
 
