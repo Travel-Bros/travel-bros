@@ -23,6 +23,12 @@
 <!--            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>-->
 
         </ul>
+        <div th:each="comment : ${currentUser.comments}">
+            <p th:text="${comment.body}"></p>
+            <p>
+                <button th:data-id="${comment.id}" class="deleteCommentButton btn btn-danger">Delete</button>
+            </p>
+        </div>
         <p>
             <button th:data-id="${trip.id}" class="editButton btn btn-danger">Edit</button>
         </p>
