@@ -1,6 +1,7 @@
 package com.travelbros.travelbros.models;
 import com.travelbros.travelbros.repositories.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "trip")
@@ -40,6 +41,8 @@ public class Trip {
     @Column(nullable = false)
     private int numPpl;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
+    private List<Comments> comments;
 
     // vehicle joining
 
@@ -117,11 +120,19 @@ public class Trip {
         this.vehicleId = vehicleId;
     }
 
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
+
     public Trip(){}
 
 
 
-    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl) {
+    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, List<Comments> comments, Vehicle vehicleId) {
         this.id = id;
         this.user = user;
         this.tripBudget = tripBudget;
@@ -130,6 +141,8 @@ public class Trip {
         this.stops = stops;
         this.distance = distance;
         this.numPpl = numPpl;
+        this.comments = comments;
+        this.vehicleId = vehicleId;
 
     }
 

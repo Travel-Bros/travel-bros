@@ -3,6 +3,7 @@ package com.travelbros.travelbros.controllers;
 import com.travelbros.travelbros.models.Comments;
 import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
+import com.travelbros.travelbros.models.Vehicle;
 import com.travelbros.travelbros.repositories.CommentsRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
@@ -32,7 +33,7 @@ public class CommentsController {
 
     // Get method to send user to comment.html view with Comment and Post objects as attributes on model
     @GetMapping("/{id}/create")
-    public String showCommentForm(@PathVariable long id, Model model) {
+    public String showCommentForm(Model model, @PathVariable long id) {
         Trip trip = tripDao.findById(id);
         model.addAttribute("trip", trip);
         model.addAttribute("comment", new Comments());
@@ -41,13 +42,11 @@ public class CommentsController {
 
     // Post method to save comment to database
     @PostMapping("/{id}/create")
-    public String addComment(@ModelAttribute Comments comment, @PathVariable long id) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long UserId = user.getId();
-        user = usersDao.findById(UserId);
+    public String addComment(@ModelAttribute Comments comments, @PathVariable long id) {
+        User user = usersDao.findById(Utils.currentUserId());
         Trip trip = tripDao.findById(id);
-        Comments newComment = new Comments(comment.getBody(), user, trip);
-        commentsDao.save(newComment);
+        Comments newComments = new Comments(comments.getBody(), user, trip);
+        commentsDao.save(newComments);
         return "redirect:/profile";
     }
 
