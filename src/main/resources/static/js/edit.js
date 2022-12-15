@@ -4,3 +4,9 @@ $(document).ready(function(){
         window.location.replace(`/trips/${$(this).attr("data-id")}/edit`);
     });
 });
+$(document).ready(function(){
+    // Event listener to redirect when .deleteButton clicked
+    $(".editVehicleButton").on('click', function(e){
+        window.location.replace(`/vehicles/${$(this).attr("data-id")}/edit`);
+    });
+});
