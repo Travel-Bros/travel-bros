@@ -76,13 +76,13 @@ public class Vehicle {
         this.model = model;
     }
 
-    public int getTank_size() {
-        return tankSize;
-    }
+//    public int getTankSize() {
+//        return tankSize;
+//    }
 
-    public void setTank_size(int tankSize) {
-        this.tankSize = tankSize;
-    }
+//    public void setTank_size(int tankSize) {
+//        this.tankSize = tankSize;
+//    }
 
     public double getMpg() {
         return mpg;
