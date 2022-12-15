@@ -5,45 +5,38 @@
 </head>
     <body>
     <div class="page-wrapper" style="height: 100%">
-        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
         <div class="container">
             <div class="row">
-                <!-- this div is so then we can flex our map -->
-                <div>
-                    <h1> Let's plan your Trip! </h1>
-                </div>
-                <div class="row form-row">
-                    <div class="flex-container" style=" display: flex; flex-direction: row; ">
-                        <!-- this div is for our inputs  -->
-                        <div class="inputForm col-6 col-sm-6">
-                            <!--            <form onsubmit="return false" th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">-->
-                            <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}">
-                                <label for="budget">Enter your Budget:</label>
-                                <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
-                                <br>
-                                <label for="startLocation">Start Location:</label>
-                                <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname">
-                                <br>
-                                <label for="endLocation">End Location:</label>
-                                <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
-                                <br>
-                                <button type="button"  id="planYourTrip">Your trip</button>
-                                <br>
-                                <label for="totalDistance"> Distance Traveled</label>
-                                <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
-                                <br>
-                                <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
-                            </form>
-                        </div><!-- END OF inputForm -->
-                    </div><!-- END OF form-row -->
-                    <div class="col-6 col-sm-6" style="height: 50%; flex-grow: 6">
-<!--                        <div style="height: 100%; flex-grow: 6">-->
-                            <div style="height: 100%;" id="map" ></div>
-                            <div id="distance">
-                                <h3 id="yourTripDistance"></h3>
-                                <h3 id="yourTravelDistance"></h3>
-<!--                            </div>-->
-                        </div>
+            <div>
+                <h1> Let's plan your Trip! </h1>
+            </div>
+            <div class="row">
+                <div class="inputForm col-6 col-sm-6">
+                    <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}">
+                        <label for="budget">Enter your Budget:</label>
+                        <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
+                        <br>
+                        <label for="startLocation">Start Location:</label>
+                        <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname">
+                        <br>
+                        <label for="endLocation">End Location:</label>
+                        <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
+                        <br>
+                        <button type="button"  id="planYourTrip">Your trip</button>
+                        <br>
+                        <label for="totalDistance"> Distance Traveled</label>
+                        <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
+                        <br>
+                        <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
+                    </form>
+                </div><!-- END OF inputForm -->
+<!--                style="height: 50%; flex-grow: 6-->
+                <div class="col-12 col-sm-6">
+                    <div style="height: 80vh;" id="map"></div>
+                    <div id="distance">
+                        <h3 id="yourTripDistance"></h3>
+                        <h3 id="yourTravelDistance"></h3>
                     </div>
                 </div>
             </div><!-- END OF ROW -->
@@ -51,51 +44,6 @@
     </div><!-- END OF PAGE-WRAPPER -->
     <!-- This is the div for out Google Maps -->
     <!-- we need to have the container to have height or the map will not show -->
-
-<!--    <div class="container">-->
-<!--        &lt;!&ndash; this div is so then we can flex our map &ndash;&gt;-->
-
-<!--        <div>-->
-<!--            <h1> Let's plan your Trip! </h1>-->
-<!--        </div>-->
-<!--        <div class="flex-container" style=" display: flex; flex-direction: row; ">-->
-
-<!--            &lt;!&ndash; this div is for our inputs  &ndash;&gt;-->
-<!--            <div style="flex-grow: 6">-->
-
-<!--    &lt;!&ndash;            <form onsubmit="return false" th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">&ndash;&gt;-->
-<!--                <form th:method="post" th:action="@{/trips/testing}" th:object="${createTrip}">-->
-
-
-
-<!--                    <label for="budget">Enter your Budget:</label>-->
-<!--                    <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget"><br><br>-->
-
-<!--                    <label for="startLocation">Start Location:</label>-->
-<!--                    <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname"><br><br>-->
-
-<!--                    <label for="endLocation">End Location:</label>-->
-<!--                    <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname"><br>-->
-<!--                    <button type="button"  id="planYourTrip">Your trip</button>-->
-<!--                    <br>-->
-
-<!--                    <label for="totalDistance"> Distance Traveled</label>-->
-<!--                    <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname"><br><br>-->
-
-<!--                    <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>-->
-<!--                </form>-->
-
-<!--            </div>-->
-<!--            <div style="height: 100%; flex-grow: 6">-->
-<!--                <div id="map" ></div>-->
-<!--                <div id="distance">-->
-<!--                    <h3 id="yourTripDistance"></h3>-->
-<!--                    <h3 id="yourTravelDistance"></h3>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 
     <!-- We need this in order to use the map with our api key -->
     <script
