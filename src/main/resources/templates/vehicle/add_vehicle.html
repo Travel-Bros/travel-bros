@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
-<head th:replace="partials/head-partials.html :: head ('Travel Bros: Add a Vehicle')"></head>
+<head th:replace="partials/head-partials.html :: head ('Travel Bros: Add a Vehicle')">
+    <script src="../../static/js/xml2json.min.js"></script>
+    <script src="../../static/js/vehical.js"></script>
+</head>
 <body>
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
 
@@ -11,23 +14,23 @@
                 <div class="col-6 h-75" th:data="user-vehicle-input">
                     <div class="col-6">
                         <label for="vehicle-make" class="stretch-wrapper">Vehicle Make:</label>
-                        <input id="vehicle-make">
+                        <input th:field="${vehicle.make}" id="vehicle-make">
                     </div>
                     <div class="col-6">
                         <label for="vehicle-model" class="stretch-wrapper">Vehicle Model:</label>
-                        <input id="vehicle-model">
+                        <input th:field="${vehicle.model}" id="vehicle-model">
                     </div>
                     <div class="col-6">
                         <label for="vehicle-mpg" class="stretch-wrapper">Vehicle MPG:</label>
-                        <input id="vehicle-mpg">
+                        <input th:field="${vehicle.mpg}" id="vehicle-mpg">
                     </div>
                     <div class="col-6">
                         <label for="vehicle-tank-size" class="stretch-wrapper">Vehicle Tank Size:</label>
-                        <input id="vehicle-tank-size">
+                        <input th:field="${vehicle.tankSize}" id="vehicle-tank-size">
                     </div>
                     <div class="col-6">
                         <label for="vehicle-year" class="stretch-wrapper">Vehicle Year:</label>
-                        <input id="vehicle-year">
+                        <input th:field="${vehicle.year}" id="vehicle-year">
                     </div>
                 </div>
                 <div class="col-6">
@@ -39,7 +42,7 @@
             <div class="row">
                 <div class="col-6">
                     <label for="cancel-vehicle"></label>
-                    <input id="cancel-vehicle" value="Cancel" type="submit">
+                    <input id="cancel-vehicle" value="Cancel" type="reset">
                 </div>
                 <div class="col-6">
                     <label for="submit-vehicle"></label>
