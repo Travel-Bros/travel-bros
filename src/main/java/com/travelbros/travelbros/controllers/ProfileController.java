@@ -38,8 +38,6 @@ public class ProfileController {
         User currentUser = userDao.findById(Utils.currentUserId());
 //        List<Trip> sortedList = currentUser
         List<Trip> descendingOrderTrips = tripDao.findAllByUserOrderByIdDesc(currentUser);
-        ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writeValueAsString(descendingOrderTrips));
 //        List<Trip> userTrips = currentUser.getTrips();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("sortedTrips", descendingOrderTrips);
