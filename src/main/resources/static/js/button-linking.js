@@ -7,6 +7,7 @@ $(document).ready(function(){
         window.location.href = "/register";
     });
 });
+
 // THIS LINKS TO LOGIN //
 $(document).ready(function () {
     $("#signInButton").on('click', function (e){
@@ -14,6 +15,7 @@ $(document).ready(function () {
         window.location.href = "/login";
     });
 });
+
 // THIS LINKS TO PROFILE //
 $(document).ready(function () {
     $("#profileButton").on('click', function (e){
@@ -47,6 +49,21 @@ $(document).ready(function () {
         window.location.href = "/vehicles";
     });
 });
+
+// THIS LINKS ADD VEHICLE BUTTON TO CREATE VEHICLE FORM
+$(document).ready(function () {
+    $(".add-new-vehicle").on('click', function (e) {
+        window.location.replace("/vehicles/create");
+    });
+});
+
+    // This makes the cancel input take you back to dashboard
+    $(document).ready(function () {
+        $("#cancel-vehicle").on('click', function (e) {
+            window.location.replace("/dashboard");
+        });
+    });
+
 // THIS LINKS TO SETTINGS //
 $(document).ready(function () {
     $("#settingsButton").on('click', function (e){
@@ -57,7 +74,12 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#logoutButton").on('click', function (e) {
         window.location.href = "/logout";
-    })
+    });
 });
 
+$(document).ready(function () {
+    $(".addTripButton").on('click', function (e) {
+        window.location.href = "/trips/create";
+    });
+});
 

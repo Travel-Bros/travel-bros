@@ -4,7 +4,24 @@
 <head th:replace="partials/head-partials.html :: head ('Travel Bros: Your Vehicles')"></head>
 <body>
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+    <button type="button" class="add-new-vehicle">Add a new vehicle</button>
 
+    <div class="card" th:each="vehicle : ${allVehicles}">
+<!--        <span th:text="${vehicle.user.username}"></span>-->
+        <span th:text="${vehicle.getMake()}"></span>
+        <span th:text="${vehicle.getModel()}"></span>
+        <span th:text="${vehicle.getYear()}"></span>
+        <span th:text="${vehicle.getMpg()}"></span>
+        <span th:text="${vehicle.getTankSize()}"></span>
+        <p>
+            <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
+        </p>
+        <p>
+            <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
+        </p>
 
+    </div>
+
+    <div th:replace="partials/scripts-partials.html :: scripts"></div>
 </body>
 </html>
