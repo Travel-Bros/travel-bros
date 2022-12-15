@@ -52,7 +52,7 @@ public class VehicleController {
     @GetMapping("/create")
     public String createVehicle(Model model) {
         model.addAttribute("vehicle", new Vehicle());
-        return "vehicle/add_vehicle";
+        return "/vehicle/add_vehicle";
     }
 
 
@@ -62,7 +62,7 @@ public class VehicleController {
         User user = usersDao.findById(Utils.currentUserId());
         vehicle.setUser(user);
         vehicleDao.save(vehicle);
-        return "redirect:/vehicles";
+        return "redirect:/dashboard";
     }
 
 
