@@ -1,12 +1,18 @@
 package com.travelbros.travelbros.controllers;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
+import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -16,20 +22,28 @@ public class ProfileController {
 
 // Dependency Injection
     private final UserRepository userDao;
+    private final TripRepository tripDao;
 
 
 // Constructor
-    public ProfileController(UserRepository userDao){
-
+    public ProfileController(UserRepository userDao, TripRepository tripDao){
+        this.tripDao = tripDao;
         this.userDao = userDao;
 
     }
 
 
     @GetMapping
-    public String showPreviousTrips(Model model) {
+    public String showPreviousTrips(Model model) throws JsonProcessingException {
         User currentUser = userDao.findById(Utils.currentUserId());
+//        List<Trip> sortedList = currentUser
+        List<Trip> descendingOrderTrips = tripDao.findAllByUserOrderByIdDesc(currentUser);
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writeValueAsString(descendingOrderTrips));
+//        List<Trip> userTrips = currentUser.getTrips();
         model.addAttribute("currentUser", currentUser);
+        model.addAttribute("sortedTrips", descendingOrderTrips);
+//        model.addAttribute("sortedTrips", userTrips);
         return "/user_profile/profile_page";
     }
 

@@ -1,4 +1,5 @@
 package com.travelbros.travelbros.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelbros.travelbros.repositories.*;
 import javax.persistence.*;
 
@@ -30,6 +31,7 @@ public class Trip {
     // User joining
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     // Vehicle joining
