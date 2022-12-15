@@ -6,6 +6,7 @@ import com.travelbros.travelbros.models.Vehicle;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.repositories.VehicleRepository;
 import com.travelbros.travelbros.utils.Utils;
+import jdk.jshell.execution.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,11 @@ public class VehicleController {
 // Get method to show index.html view with all vehicles added to model
     @GetMapping
     public String allVehicles(Model model){
-        List<Vehicle> allVehicles = vehicleDao.findAll();
-        model.addAttribute("allTrips", allVehicles);
-        return "vehicle/index";
+        User currentUser = usersDao.findById(Utils.currentUserId());
+        List<Vehicle> allVehicles = currentUser.getUserVehicles();
+//        List<Vehicle> allVehicles = vehicleDao.findAll();
+        model.addAttribute("allVehicles", allVehicles);
+        return "/vehicle/vehicle_list";
     }
 
 
@@ -76,7 +79,7 @@ public class VehicleController {
             return "redirect:/vehicles";
         }
         model.addAttribute("vehicle", vehicle);
-        return "/vehicles/edit";
+        return "/vehicle/vehicle_id_edit";
     }
 
 
