@@ -7,7 +7,6 @@ $(document).ready(function(){
         window.location.href = "/register";
     });
 });
-
 // THIS LINKS TO LOGIN //
 $(document).ready(function () {
     $("#signInButton").on('click', function (e){
@@ -15,13 +14,6 @@ $(document).ready(function () {
         window.location.href = "/login";
     });
 });
-// THIS LINKS TO LOGOUT //
-$(document).ready(function () {
-    $("#logoutButton").on('click', function (e) {
-        window.location.href = "/logout";
-    });
-});
-
 // THIS LINKS TO PROFILE //
 $(document).ready(function () {
     $("#profileButton").on('click', function (e){
@@ -29,7 +21,13 @@ $(document).ready(function () {
         // alert("profile coming soon");
     });
 });
-
+// THIS LINKS TO HOME //
+$(document).ready(function () {
+    $("#homeButton").on('click', function (e){
+        window.location.replace(`/dashboard`);
+        // alert("profile coming soon");
+    });
+});
 // THIS LINKS TO TRIPS //
 $(document).ready(function () {
     $("#tripsButton").on('click', function (e){
@@ -37,40 +35,29 @@ $(document).ready(function () {
         window.location.href = "/trips";
     });
 });
+// THIS LINKS TRIPS/CREATE BUTTON //
+$(document).ready(function () {
+    $(".addTripButton").on('click', function (e) {
+        window.location.href = "/trips/create";
+    })
+});
 // THIS LINKS TO VEHICLES //
 $(document).ready(function () {
     $("#vehicleButton").on('click', function (e){
         window.location.href = "/vehicles";
     });
 });
-
-// THIS LINKS ADD VEHICLE BUTTON TO CREATE VEHICLE FORM
-$(document).ready(function () {
-    $(".add-new-vehicle").on('click', function (e) {
-        window.location.replace("/vehicles/create");
-    });
-});
-
-    // This makes the cancel input take you back to dashboard
-    $(document).ready(function () {
-        $("#cancel-vehicle").on('click', function (e) {
-            window.location.replace("/dashboard");
-        });
-    });
-
 // THIS LINKS TO SETTINGS //
 $(document).ready(function () {
     $("#settingsButton").on('click', function (e){
         window.location.href = "/settings";
     });
 });
-
-// THIS LINKS TRIPS BUTTON //
+// THIS LINKS TO LOGOUT //
 $(document).ready(function () {
-    $(".addTripButton").on('click', function (e) {
-        window.location.href = "/trips/create";
-    });
+    $("#logoutButton").on('click', function (e) {
+        window.location.href = "/logout";
+    })
 });
-
 
 
