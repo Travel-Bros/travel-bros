@@ -34,7 +34,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#tripsButton").on('click', function (e){
         // alert("trips coming soon!");
-        window.location.href = "/trips";
+        window.location.href = "/trips/create";
     });
 });
 // THIS LINKS TRIPS/CREATE BUTTON //
@@ -64,12 +64,12 @@ $(document).ready(function () {
         });
     });
 
-// THIS LINKS TO SETTINGS //
-$(document).ready(function () {
-    $("#settingsButton").on('click', function (e){
-        window.location.href = "/settings";
-    });
-});
+// // THIS LINKS TO SETTINGS //
+// $(document).ready(function () {
+//     $("#settingsButton").on('click', function (e){
+//         window.location.href = "/settings";
+//     });
+// });
 // THIS LINKS TO LOGOUT //
 $(document).ready(function () {
     $("#logoutButton").on('click', function (e) {
