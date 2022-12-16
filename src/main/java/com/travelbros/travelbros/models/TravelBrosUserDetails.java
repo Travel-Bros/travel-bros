@@ -34,7 +34,7 @@ public class TravelBrosUserDetails extends User implements UserDetails {
 
     public TravelBrosUserDetails(){}
 
-    public TravelBrosUserDetails(long id, String email, String username, String password) {
-        super(id, email, username, password);
+    public TravelBrosUserDetails(long id, String username, String email, String password) {
+        super(id, username, email, password);
     }
 }
