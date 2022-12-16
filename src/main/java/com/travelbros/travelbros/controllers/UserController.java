@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
 
@@ -37,10 +40,21 @@ public class UserController {
 
     // Post method to save new user to database after hashing password
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user, HttpServletRequest request) {
+        String plainPass = user.getPassword();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         usersDao.save(user);
-        return "redirect:/login";
+        authWithHttpServletRequest(request, user.getUsername(), plainPass);
+        return "redirect:/dashboard";
+    }
+
+
+    private void authWithHttpServletRequest(HttpServletRequest request, String username, String password) {
+        try {
+            request.login(username, password);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 
 
