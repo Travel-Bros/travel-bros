@@ -24,7 +24,7 @@ public class Vehicle {
     @Column(nullable = false)
     private double mpg;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String year;
 
 
