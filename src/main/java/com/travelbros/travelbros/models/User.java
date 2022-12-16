@@ -106,11 +106,11 @@ public class User {
         this.password = password;
     }
 
-    public User(long id, String username, String password, String email, List<Trip> trips, List<Comments> comments, List<Vehicle> userVehicles) {
+    public User(long id, String username, String email, String password, List<Trip> trips, List<Comments> comments, List<Vehicle> userVehicles) {
         this.id = id;
         this.username = username;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.trips = trips;
         this.comments = comments;
         this.userVehicles = userVehicles;

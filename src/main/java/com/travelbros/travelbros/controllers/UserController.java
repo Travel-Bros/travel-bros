@@ -2,6 +2,7 @@ package com.travelbros.travelbros.controllers;
 
 import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.services.EmailService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +18,13 @@ public class UserController {
     private final UserRepository usersDao;
     private final PasswordEncoder passwordEncoder;
 
+    private final EmailService emailService;
 
     // Constructor
-    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder, EmailService emailService) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
+        this.emailService = emailService;
     }
 
 
