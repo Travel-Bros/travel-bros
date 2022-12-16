@@ -43,7 +43,7 @@ console.log(locationsFromUser)
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const startInput = document.querySelector('#startLocation')
+    const startInput = document.querySelector('#vehicle-make')
     const endInput = document.querySelector('#endLocation')
 
     startInput.addEventListener('keyup',function(e){
