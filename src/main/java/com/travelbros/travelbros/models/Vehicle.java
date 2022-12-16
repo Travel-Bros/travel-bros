@@ -12,10 +12,10 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String make;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String model;
 
     @Column(nullable = false)
@@ -24,7 +24,7 @@ public class Vehicle {
     @Column(nullable = false)
     private double mpg;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String year;
 
 
@@ -119,6 +119,13 @@ public class Vehicle {
     // Constructors
 
     public Vehicle() {
+    }
+
+    public Vehicle(String year, String make, int tankSize, double mpg) {
+        this.year = year;
+        this.make = make;
+        this.tankSize = tankSize;
+        this.mpg = mpg;
     }
 
     public Vehicle(String year, String make, String model, int tankSize, double mpg) {
