@@ -21,9 +21,15 @@
 
             <label for="endLocation">End Location:</label>
             <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname"><br>
-            <button type="button"  id="planYourTrip">Your trip</button>
+            <select name="user-car" id="user-car-select" th:field="${currentUser}"  th:if="${currentUser.userVehicles.size() > 0}">
+                <option
+                        th:each="vehicle : ${currentUser.userVehicles}"
+                        th:value="${vehicle.id}"
+                        th:text="${vehicle.make}">
+                </option>
+            </select>
             <br>
-
+            <button type="button"  id="planYourTrip">Your trip</button>
             <label for="totalDistance"> Distance Traveled</label>
             <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname"><br><br>
 
