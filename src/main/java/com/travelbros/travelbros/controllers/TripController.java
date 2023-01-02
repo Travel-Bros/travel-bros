@@ -95,6 +95,10 @@ public class TripController {
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
+        model.addAttribute("currentUser", currentUser);
+        if (currentUser.getUserVehicles().size() == 0) {
+            return "redirect:/vehicles/create";
+        }
         return "/trips/trip_planner";
     }
 

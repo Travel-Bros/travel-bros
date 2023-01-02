@@ -13,6 +13,10 @@
 
     <form th:object="${vehicle}" th:method="post" th:action="@{/vehicles/create}">
         <div class="container-fluid">
+            <div th:if="${currentUser.getUserVehicles().size() == 0}" class="row">
+                <h1>Please enter your vehicle information to continue!</h1>
+            </div>
+
             <div class="row">
                 <div class="col-6 h-75" th:data="user-vehicle-input">
                     <div class="col-6">
