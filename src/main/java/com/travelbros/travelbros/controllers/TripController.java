@@ -51,6 +51,7 @@ public class TripController {
 @GetMapping("/{id}/edit")
     public String showEditTripForm(@PathVariable long id, Model model) {
         User user = userDao.findById(Utils.currentUserId());
+        model.addAttribute("currentUser", user);
         Trip trip = tripDao.findById(id);
         // redirects back to all posts if user is not the owner of the post
         if(!user.equals(trip.getUser())) {
