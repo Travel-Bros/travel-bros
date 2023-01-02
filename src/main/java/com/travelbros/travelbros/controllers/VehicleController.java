@@ -54,14 +54,16 @@ public class VehicleController {
 // Get method to show create.html view with empty vehicle object added to model
     @GetMapping("/create")
     public String createVehicle(Model model) {
+        User currentUser = usersDao.findById(Utils.currentUserId());
         model.addAttribute("vehicle", new Vehicle());
+        model.addAttribute("currentUser", currentUser);
         return "/vehicle/add_vehicle";
     }
 
 
 // Post method to receive vehicle object and save to database
     @PostMapping("/create")
-    public String submitVehicle(@ModelAttribute Vehicle vehicle) {
+    public String submitVehicle(@ModelAttribute Vehicle vehicle, Model model) {
         User user = usersDao.findById(Utils.currentUserId());
         vehicle.setUser(user);
         vehicleDao.save(vehicle);
@@ -74,6 +76,7 @@ public class VehicleController {
     public String showEditVehicleForm(@PathVariable long id, Model model) {
         User user = usersDao.findById(Utils.currentUserId());
         Vehicle vehicle = vehicleDao.findById(id);
+        model.addAttribute("currentUser", user);
         // redirects back to all posts if user is not the owner of the post
         if(!user.equals(vehicle.getUser())) {
             return "redirect:/vehicles";
