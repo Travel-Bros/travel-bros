@@ -3,6 +3,7 @@ package com.travelbros.travelbros.models;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "budget")
@@ -29,6 +30,9 @@ public class Budget {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budget")
+    private List<MiscExpenses> miscExpenses;
 
     //////////////////// Constructors ////////////////////
 
