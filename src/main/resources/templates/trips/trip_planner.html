@@ -7,13 +7,13 @@
     <div class="page-wrapper" style="height: 100%">
     <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
         <div class="container">
-            <div class="row">
+            <div class="row"> <!-- row 1 -->
             <div>
                 <h1> Let's plan your Trip! </h1>
             </div>
-            <div class="row">
+            <div class="row"> <!-- row 2 -->
                 <div class="inputForm col-6 col-sm-6">
-                    <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}">
+                    <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
                         <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
                         <br>
@@ -22,6 +22,14 @@
                         <br>
                         <label for="endLocation">End Location:</label>
                         <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
+                        <br>
+                        <select name="user-car" id="user-car-select" th:field="${currentUser}"  th:if="${currentUser.userVehicles.size() > 0}">
+                            <option
+                                    th:each="vehicle : ${currentUser.userVehicles}"
+                                    th:value="${vehicle.id}"
+                                    th:text="${vehicle.make}">
+                            </option>
+                        </select>
                         <br>
                         <button type="button"  id="planYourTrip">Your trip</button>
                         <br>
@@ -38,6 +46,7 @@
                         <h3 id="yourTravelDistance"></h3>
                     </div>
                 </div><!-- END OF COL FOR GOOGLE MAPS-->
+                </div> <!-- End OF ROW 2 -->
             </div><!-- END OF ROW -->
         </div><!-- END OF CONTAINER -->
     </div><!-- END OF PAGE-WRAPPER -->
