@@ -41,6 +41,12 @@
     -ms-transform: translateY(-50%);
 }
 
+
+
+/* /////////////// */
+/*  Media Queries  */
+/* ///////////// */
+
 @media only screen and (max-width: 650px) {
     .loginWrapperDN>ul {
         width: 100%;
