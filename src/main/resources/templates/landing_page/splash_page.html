@@ -16,14 +16,14 @@
     <div class="page-wrapper">
         <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
         <div th:if="${param.logout}" class="logoutMessage">You been logged out</div>
-        <div class="container">
+        <div class="container app__description">
             <div class="row">
-                <div class="col-sm-12 col-lg-6">
+                <div class="col-sm-12 col-lg-6 app__description-aboutUs">
                     <h3>Your adventure awaits Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, error, ex facere modi numquam quo quod, saepe sapiente soluta temporibus veniam vitae. Aspernatur consequuntur necessitatibus nemo nihil odit quibusdam quidem.</h3>
                     <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cumque dignissimos distinctio enim et fugiat fugit modi molestiae nemo quaerat. Ab, ad aperiam dolores eos ex nulla pariatur provident vel.</h3>
                 </div>
-                <div class="col-sm-12 col-lg-6">
-                    <div class="kingKaiPlanet">
+                <div class="col-sm-12 col-lg-6 app__description-logo">
+                    <div id="3dLogo" class="kingKaiPlanet">
                         <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>
                     </div>
                     <div class="testButton"></div>
