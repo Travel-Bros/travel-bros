@@ -41,11 +41,10 @@
     -ms-transform: translateY(-50%);
 }
 
-@media only screen and (max-width: 412px) {
+@media only screen and (max-width: 650px) {
     .loginWrapperDN>ul {
         width: 100%;
     }
-
     .loginWrapperDN {
         display: flex;
         justify-content: center;
@@ -66,3 +65,11 @@
 @media screen and (max-width: 1440px){
 
 }
+/* Display none on smaller px */
+@media screen and (max-width: 700px) {
+    .kingKaiPlanet{
+        display: none;
+    }
+
+}
+
