@@ -34,7 +34,7 @@ public class Vehicle {
     private User user;
 
     // Trip joining
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicleId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicle")
     List <Trip> tripVehicles;
 
 
