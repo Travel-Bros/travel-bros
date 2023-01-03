@@ -16,10 +16,10 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double maxBudget;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private double gas;
 
     // Instance Variables
@@ -27,9 +27,9 @@ public class Budget {
     private Trip trip;
 
     // User joining
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "budget")
     private List<MiscExpenses> miscExpenses;
