@@ -1,48 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
-<head th:replace="partials/head-partials.html :: head ('test-edit')">
+<head th:replace="partials/maps-head-partials.html :: head ('test-edit')">
 </head>
 <body>
-<nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-
-<main>
     <h1 class="text-center" id="form-title">Edit Trips</h1>
-    <div class="form-wrapper">
-        <form th:method="post" th:action="@{|/trips/${id}/edit|}" th:object="${trip}">
+    <div class="page-wrapper" style="height: 100%">
+        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+        <div class="container">
+            <div class="row"> <!-- row 1 -->
+                <div>
+                    <h1> Let's plan your Trip! </h1>
+                </div>
+                <div class="row"> <!-- row 2 -->
+                    <div class="inputForm col-6 col-sm-6">
+                        <form th:method="post" th:action="@{|/trips/${id}/edit|}" th:object="${trip}" th:if="${currentUser.userVehicles.size() > 0}">
+                            <label for="budget">Enter your Budget:</label>
+                            <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
+                            <br>
+
+<!--                            <label for="budget">Enter your Budget:</label>-->
+<!--                            <input th:field="${trip.tripBudget}" type="text" id="budget" name="budget">-->
+<!--                            <br>-->
+                            <label for="startLocation">Start Location:</label>
+                            <input th:field="${trip.startPoint}" type="text" id="startLocation" name="fname">
+                            <br>
+                            <label for="endLocation">End Location:</label>
+                            <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname">
+                            <br>
+                            <select name="user-car" id="user-car-select" th:field="${trip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">
+                                <option
+                                        th:each="vehicle : ${currentUser.userVehicles}"
+                                        th:value="${vehicle.id}"
+                                        th:text="${vehicle.make}">
+                                </option>
+                            </select>
+                            <br>
+                            <button type="button"  id="planYourTrip">Your trip</button>
+                            <br>
+                            <label for="totalDistance"> Distance Traveled</label>
+                            <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname">
+                            <br>
+                            <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
+                        </form>
+                    </div><!-- END OF inputForm -->
+                    <div class="col-12 col-sm-6">
+                        <div class="googleMap"style="height: 50vh;" id="map"></div>
+                        <div id="distance">
+                            <h3 id="yourTripDistance"></h3>
+                            <h3 id="yourTravelDistance"></h3>
+                        </div>
+                    </div><!-- END OF COL FOR GOOGLE MAPS-->
+                </div> <!-- End OF ROW 2 -->
+            </div><!-- END OF ROW -->
+        </div><!-- END OF CONTAINER -->
+    </div><!-- END OF PAGE-WRAPPER -->
 
 
 
-            <label for="budget">Enter your Budget:</label>
-            <input th:field="${trip.tripBudget}" type="text" id="budget" name="budget"><br><br>
+<!--    <div class="form-wrapper">-->
+<!--        <form th:method="post" th:action="@{|/trips/${id}/edit|}" th:object="${trip}">-->
 
-            <label for="startLocation">Start Location:</label>
-            <input th:field="${trip.startPoint}" type="text" id="startLocation" name="fname"><br><br>
 
-            <label for="endLocation">End Location:</label>
-            <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname"><br>
-            <select name="user-car" id="user-car-select" th:field="${currentUser}"  th:if="${currentUser.userVehicles.size() > 0}">
-                <option
-                        th:each="vehicle : ${currentUser.userVehicles}"
-                        th:value="${vehicle.id}"
-                        th:text="${vehicle.make}">
-                </option>
-            </select>
-            <br>
-            <button type="button"  id="planYourTrip">Your trip</button>
-            <label for="totalDistance"> Distance Traveled</label>
-            <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname"><br><br>
 
-            <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
-        </form>
+<!--            <label for="budget">Enter your Budget:</label>-->
+<!--            <input th:field="${trip.tripBudget}" type="text" id="budget" name="budget"><br><br>-->
 
-        <div style="height: 100%; flex-grow: 6">
-            <div id="map" ></div>
-            <div id="distance">
-                <h3 id="yourTripDistance"></h3>
-                <h3 id="yourTravelDistance"></h3>
-            </div>
-        </div>
+<!--            <label for="startLocation">Start Location:</label>-->
+<!--            <input th:field="${trip.startPoint}" type="text" id="startLocation" name="fname"><br><br>-->
+
+<!--            <label for="endLocation">End Location:</label>-->
+<!--            <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname"><br>-->
+<!--            <select name="user-car" id="user-car-select" th:field="${trip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">-->
+<!--                <option-->
+<!--                        th:each="vehicle : ${currentUser.userVehicles}"-->
+<!--                        th:value="${vehicle.id}"-->
+<!--                        th:text="${vehicle.make}">-->
+<!--                </option>-->
+<!--            </select>-->
+<!--            <br>-->
+<!--            <button type="button"  id="planYourTrip">Your trip</button>-->
+<!--            <label for="totalDistance"> Distance Traveled</label>-->
+<!--            <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname"><br><br>-->
+
+<!--            <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>-->
+<!--        </form>-->
+
+<!--        <div style="height: 100%; flex-grow: 6">-->
+<!--            <div id="map" ></div>-->
+<!--            <div id="distance">-->
+<!--                <h3 id="yourTripDistance"></h3>-->
+<!--                <h3 id="yourTravelDistance"></h3>-->
+<!--            </div>-->
+<!--        </div>-->
 <!--        <form th:action="@{|/profile/${id}/edit|}" th:method="post" class="w-100 mx-auto" th:object="${trip}">-->
 <!--            <div class="w-100">-->
 <!--                <label for="tripBudget" class="form-label">Budget</label>-->
@@ -62,12 +112,7 @@
 <!--        </form>-->
     </div>
 
-</main>
 
-<script
-        async defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBD6bONTHh3O1h_nspMirxxFCkXp13j9QI&callback=initMap" >
-</script>
-<div th:replace="partials/scripts-partials.html :: scripts"></div>
+<div th:replace="partials/maps-scripts-partials :: maps-scripts"></div>
 </body>
 </html>
