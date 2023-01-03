@@ -1,10 +1,13 @@
 package com.travelbros.travelbros.controllers;
 
+import com.travelbros.travelbros.models.Budget;
 import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
+import com.travelbros.travelbros.models.Vehicle;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,6 +110,8 @@ public class TripController {
     public String postTrip(@ModelAttribute Trip trip) {
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
+        Vehicle vehicle = trip.getVehicle();
+        trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
         tripDao.save(trip);
         return "redirect:/dashboard";
     }

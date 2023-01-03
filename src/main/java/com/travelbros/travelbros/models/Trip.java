@@ -38,13 +38,14 @@ public class Trip {
     // Vehicle joining
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
-    private Vehicle vehicleId;
+    private Vehicle vehicle;
 
     @Column(nullable = false)
     private int numPpl;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "trip")
     private List<Comments> comments;
+
 
     // vehicle joining
 
@@ -114,12 +115,12 @@ public class Trip {
     }
 
 
-    public Vehicle getVehicleId() {
-        return vehicleId;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleId(Vehicle vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public List<Comments> getComments() {
@@ -134,7 +135,7 @@ public class Trip {
 
 
 
-    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, List<Comments> comments, Vehicle vehicleId) {
+    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, List<Comments> comments, Vehicle vehicle) {
         this.id = id;
         this.user = user;
         this.tripBudget = tripBudget;
@@ -144,7 +145,7 @@ public class Trip {
         this.distance = distance;
         this.numPpl = numPpl;
         this.comments = comments;
-        this.vehicleId = vehicleId;
+        this.vehicle = vehicle;
 
     }
 

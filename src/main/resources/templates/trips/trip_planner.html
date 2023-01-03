@@ -23,7 +23,7 @@
                         <label for="endLocation">End Location:</label>
                         <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
                         <br>
-                        <select name="user-car" id="user-car-select" th:field="${currentUser}"  th:if="${currentUser.userVehicles.size() > 0}">
+                        <select name="user-car" id="user-car-select" th:field="${createTrip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">
                             <option
                                     th:each="vehicle : ${currentUser.userVehicles}"
                                     th:value="${vehicle.id}"

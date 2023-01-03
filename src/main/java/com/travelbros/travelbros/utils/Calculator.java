@@ -1,11 +1,12 @@
-package com.travelbros.travelbros.models;
+package com.travelbros.travelbros.utils;
 
 public class Calculator {
 
 
     ///// Methods
-    public static double numberOfStops(double distance, double mpg, double tankSize) {
-        return (distance / (0.8* (mpg * tankSize)));
+
+    public static int numberOfStops(double distance, double mpg, double tankSize) {
+        return (int) ((distance/1609.344)/ (0.8* (mpg * tankSize)));
     }
     public static double remainingBudget(double maxBudget, double expenses, double numPpl) {
         return (maxBudget - expenses) / numPpl;
