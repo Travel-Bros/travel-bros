@@ -20,6 +20,7 @@ public class Calculator {
 
 
 
+
     public static void main(String[] args) {
         System.out.println(numberOfStops(400, 40, 10));
         System.out.println(remainingBudget(800, 1120, 2));
