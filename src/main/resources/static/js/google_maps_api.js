@@ -115,7 +115,7 @@ function initMap() {
 
     const service = new google.maps.DistanceMatrixService();
 
-
+    const routes = [];
     const directionsService = new google.maps.DirectionsService();
     const button = document.getElementById("planYourTrip");
     button.addEventListener("click", (e)=>{
@@ -176,6 +176,10 @@ function initMap() {
                 //         var to = destinations[j];
                 //      }
                 //  }
+
+            ///////////////////////////////////////////////////////////
+            ////////////  Getting your array of places  ///////////////
+            ///////////////////////////////////////////////////////////
             }
         }
 
@@ -195,6 +199,30 @@ function initMap() {
         }, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
+
+                /////////////////////////////////////////////
+                ///////////  Here is the distance //////////
+                ///////////////////////////////////////////
+
+                var routes = response.routes[0].legs[0].steps;
+                console.log(routes);
+
+                var previousStop = routes[0].start_location;
+                console.log(previousStop);
+
+                var range = 5000; // maximum range in meters
+
+                for (var i = 1; i < routes.length; i++) {
+                    var currentStop = routes[i].start_location;
+                    var distance = google.maps.geometry.spherical.computeDistanceBetween(previousStop, currentStop);
+                    if (distance <= range) {
+                        console.log(currentStop);
+                        console.log(distance);
+                    }
+                    previousStop = currentStop;
+                }
+
+
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
