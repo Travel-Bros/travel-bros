@@ -54,8 +54,11 @@ public class TripController {
 @GetMapping("/{id}/edit")
     public String showEditTripForm(@PathVariable long id, Model model) {
         User user = userDao.findById(Utils.currentUserId());
-        model.addAttribute("currentUser", user);
         Trip trip = tripDao.findById(id);
+        Budget budget = trip.getTripBudget();
+        model.addAttribute("tripBudget", budget);
+//        Budget budget = budgetDao.findById(Utils.currentBudgetId());
+            model.addAttribute("currentUser", user);
         // redirects back to all posts if user is not the owner of the post
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
@@ -67,12 +70,33 @@ public class TripController {
 
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
-    public String editTrip(@ModelAttribute Trip trip, @PathVariable long id) {
+    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id) {
+
+        ////      Current user
+        //        User user = userDao.findById(Utils.currentUserId());
+        //        // Current user is set as the trip's user
+        //        trip.setUser(user);
+        //        // Vehicle is set to the user's trip
+        //        Vehicle vehicle = trip.getVehicle();
+        //        // Number of stops is calculated using the vehicle's info & trip distance
+        //        trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
+        //        trip.setTripBudget(budget);
+        //        //trip.setTripBudget();
+        //        tripDao.save(trip);
+        //        return "redirect:/dashboard";
+
+
+
+
         User user = userDao.findById(Utils.currentUserId());
+        trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);
+        Vehicle vehicle = trip.getVehicle();
         // Only edits post if correct user sending post request
         if(user.equals(currentTrip.getUser())){
             trip.setUser(user);
+            trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
+            trip.setTripBudget(budget);
             tripDao.save(trip);
         }
         trip.setUser(user);
@@ -100,6 +124,7 @@ public class TripController {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
         model.addAttribute("currentUser", currentUser);
+        model.addAttribute("tripBudget", new Budget());
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
@@ -107,11 +132,17 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(@ModelAttribute Trip trip) {
+    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget) {
+        // Current user
         User user = userDao.findById(Utils.currentUserId());
+        // Current user is set as the trip's user
         trip.setUser(user);
+        // Vehicle is set to the user's trip
         Vehicle vehicle = trip.getVehicle();
+        // Number of stops is calculated using the vehicle's info & trip distance
         trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
+        trip.setTripBudget(budget);
+        //trip.setTripBudget();
         tripDao.save(trip);
         return "redirect:/dashboard";
     }

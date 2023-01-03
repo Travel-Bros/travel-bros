@@ -15,7 +15,7 @@
                 <div class="inputForm col-6 col-sm-6">
                     <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
-                        <input th:field="${createTrip.tripBudget}" type="text" id="budget" name="budget">
+                        <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
                         <br>
                         <label for="startLocation">Start Location:</label>
                         <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname">
