@@ -30,6 +30,34 @@
                                     th:text="${vehicle.make}">
                             </option>
                         </select>
+
+
+                        <!-- Buttons and total-->
+                        <div class="container" id="button">
+                            <div class="splitContainer">
+                                <div class="title">People</div>
+                                <div class="controls">
+                <span class="buttonContainer">
+                    <button type="button" class="splitButton" onclick="decreasePeople()">
+                        <!-- Minus button -->
+                        <span class="buttonText">-</span>
+                    </button>
+                </span> <!-- End of buttonContainer -->
+
+                                    <span class="splitAmount" id="numberOfPeople" th:field="${createTrip.numPpl}">1</span>
+                                    <!--                Plus button-->
+                                    <span class="buttonContainer">
+                    <button type="button" class="incPplButton" onclick="increasePeople()">
+                        <span class="buttonText">+</span>
+                    </button>
+                </span> <!-- End of buttonContainer -->
+                                </div><!-- End of controls -->
+                            </div> <!-- End of splitContainer -->
+
+
+                        </div><!-- End of container -->
+
+
                         <br>
                         <button type="button"  id="planYourTrip">Your trip</button>
                         <br>
@@ -53,6 +81,8 @@
     <!-- This is the div for out Google Maps -->
     <!-- we need to have the container to have height or the map will not show -->
     <!-- We need this in order to use the map with our api key -->
-    <script th:replace="partials/map s-scripts-partials :: maps-scripts"></script>
+    <script th:src="@{/js/num-ppl-counter.js}"></script>
+
+    <script th:replace="partials/maps-scripts-partials :: maps-scripts"></script>
     </body>
 </html>

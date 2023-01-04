@@ -30,18 +30,18 @@ public class BudgetController {
 
 
     // Get method to show create.html view with empty budget object added to model
-    @GetMapping("/create")
-    public String createTrip(Model model) {
-//        User currentUser = userDao.findById(Utils.currentUserId());
-        model.addAttribute("createTrip", new Trip());
-//        model.addAttribute("currentUser", currentUser);
-        model.addAttribute("tripBudget", new Budget());
-        model.addAttribute("calculator", new Calculator());
-//        if (currentUser.getUserVehicles().size() == 0) {
-//            return "redirect:/vehicles/create";
-//        }
-        return "/trips/trip_planner";
-    }
+//    @GetMapping("/create")
+//    public String createTrip(Model model) {
+////        User currentUser = userDao.findById(Utils.currentUserId());
+//        model.addAttribute("createTrip", new Trip());
+////        model.addAttribute("currentUser", currentUser);
+//        model.addAttribute("tripBudget", new Budget());
+//        model.addAttribute("calculator", new Calculator());
+////        if (currentUser.getUserVehicles().size() == 0) {
+////            return "redirect:/vehicles/create";
+////        }
+//        return "/trips/trip_planner";
+//    }
     // Post method to receive post budget and save to database
     @PostMapping("/create")
     public String submitBudget(@ModelAttribute Budget budget) {
