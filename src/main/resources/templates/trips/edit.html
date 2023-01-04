@@ -14,6 +14,12 @@
                 </div>
                 <div class="row"> <!-- row 2 -->
                     <div class="inputForm col-6 col-sm-6">
+
+                        <div style="" th:action="@{|/trips/${id}/edit|}" >
+                        <p id="startingLocation" th:text="${trip.startPoint}"></p>
+                        <p id="endingLocation" th:text="${trip.endPoint}"></p>
+                        </div>
+
                         <form th:method="post" th:action="@{|/trips/${id}/edit|}" th:object="${trip}" th:if="${currentUser.userVehicles.size() > 0}">
                             <label for="budget">Enter your Budget:</label>
                             <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
@@ -114,5 +120,6 @@
 
 
 <div th:replace="partials/maps-scripts-partials :: maps-scripts"></div>
+
 </body>
 </html>
