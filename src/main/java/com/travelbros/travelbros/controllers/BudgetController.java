@@ -32,7 +32,7 @@ public class BudgetController {
     @GetMapping("/create")
     public String createBudget(Model model) {
         model.addAttribute("budget", new Budget());
-        return "budgets/create";
+        return "budget/final_budget";
     }
 
     // Post method to receive post budget and save to database
@@ -50,7 +50,7 @@ public class BudgetController {
     public String showEditBudgetForm(@PathVariable long id, Model model) {
         Trip trip = tripDao.findById(Utils.currentTripId());
         Budget budget = budgetDao.findById(id);
-        // redirects back to all budgets if user is not the owner of the post
+        // redirects back to all budgets if user is not the owner of the budget
         if(!trip.equals(budget.getTrip())) {
             return "redirect:/budgets";
         }
