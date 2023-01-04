@@ -6,13 +6,14 @@ import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/budgets")
+@RequestMapping("/budget")
 public class BudgetController {
 
 
@@ -30,33 +31,41 @@ public class BudgetController {
 
     // Get method to show create.html view with empty budget object added to model
     @GetMapping("/create")
-    public String createBudget(Model model) {
-        model.addAttribute("budget", new Budget());
-        return "budget/final_budget";
+    public String createTrip(Model model) {
+//        User currentUser = userDao.findById(Utils.currentUserId());
+        model.addAttribute("createTrip", new Trip());
+//        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("tripBudget", new Budget());
+        model.addAttribute("calculator", new Calculator());
+//        if (currentUser.getUserVehicles().size() == 0) {
+//            return "redirect:/vehicles/create";
+//        }
+        return "/trips/trip_planner";
     }
-
     // Post method to receive post budget and save to database
     @PostMapping("/create")
     public String submitBudget(@ModelAttribute Budget budget) {
         Trip trip = tripDao.findById(Utils.currentUserId());
         budget.setTrip(trip);
         budgetDao.save(budget);
-        return "redirect:/budgets";
+        return "redirect:/budget";
     }
 
 
     // Get method to show edit.html view with budget object added to model
     @GetMapping("/{id}/edit")
     public String showEditBudgetForm(@PathVariable long id, Model model) {
+//        User user = userDao.findById(Utils.currentUserId());
         Trip trip = tripDao.findById(Utils.currentTripId());
-        Budget budget = budgetDao.findById(id);
-        // redirects back to all budgets if user is not the owner of the budget
-        if(!trip.equals(budget.getTrip())) {
-            return "redirect:/budgets";
-        }
+        Budget budget = trip.getTripBudget();
+        model.addAttribute("tripBudget", budget);
+//        Budget budget = budgetDao.findById(Utils.currentBudgetId());
+        model.addAttribute("currentTrip", trip);
+
         model.addAttribute("budget", budget);
-        return "/budgets/edit";
+        return "/budget/edit";
     }
+
 
 
     // Post method to receive budget object and save to database
@@ -71,7 +80,7 @@ public class BudgetController {
         }
         budget.setTrip(trip);
         budgetDao.save(budget);
-        return "redirect:/budgets";
+        return "redirect:/budget";
     }
 
 
@@ -84,7 +93,7 @@ public class BudgetController {
         if (trip.getId() == budget.getTrip().getId()) {
             budgetDao.delete(budget);
         }
-        return "redirect:/budgets";
+        return "redirect:/budget";
     }
 
 }
