@@ -9,6 +9,7 @@
     flex-direction: column;
     background-color: green;
     padding-top: 0;
+    padding-bottom: 0px;
 }
 .bi-facebook{
     color: #ffff;
@@ -22,6 +23,9 @@
 .bi-linkedin {
     color: #ffff;
 }
+.bi-people-fill {
+    color: #ffff;
+}
 .bi:hover {
     color: red;
 }
@@ -31,7 +35,7 @@
     justify-content: space-between;
     align-items: flex-start;
 
-    margin-top: 5rem;
+    margin-top: 2rem;
     padding: 0 2rem;
 
 }
