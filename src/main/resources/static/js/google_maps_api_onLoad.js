@@ -1,6 +1,4 @@
 
-
-
 ///////////////////////////////////////////////
 ///  Getting the values from the input  //////
 //////////////////////////////////////////////
@@ -41,29 +39,63 @@ console.log(locationsFromUser)
 ///////////////////////////////////////////
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//
-//     const startInput = document.querySelector('#vehicle-make')
-//     const endInput = document.querySelector('#endLocation')
-//
-//     startInput.addEventListener('keyup',function(e){
-//         e.preventDefault
-//         let startValue;
-//         startValue = e.target.value;
-//         locationsFromUser.startLocation = startValue;
-//         setValue(locationsFromUser)
-//         console.log(getvalue())
-//     });
-//
-//     endInput.addEventListener('keyup',function(e){
-//         e.preventDefault
-//         let endValue;
-//         endValue = endingLoc;
-//         locationsFromUser.endLocation = endValue;
-//         setValue(locationsFromUser)
-//         console.log(getvalue())
-//     });
-// })
+document.addEventListener('DOMContentLoaded', function () {
+
+    const startInput = document.querySelector('#vehicle-make')
+    const endInput = document.querySelector('#endLocation')
+
+    // var startPlace = document.querySelector("#startingLocation").innerHTML;
+    // var endPlace = document.querySelector("#endingLocation").innerHTML;
+    //
+    //
+    ////////////////////////////////////////
+    /////////////  Test Code //////////////
+    //////////////////////////////////////
+    //
+    // window.addEventListener('load', function(e) {
+    //     setTimeout(() => {let startValue;
+    //         startValue = startPlace;
+    //         locationsFromUser.startLocation = startValue;
+    //         setValue(locationsFromUser)
+    //
+    //         let endValue;
+    //         endValue = endPlace;
+    //         locationsFromUser.endLocation = endValue;
+    //         setValue(locationsFromUser)
+    //         console.log(getvalue()) }, 300
+    //     )
+    // });
+
+    window.addEventListener('load', function() {
+        let startValue;
+        startValue = e.target.value;
+        locationsFromUser.startLocation = startValue;
+        setValue(locationsFromUser)
+
+        let endValue;
+        endValue = e.target.value;
+        locationsFromUser.endLocation = endValue;
+        setValue(locationsFromUser)
+        console.log(getvalue())
+    });
+
+    startInput.addEventListener('keyup',function(e){
+        e.preventDefault
+        let startValue;
+        startValue = e.target.value;
+        locationsFromUser.startLocation = startValue;
+        setValue(locationsFromUser)
+    });
+
+    endInput.addEventListener('keyup',function(e){
+        e.preventDefault
+        let endValue;
+        endValue = e.target.value;
+        locationsFromUser.endLocation = endValue;
+        setValue(locationsFromUser)
+        console.log(getvalue())
+    });
+})
 
 // const input = document.querySelector('input');
 // function onChange(e){
@@ -178,9 +210,9 @@ function initMap() {
                 //      }
                 //  }
 
-            ///////////////////////////////////////////////////////////
-            ////////////  Getting your array of places  ///////////////
-            ///////////////////////////////////////////////////////////
+                ///////////////////////////////////////////////////////////
+                ////////////  Getting your array of places  ///////////////
+                ///////////////////////////////////////////////////////////
             }
         }
 
@@ -335,38 +367,13 @@ function initMap() {
     ///////////////////////////////////////////////////
     //////////////  When the code loads  //////////////
     ///////////////////////////////////////////////////
-
     document.addEventListener('DOMContentLoaded', function () {
 
-        const startInput = document.querySelector('#startLocation')
-        const endInput = document.querySelector('#endLocation')
-
-        startInput.addEventListener('keyup',function(e){
-            e.preventDefault
-            let startValue;
-            startValue = e.target.value;
-            locationsFromUser.startLocation = startValue;
-            setValue(locationsFromUser)
-            console.log(getvalue())
-        });
-
-        endInput.addEventListener('keyup',function(e){
-            e.preventDefault
-            let endValue;
-            endValue = endingLoc;
-            locationsFromUser.endLocation = endValue;
-            setValue(locationsFromUser)
-            console.log(getvalue())
-        });
-
         window.addEventListener('load', function (e) {
-            e.preventDefault()
-
             var startPlace = document.querySelector("#startingLocation").innerHTML;
             var endPlace = document.querySelector("#endingLocation").innerHTML;
-            let locationInfo= {};
 
-            function setStartLocation() {
+            setTimeout(() => {
                     let startValue;
                     startValue = startPlace;
                     locationsFromUser.startLocation = startValue;
@@ -377,18 +384,13 @@ function initMap() {
                     locationsFromUser.endLocation = endValue;
                     setValue(locationsFromUser)
                     console.log(getvalue())
-
-                    locationInfo = getvalue()
-                    console.log(locationsFromUser)
-                }
+                }, 300
+            )
 
 
-
-            setStartLocation();
             // object made for saving state
-
-
-            console.log(locationsFromUser)
+            let locationInfo = getvalue()
+            console.log(locationInfo)
             service.getDistanceMatrix(
                 {
                     origins: [locationInfo.startLocation],
@@ -499,6 +501,7 @@ function initMap() {
     /////////////////////////////////////////////////////////
     /////////////////// end o event Listiner ////////////////
     /////////////////////////////////////////////////////////
+
 
 }
 
