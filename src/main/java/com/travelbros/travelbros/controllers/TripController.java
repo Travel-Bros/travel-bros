@@ -72,22 +72,6 @@ public class TripController {
     @PostMapping("/{id}/edit")
     public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id) {
 
-        ////      Current user
-        //        User user = userDao.findById(Utils.currentUserId());
-        //        // Current user is set as the trip's user
-        //        trip.setUser(user);
-        //        // Vehicle is set to the user's trip
-        //        Vehicle vehicle = trip.getVehicle();
-        //        // Number of stops is calculated using the vehicle's info & trip distance
-        //        trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
-        //        trip.setTripBudget(budget);
-        //        //trip.setTripBudget();
-        //        tripDao.save(trip);
-        //        return "redirect:/dashboard";
-
-
-
-
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);

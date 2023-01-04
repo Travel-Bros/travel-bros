@@ -109,6 +109,7 @@ function initMap() {
         zoom: 4,
     });
 
+
     /////////////////////////////////////////////////////////
     ////////////////  Driving distance API /////////////////
     ///////////////////////////////////////////////////////
@@ -116,11 +117,21 @@ function initMap() {
 
     const service = new google.maps.DistanceMatrixService();
 
-    const routes = [];
+    let routes = [];
     const directionsService = new google.maps.DirectionsService();
     const button = document.getElementById("planYourTrip");
     button.addEventListener("click", (e)=>{
         e.preventDefault
+
+
+        // console.log(map.data)
+        // // Get the map.data object
+        //
+        // // Get the DirectionsRenderer object
+        // var directionsRenderer = new google.maps.DirectionsRenderer();
+        //
+        // // Remove the route from the map
+        // directionsRenderer.setMap(map);
 
         // object made for saving state
         let locationInfo = getvalue()
