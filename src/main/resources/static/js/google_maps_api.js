@@ -109,9 +109,6 @@ function initMap() {
         zoom: 4,
     });
 
-    function clearMap() {
-        map.clear();
-    }
 
     /////////////////////////////////////////////////////////
     ////////////////  Driving distance API /////////////////
@@ -126,7 +123,15 @@ function initMap() {
     button.addEventListener("click", (e)=>{
         e.preventDefault
 
-        clearMap();
+
+        // console.log(map.data)
+        // // Get the map.data object
+        //
+        // // Get the DirectionsRenderer object
+        // var directionsRenderer = new google.maps.DirectionsRenderer();
+        //
+        // // Remove the route from the map
+        // directionsRenderer.setMap(map);
 
         // object made for saving state
         let locationInfo = getvalue()
