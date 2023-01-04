@@ -95,7 +95,7 @@ public class TripController {
         // Only edits post if correct user sending post request
         if(user.equals(currentTrip.getUser())){
             trip.setUser(user);
-            trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
+            trip.setStops((int)Math.ceil(Calculator.numberOfStops(Calculator.convertMetersToMiles(trip.getDistance()), vehicle.getMpg(), vehicle.getTankSize())));
             trip.setTripBudget(budget);
             tripDao.save(trip);
         }
@@ -125,6 +125,7 @@ public class TripController {
         model.addAttribute("createTrip", new Trip());
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("tripBudget", new Budget());
+        model.addAttribute("calculator", new Calculator());
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
@@ -133,6 +134,7 @@ public class TripController {
 
     @PostMapping("/create")
     public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget) {
+
         // Current user
         User user = userDao.findById(Utils.currentUserId());
         // Current user is set as the trip's user
