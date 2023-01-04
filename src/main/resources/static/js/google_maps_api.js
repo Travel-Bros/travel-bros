@@ -109,6 +109,10 @@ function initMap() {
         zoom: 4,
     });
 
+    function clearMap() {
+        map.clear();
+    }
+
     /////////////////////////////////////////////////////////
     ////////////////  Driving distance API /////////////////
     ///////////////////////////////////////////////////////
@@ -116,11 +120,13 @@ function initMap() {
 
     const service = new google.maps.DistanceMatrixService();
 
-    const routes = [];
+    let routes = [];
     const directionsService = new google.maps.DirectionsService();
     const button = document.getElementById("planYourTrip");
     button.addEventListener("click", (e)=>{
         e.preventDefault
+
+        clearMap();
 
         // object made for saving state
         let locationInfo = getvalue()
