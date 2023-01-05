@@ -19,7 +19,7 @@ public class HomeController {
     ////////////////// User's Authenticated Dashboard //////////////////
     @GetMapping("/dashboard")
     public String showDashBoard() {
-        return "/main_pages/main_page";
+        return "main_pages/main_page";
     }
 
     ////////////////// Trip Planning View //////////////////
@@ -28,7 +28,7 @@ public class HomeController {
     ////////////////// Final Budget View //////////////////
     @GetMapping("/budget")
     public String showFinalBudget() {
-        return "/main_pages/budget_page";
+        return "main_pages/budget_page";
     }
 
 
