@@ -38,7 +38,7 @@ public class VehicleController {
         List<Vehicle> allVehicles = currentUser.getUserVehicles();
 //        List<Vehicle> allVehicles = vehicleDao.findAll();
         model.addAttribute("allVehicles", allVehicles);
-        return "/vehicle/vehicle_list";
+        return "vehicle/vehicle_list";
     }
 
 
@@ -57,7 +57,7 @@ public class VehicleController {
         User currentUser = usersDao.findById(Utils.currentUserId());
         model.addAttribute("vehicle", new Vehicle());
         model.addAttribute("currentUser", currentUser);
-        return "/vehicle/add_vehicle";
+        return "vehicle/add_vehicle";
     }
 
 
@@ -82,7 +82,7 @@ public class VehicleController {
             return "redirect:/vehicles";
         }
         model.addAttribute("vehicle", vehicle);
-        return "/vehicle/vehicle_id_edit";
+        return "vehicle/vehicle_id_edit";
     }
 
 

@@ -64,7 +64,7 @@ public class TripController {
             return "redirect:/profile";
         }
         model.addAttribute("trip", trip);
-        return "/trips/edit";
+        return "trips/edit";
     }
 
 
@@ -122,7 +122,7 @@ public class TripController {
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
-        return "/trips/trip_planner";
+        return "trips/trip_planner";
     }
 
     @PostMapping("/create")
@@ -200,7 +200,7 @@ public class TripController {
     public String tripMapTest(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        return "/trips/test-trip-planner";
+        return "trips/test-trip-planner";
     }
 
 // Post method to receive post trip and save to database
@@ -209,7 +209,7 @@ public class TripController {
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         tripDao.save(trip);
-    return "/landing_page/splash_page";
+    return "landing_page/splash_page";
     }
 
 }

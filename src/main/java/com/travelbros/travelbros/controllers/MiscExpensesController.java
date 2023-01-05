@@ -30,7 +30,7 @@ public class MiscExpensesController {
     @GetMapping("/create")
     public String createMiscExp(Model model) {
         model.addAttribute("miscExp", new MiscExpenses());
-        return "/miscExp/create";
+        return "miscExp/create";
     }
 
 
@@ -54,7 +54,7 @@ public class MiscExpensesController {
             return "redirect:/miscExp";
         }
         model.addAttribute("miscExp", miscExpenses);
-        return "/miscExp/edit";
+        return "miscExp/edit";
     }
 
     // Post method to receive miscExp object and save to database
