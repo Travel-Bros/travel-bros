@@ -7,6 +7,7 @@ import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.services.TripService;
 import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,8 @@ import java.util.List;
 public class TripController {
 
 // Dependency Injection
+    @Autowired
+    private TripService tripService;
     private final TripRepository tripDao;
     private final UserRepository userDao;
 
@@ -66,6 +69,7 @@ public class TripController {
         model.addAttribute("tripBudget", budget);
         model.addAttribute("miscExpenses", miscExpenses);
         model.addAttribute("currentUser", user);
+        model.addAttribute("miscExpense", new MiscExpenses());
 
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
@@ -79,10 +83,12 @@ public class TripController {
     @PostMapping("/{id}/edit")
     public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
 
+        tripService.deleteOldMiscExpenseFromBudget(budget);
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);
         Vehicle vehicle = trip.getVehicle();
+
         // Only edits post if correct user sending post request
         if(user.equals(currentTrip.getUser())){
             trip.setUser(user);
@@ -94,6 +100,8 @@ public class TripController {
                 vehicle.getMpg(),
                 vehicle.getTankSize()))
             );
+
+
             trip.setTripBudget(budget);
             tripDao.save(trip);
         }
