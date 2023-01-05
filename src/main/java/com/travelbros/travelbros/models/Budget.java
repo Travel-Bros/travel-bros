@@ -39,10 +39,17 @@ public class Budget {
     // No args
     public Budget(){}
 
+    public Budget(long id, double maxBudget, double gas, List<MiscExpenses> miscExpenses) {
+        this.id = id;
+        this.maxBudget = maxBudget;
+        this.gas = gas;
+        this.miscExpenses = miscExpenses;
+    }
     public Budget(long id, double maxBudget, double gas) {
         this.id = id;
         this.maxBudget = maxBudget;
         this.gas = gas;
+
     }
 
     //////////////////// Getters & Setters ////////////////////
@@ -80,4 +87,15 @@ public class Budget {
         this.maxBudget = maxBudget;
     }
 
+    public void setAnExpense () {}
+
+
+
+    public List<MiscExpenses> getMiscExpenses() {
+        return miscExpenses;
+    }
+
+    public void setMiscExpenses(List<MiscExpenses> miscExpenses) {
+        this.miscExpenses = miscExpenses;
+    }
 }

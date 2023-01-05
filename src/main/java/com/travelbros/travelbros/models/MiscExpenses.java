@@ -62,14 +62,22 @@ import javax.persistence.*;
             this.budget = budget;
         }
 
-//////// CONSTRUCTORS ////////
-        public MiscExpenses() {
-        }
 
+        //////// CONSTRUCTORS ////////
+        public MiscExpenses() {}
+
+        public MiscExpenses(long id, String title, double cost, Budget budget) {
+            this.id = id;
+            this.title = title;
+            this.cost = cost;
+            this.budget = budget;
+        }
         public MiscExpenses(long id, String title, double cost) {
             this.id = id;
             this.title = title;
             this.cost = cost;
         }
+
+
 
 }
