@@ -35,14 +35,20 @@
     </head>
     <body>
 
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div id="chartContainer" style="height: 500px; width: 100%;">
+        <div>
+        </div>
+    </div>
+    <div>
+
+    </div>
     <button class="btn invisible" id="backButton">< Back</button>
     <script th:src="@{/js/traveling.js}"></script>
     <script src="../../static/js/chart.js"></script>
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-    <div id="dataFromUser" data-gas-tank="10" data-distance="400" data-mpg="30" data-other-expenses="1000" data-per-gallon="2.81" data-budget="$1000" ></div>
+    <div id="dataFromUser" data-misc-Expense="300" data-budget="3000" data-gas="250" ></div>
 
 <!--    <div id="dataFromUser2" th:attr="data-gas-tank=${trip.vehicle.gas_tank}"></div>-->
 
