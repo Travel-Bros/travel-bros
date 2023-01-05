@@ -55,11 +55,17 @@ public class TripController {
         User user = userDao.findById(Utils.currentUserId());
         Trip trip = tripDao.findById(id);
         Budget budget = trip.getTripBudget();
+        List<MiscExpenses> miscExpenses = budget.getMiscExpenses();
+    //        User currentUser = userDao.findById(Utils.currentUserId());
+    //        model.addAttribute("createTrip", new Trip());
+    //        model.addAttribute("tripBudget", new Budget());
+    //        model.addAttribute("currentUser", currentUser);
+    ////        model.addAttribute("calculator", new Calculator());
+    //        model.addAttribute("miscExpense", new MiscExpenses());
 
         model.addAttribute("tripBudget", budget);
-
+        model.addAttribute("miscExpenses", miscExpenses);
         model.addAttribute("currentUser", user);
-
 
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
@@ -71,7 +77,7 @@ public class TripController {
 
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
-    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id) {
+    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
 
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
@@ -139,13 +145,13 @@ public class TripController {
         // Number of stops is calculated using the vehicle's info & trip distance
         trip.setStops(
                 (int)Math.ceil(
-                        Calculator.numberOfStops(
-                                trip.getDistance(),
-                                vehicle.getMpg(),
-                                vehicle.getTankSize())
-                )
+                Calculator.numberOfStops(
+                trip.getDistance(),
+                vehicle.getMpg(),
+                vehicle.getTankSize())
+            )
         );
-        budget = TripService.postTripService(budget, miscTitle, miscCost);
+        budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
         trip.setTripBudget(budget);
         tripDao.save(trip);

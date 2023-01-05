@@ -16,13 +16,7 @@ public class TripService {
 
 
 
-    public static Budget postTripService(Budget budget, List<String> miscTitle, List<Double> miscCost) {
-        Trip tripFinder = new Trip();
-        // create an empty array of misc expenses
-        // create a for-loop
-        // loop through one of the list arrays
-        // create your expense objects using index of list array
-        // set each to budget
+    public static Budget budgetToMiscExpenseMethod(Trip trip, Budget budget, List<String> miscTitle, List<Double> miscCost) {
         ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
 
         for (int i = 0; i < miscTitle.size(); i++) {
@@ -34,14 +28,12 @@ public class TripService {
             emptyMiscList.add(listOfMiscExpenses);
         } // End for-loop
 
-
-
         budget.setMiscExpenses(emptyMiscList);
-        System.out.printf("%d miscellaneous expenses were added to trip: %s%n", emptyMiscList.size(), tripFinder.getEndPoint());
-
+        System.out.printf("%d miscellaneous expenses were added to: %s%n", emptyMiscList.size(), trip.getEndPoint());
 
         return budget;
     }
+
 
 
     //////////////// Constructors ////////////////
