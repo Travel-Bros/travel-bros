@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
                 click: visitorsChartDrilldownHandler,
                 cursor: "pointer",
                 explodeOnClick: false,
-                innerRadius: "65%",
+                innerRadius: "90%",
                 legendMarkerType: "square",
                 name: "Your trip to: ",
                 radius: "100%",
@@ -26,9 +26,9 @@ window.addEventListener('load', function() {
                 type: "doughnut",
                 dataPoints: [
                     // { y: `${budget}`, name: "Budget", color: "#E7823A" },
-                    { y: `${gas}`, name: "gas", color: "#546BC1" },
-                    { y: `${otherExpenses}`, name: "otherExpenses", color: "#FF0000" },
-                    { y: `${cashLeftOver}`, name: "cashLeftOver", color: "#00FF00" }
+                    { y: `${gas}`, name: "gas", color: "#8DD6C0" },
+                    { y: `${otherExpenses}`, name: "otherExpenses", color: "#EE8584" },
+                    { y: `${cashLeftOver}`, name: "cashLeftOver", color: "#9C7DC8" }
                 ]
             }],
         };

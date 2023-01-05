@@ -8,48 +8,33 @@
         <link rel="stylesheet" th:href="@{css/navbar_partials.css}">
         <link rel="icon" type="img/x-icon" th:href="@{img/Travel-Bros-Logo.png}">
         <script th:src="@{/js/traveling.js}"></script>
+        <link rel="stylesheet" href="../../static/css/chartjs.css">
         <meta charset="UTF-8">
         <title>Final Budget</title>
     </head>
     <body>
+<!--    <div class="hiddenDivRight"></div>-->
+    <div class="page-wrapper">
+        <div class="chart">
+            <div class="chart__overlay">
+                <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+                <h1 class="totalBalance">$2000</h1>
+            </div><!-- END OF CHART OVERLAY-->
+            <div class="chart__content">
+                <div class="hiddenDivRight"></div>
+                <div class="hiddenDivLeft"></div>
+            </div> <!-- END OF CHART CONTENT -->
+            <div class="hiddenDivRight"></div>
+            <div class="hiddenDivLeft"></div>
+        </div><!-- END OF CHART-->
+    </div><!-- END OF PAGE WRAPPER -->
+    <div id="dataFromUser" data-misc-Expense="300" data-budget="8000" data-gas="250"></div>
 
-    <script>
-    </script>
-    <style>
-        #backButton {
-            border-radius: 4px;
-            padding: 8px;
-            border: none;
-            font-size: 16px;
-            background-color: #2eacd1;
-            color: white;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .invisible {
-            display: none;
-        }
-    </style>
-    </head>
-    <body>
-
-    <div id="chartContainer" style="height: 500px; width: 100%;">
-        <div>
-        </div>
-    </div>
-    <div>
-
-    </div>
-    <button class="btn invisible" id="backButton">< Back</button>
+    <button class="btn invisible" id="backButton">Back</button>
     <script th:src="@{/js/traveling.js}"></script>
     <script src="../../static/js/chart.js"></script>
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-    <div id="dataFromUser" data-misc-Expense="300" data-budget="3000" data-gas="250" ></div>
-
 <!--    <div id="dataFromUser2" th:attr="data-gas-tank=${trip.vehicle.gas_tank}"></div>-->
 
     <script src="../../static/js/traveling.js"></script>
