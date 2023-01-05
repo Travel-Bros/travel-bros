@@ -14,16 +14,41 @@
 .invisible {
     display: none;
 }
-.page-wrapper {
+
+.chart{
     position: relative;
 }
+
+.chart__overley {
+    position: absolute;
+    inset:0;
+}
+
 #chartContainer {
     position: relative;
     align-items: center;
-
+    z-index: 0;
 }
 
-.app__chart{
+.chart__content{
+    flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+}
+
+.hiddenDivLeft {
+    margin-top: 470px;
+    height: 40px;
+    width: 74px;
+    position: absolute;
+    z-index: 1500;
+    background-color: white;
+}
+.hiddenDivRight {
+    position: absolute;
+    /*display: flex;*/
+    height: 40px;
+    width: 74px;
+    z-index: 1500;
+    background-color: white;
 }
