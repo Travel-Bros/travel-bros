@@ -98,4 +98,15 @@ public class Budget {
     public void setMiscExpenses(List<MiscExpenses> miscExpenses) {
         this.miscExpenses = miscExpenses;
     }
+
+    @Override
+    public String toString() {
+        return "Budget{" +
+                "id=" + id +
+                ", maxBudget=" + maxBudget +
+                ", gas=" + gas +
+                ", trip=" + trip +
+                ", miscExpenses=" + miscExpenses +
+                '}';
+    }
 }
