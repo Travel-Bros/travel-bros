@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -113,10 +114,11 @@ public class TripController {
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        model.addAttribute("currentUser", currentUser);
         model.addAttribute("tripBudget", new Budget());
+        model.addAttribute("currentUser", currentUser);
 //        model.addAttribute("calculator", new Calculator());
         model.addAttribute("miscExpense", new MiscExpenses());
+
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
@@ -124,7 +126,16 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @ModelAttribute MiscExpenses miscExpenses) {
+    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
+
+        // create an empty array of misc expenses
+        // create a for loop
+        // loop through one of the list arrays
+        // create your expense objects using index of list array
+        // set each to budget
+
+        ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
+
 
 
         // Current user
@@ -143,11 +154,44 @@ public class TripController {
                 )
         );
 
+//        budget.setMiscExpenses(miscExpenses);
+        // Saves budget to trip
         trip.setTripBudget(budget);
+        System.out.println(miscTitle.size());
+        System.out.println(miscCost.size());
 
+
+        // create an empty arrayList of misc expenses
+        // create a for loop
+        // loop through one of the list arrays
+        // create your expense objects using index of list array
+        // set each to budget
+
+
+        for (int i = 0; i < miscTitle.size(); i++) {
+//            miscExpenses.setTitle(miscTitle.get(i));
+//            miscExpenses.setCost(miscCost.get(i));
+            miscExpenses.setTitle(miscTitle.get(i));
+            miscExpenses.setCost(miscCost.get(i));
+
+            emptyMiscList.add(miscExpenses);
+
+        }
+        //budget.setMiscExpenses(emptyMiscList);
+        for (int i = 0; i < emptyMiscList.size(); i++) {
+            budget.setMiscExpenses(emptyMiscList);
+        }
+
+
+
+
+
+//        budget.setMiscExpenses(new );
 
         //trip.setTripBudget();
+
         tripDao.save(trip);
+
         return "redirect:/dashboard";
     }
 

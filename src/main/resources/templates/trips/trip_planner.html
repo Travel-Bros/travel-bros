@@ -37,17 +37,27 @@
                         <br>
                         <button type="button" id="add-expense">Add other expenses</button>
 
+                        <div>
+                            <div th:field="${miscExpense.title}" id="misc-expense-container">
 
-                        <div id="misc-expense-container">
+
+                            </div>
+                            <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">
 
 
+                            </div>
+<!--                            <button type="button">Send expenses</button>-->
                         </div>
 
                         <button type="button"  id="planYourTrip">Your trip</button>
                         <br>
                         <label for="totalDistance"> Distance Traveled</label>
                         <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
-<!--                        <input th:field="${tripBudget.miscExpenses}" type="text" name="fname">-->
+<!--                        <label for= input-misc>Expense</label>-->
+<!--                        <input id="input-misc" th:field="${miscExpense.title}" type="text" name="fname">-->
+
+<!--                        <label for= input-cost-misc>Cost</label>-->
+<!--                        <input id="input-cost-misc" th:field="${miscExpense.cost}" type="text" name="fname">-->
                         <br>
 
                         <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>

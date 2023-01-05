@@ -64,8 +64,7 @@ import javax.persistence.*;
 
 
         //////// CONSTRUCTORS ////////
-        public MiscExpenses() {
-        }
+        public MiscExpenses() {}
 
         public MiscExpenses(long id, String title, double cost, Budget budget) {
             this.id = id;
@@ -78,5 +77,7 @@ import javax.persistence.*;
             this.title = title;
             this.cost = cost;
         }
+
+
 
 }
