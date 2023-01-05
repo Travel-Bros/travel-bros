@@ -1,9 +1,6 @@
 package com.travelbros.travelbros.controllers;
 
-import com.travelbros.travelbros.models.Budget;
-import com.travelbros.travelbros.models.Trip;
-import com.travelbros.travelbros.models.User;
-import com.travelbros.travelbros.models.Vehicle;
+import com.travelbros.travelbros.models.*;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
@@ -13,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -56,10 +54,12 @@ public class TripController {
         User user = userDao.findById(Utils.currentUserId());
         Trip trip = tripDao.findById(id);
         Budget budget = trip.getTripBudget();
+
         model.addAttribute("tripBudget", budget);
-//        Budget budget = budgetDao.findById(Utils.currentBudgetId());
-            model.addAttribute("currentUser", user);
-        // redirects back to all posts if user is not the owner of the post
+
+        model.addAttribute("currentUser", user);
+
+
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
         }
@@ -79,7 +79,14 @@ public class TripController {
         // Only edits post if correct user sending post request
         if(user.equals(currentTrip.getUser())){
             trip.setUser(user);
-            trip.setStops((int)Math.ceil(Calculator.numberOfStops(Calculator.convertMetersToMiles(trip.getDistance()), vehicle.getMpg(), vehicle.getTankSize())));
+            trip.setStops(
+                (int)
+                Math.ceil(Calculator.numberOfStops
+                (Calculator.convertMetersToMiles
+                (trip.getDistance()),
+                vehicle.getMpg(),
+                vehicle.getTankSize()))
+            );
             trip.setTripBudget(budget);
             tripDao.save(trip);
         }
@@ -107,9 +114,11 @@ public class TripController {
     public String createTrip(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        model.addAttribute("currentUser", currentUser);
         model.addAttribute("tripBudget", new Budget());
-        model.addAttribute("calculator", new Calculator());
+        model.addAttribute("currentUser", currentUser);
+//        model.addAttribute("calculator", new Calculator());
+        model.addAttribute("miscExpense", new MiscExpenses());
+
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
@@ -117,7 +126,17 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget) {
+    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
+
+        // create an empty array of misc expenses
+        // create a for loop
+        // loop through one of the list arrays
+        // create your expense objects using index of list array
+        // set each to budget
+
+        ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
+
+
 
         // Current user
         User user = userDao.findById(Utils.currentUserId());
@@ -126,10 +145,53 @@ public class TripController {
         // Vehicle is set to the user's trip
         Vehicle vehicle = trip.getVehicle();
         // Number of stops is calculated using the vehicle's info & trip distance
-        trip.setStops((int)Math.ceil(Calculator.numberOfStops(trip.getDistance(), vehicle.getMpg(), vehicle.getTankSize())));
+        trip.setStops(
+                (int)Math.ceil(
+                        Calculator.numberOfStops(
+                                trip.getDistance(),
+                                vehicle.getMpg(),
+                                vehicle.getTankSize())
+                )
+        );
+
+//        budget.setMiscExpenses(miscExpenses);
+        // Saves budget to trip
         trip.setTripBudget(budget);
+        System.out.println(miscTitle.size());
+        System.out.println(miscCost.size());
+
+
+        // create an empty arrayList of misc expenses
+        // create a for loop
+        // loop through one of the list arrays
+        // create your expense objects using index of list array
+        // set each to budget
+
+
+        for (int i = 0; i < miscTitle.size(); i++) {
+//            miscExpenses.setTitle(miscTitle.get(i));
+//            miscExpenses.setCost(miscCost.get(i));
+            miscExpenses.setTitle(miscTitle.get(i));
+            miscExpenses.setCost(miscCost.get(i));
+
+            emptyMiscList.add(miscExpenses);
+
+        }
+        //budget.setMiscExpenses(emptyMiscList);
+        for (int i = 0; i < emptyMiscList.size(); i++) {
+            budget.setMiscExpenses(emptyMiscList);
+        }
+
+
+
+
+
+//        budget.setMiscExpenses(new );
+
         //trip.setTripBudget();
+
         tripDao.save(trip);
+
         return "redirect:/dashboard";
     }
 

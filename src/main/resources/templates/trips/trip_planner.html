@@ -13,7 +13,7 @@
             </div>
             <div class="row"> <!-- row 2 -->
                 <div class="inputForm col-6 col-sm-6">
-                    <form th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
+                    <form id="create-trip-form" th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
                         <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
                         <br>
@@ -31,39 +31,36 @@
                             </option>
                         </select>
 
-
-                        <!-- Buttons and total-->
-                        <div class="container" id="button">
-                            <div class="splitContainer">
-                                <div class="title">People</div>
-                                <div class="controls">
-                <span class="buttonContainer">
-                    <button type="button" class="decPplButton">
-                        <!-- Minus button -->
-                        <span class="buttonText">-</span>
-                    </button>
-                </span> <!-- End of buttonContainer -->
-
-                                    <span class="splitAmount" id="numberOfPeople" th:value="${createTrip.numPpl}">1</span>
-                                    <!--                Plus button-->
-                                    <span class="buttonContainer">
-                    <button type="button" class="incPplButton">
-                        <span class="buttonText">+</span>
-                    </button>
-                </span> <!-- End of buttonContainer -->
-                                </div><!-- End of controls -->
-                            </div> <!-- End of splitContainer -->
-
-
-                        </div><!-- End of container -->
-
-
                         <br>
+                        <label for="numberOfPeople">Number of people</label>
+                        <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}">
+                        <br>
+                        <button type="button" id="add-expense">Add other expenses</button>
+
+                        <div>
+                            <div th:field="${miscExpense.title}" id="misc-expense-container">
+
+
+
+                            </div>
+                            <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">
+
+
+                            </div>
+<!--                            <button type="button">Send expenses</button>-->
+                        </div>
+
                         <button type="button"  id="planYourTrip">Your trip</button>
                         <br>
                         <label for="totalDistance"> Distance Traveled</label>
                         <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
+<!--                        <label for= input-misc>Expense</label>-->
+<!--                        <input id="input-misc" th:field="${miscExpense.title}" type="text" name="fname">-->
+
+<!--                        <label for= input-cost-misc>Cost</label>-->
+<!--                        <input id="input-cost-misc" th:field="${miscExpense.cost}" type="text" name="fname">-->
                         <br>
+
                         <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
                     </form>
                 </div><!-- END OF inputForm -->
@@ -83,6 +80,6 @@
     <!-- We need this in order to use the map with our api key -->
 
     <script th:replace="partials/maps-scripts-partials :: maps-scripts"></script>
-    <script th:src="@{/js/num-ppl-counter.js}"></script>
+<!--    <script th:src="@{/js/misc-expenses.js}"></script>-->
     </body>
 </html>
