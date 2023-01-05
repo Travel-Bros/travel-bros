@@ -19,7 +19,7 @@
     position: relative;
 }
 
-.chart__overley {
+.chart__overlay {
     position: absolute;
     inset:0;
 }
@@ -44,6 +44,7 @@
     z-index: 1500;
     background-color: white;
 }
+
 .hiddenDivRight {
     position: absolute;
     /*display: flex;*/
@@ -51,4 +52,11 @@
     width: 74px;
     z-index: 1500;
     background-color: white;
+}
+.totalBalance {
+    align-items: center;
+    position: absolute;
+    z-index: 1500;
+    top: 15rem;
+    left: 46%;
 }
