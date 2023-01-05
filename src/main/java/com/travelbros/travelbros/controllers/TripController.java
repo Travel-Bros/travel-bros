@@ -4,6 +4,7 @@ import com.travelbros.travelbros.models.*;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.services.TripService;
 import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.stereotype.Controller;
@@ -54,11 +55,17 @@ public class TripController {
         User user = userDao.findById(Utils.currentUserId());
         Trip trip = tripDao.findById(id);
         Budget budget = trip.getTripBudget();
+        List<MiscExpenses> miscExpenses = budget.getMiscExpenses();
+    //        User currentUser = userDao.findById(Utils.currentUserId());
+    //        model.addAttribute("createTrip", new Trip());
+    //        model.addAttribute("tripBudget", new Budget());
+    //        model.addAttribute("currentUser", currentUser);
+    ////        model.addAttribute("calculator", new Calculator());
+    //        model.addAttribute("miscExpense", new MiscExpenses());
 
         model.addAttribute("tripBudget", budget);
-
+        model.addAttribute("miscExpenses", miscExpenses);
         model.addAttribute("currentUser", user);
-
 
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
@@ -70,7 +77,7 @@ public class TripController {
 
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
-    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id) {
+    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
 
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
@@ -126,16 +133,7 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
-
-        // create an empty array of misc expenses
-        // create a for loop
-        // loop through one of the list arrays
-        // create your expense objects using index of list array
-        // set each to budget
-
-        ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
-
+    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
 
 
         // Current user
@@ -147,59 +145,15 @@ public class TripController {
         // Number of stops is calculated using the vehicle's info & trip distance
         trip.setStops(
                 (int)Math.ceil(
-                        Calculator.numberOfStops(
-                                trip.getDistance(),
-                                vehicle.getMpg(),
-                                vehicle.getTankSize())
-                )
+                Calculator.numberOfStops(
+                trip.getDistance(),
+                vehicle.getMpg(),
+                vehicle.getTankSize())
+            )
         );
+        budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
-//        budget.setMiscExpenses(miscExpenses);
-        // Saves budget to trip
         trip.setTripBudget(budget);
-        System.out.println(miscTitle.size());
-        System.out.println(miscCost.size());
-
-
-        // create an empty arrayList of misc expenses
-        // create a for loop
-        // loop through one of the list arrays
-        // create your expense objects using index of list array
-        // set each to budget
-
-        System.out.printf("//////////%n/////////%n" +
-                "miscTitle Size:%n" +
-                        "//////////%n/////////%n"
-                );
-
-        /////////////////////////////////////////////////////////////////
-        //////////////// This is souting the proper info ////////////////
-        ////////////////////////////////////////////////////////////////
-        System.out.println(miscTitle.size());
-        for (int i = 0; i < miscTitle.size(); i++) {
-            MiscExpenses miscExpenses1 = new MiscExpenses();
-
-
-            System.out.printf("miscCost Cost %s", miscCost.get(i));
-            System.out.printf("miscTitle title %s", miscTitle.get(i));
-
-            miscExpenses1.setTitle(miscTitle.get(i));
-            miscExpenses1.setCost(miscCost.get(i));
-            miscExpenses1.setBudget(budget);
-
-            //miscExpenses.setCost(miscCost.get(i));
-            emptyMiscList.add(miscExpenses1);
-
-            System.out.printf("%nmiscExpenses [%s, %f] (title, cost)%n", miscExpenses1.getTitle(), miscExpenses1.getCost());
-
-        }
-
-        budget.setMiscExpenses(emptyMiscList);
-        System.out.println(budget.getMiscExpenses());
-
-
-
-
         tripDao.save(trip);
 
         return "redirect:/dashboard";

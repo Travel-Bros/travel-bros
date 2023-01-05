@@ -4,9 +4,9 @@
 <head th:replace="partials/maps-head-partials.html :: head ('test-edit')">
 </head>
 <body>
+    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
     <h1 class="text-center" id="form-title">Edit Trips</h1>
     <div class="page-wrapper" style="height: 100%">
-        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
         <div class="container">
             <div class="row"> <!-- row 1 -->
                 <div>
@@ -15,7 +15,7 @@
                 <div class="row"> <!-- row 2 -->
                     <div class="inputForm col-6 col-sm-6">
 
-                        <div style="" th:action="@{|/trips/${id}/edit|}" >
+                        <div style="display: none" th:action="@{|/trips/${id}/edit|}" >
                         <p id="startingLocation" th:text="${trip.startPoint}"></p>
                         <p id="endingLocation" th:text="${trip.endPoint}"></p>
                         </div>
