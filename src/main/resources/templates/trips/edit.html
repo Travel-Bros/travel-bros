@@ -24,10 +24,6 @@
                             <label for="budget">Enter your Budget:</label>
                             <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
                             <br>
-
-<!--                            <label for="budget">Enter your Budget:</label>-->
-<!--                            <input th:field="${trip.tripBudget}" type="text" id="budget" name="budget">-->
-<!--                            <br>-->
                             <label for="startLocation">Start Location:</label>
                             <input th:field="${trip.startPoint}" type="text" id="startLocation" name="fname">
                             <br>
@@ -42,6 +38,25 @@
                                 </option>
                             </select>
                             <br>
+                            <label for="numberOfPeople">Number of people</label>
+                            <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${trip.numPpl}">
+                            <br>
+
+                            <button type="button" id="add-expense">Add other expenses</button>
+
+                            <div>
+                                <div th:field="${miscExpense.title}" id="misc-expense-container">
+
+
+
+                                </div>
+                                <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">
+
+
+                                </div>
+                                <!--                            <button type="button">Send expenses</button>-->
+                            </div>
+
                             <button type="button"  id="planYourTrip">Your trip</button>
                             <br>
                             <label for="totalDistance"> Distance Traveled</label>
@@ -61,65 +76,6 @@
             </div><!-- END OF ROW -->
         </div><!-- END OF CONTAINER -->
     </div><!-- END OF PAGE-WRAPPER -->
-
-
-
-<!--    <div class="form-wrapper">-->
-<!--        <form th:method="post" th:action="@{|/trips/${id}/edit|}" th:object="${trip}">-->
-
-
-
-<!--            <label for="budget">Enter your Budget:</label>-->
-<!--            <input th:field="${trip.tripBudget}" type="text" id="budget" name="budget"><br><br>-->
-
-<!--            <label for="startLocation">Start Location:</label>-->
-<!--            <input th:field="${trip.startPoint}" type="text" id="startLocation" name="fname"><br><br>-->
-
-<!--            <label for="endLocation">End Location:</label>-->
-<!--            <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname"><br>-->
-<!--            <select name="user-car" id="user-car-select" th:field="${trip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">-->
-<!--                <option-->
-<!--                        th:each="vehicle : ${currentUser.userVehicles}"-->
-<!--                        th:value="${vehicle.id}"-->
-<!--                        th:text="${vehicle.make}">-->
-<!--                </option>-->
-<!--            </select>-->
-<!--            <br>-->
-<!--            <button type="button"  id="planYourTrip">Your trip</button>-->
-<!--            <label for="totalDistance"> Distance Traveled</label>-->
-<!--            <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname"><br><br>-->
-
-<!--            <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>-->
-<!--        </form>-->
-
-<!--        <div style="height: 100%; flex-grow: 6">-->
-<!--            <div id="map" ></div>-->
-<!--            <div id="distance">-->
-<!--                <h3 id="yourTripDistance"></h3>-->
-<!--                <h3 id="yourTravelDistance"></h3>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <form th:action="@{|/profile/${id}/edit|}" th:method="post" class="w-100 mx-auto" th:object="${trip}">-->
-<!--            <div class="w-100">-->
-<!--                <label for="tripBudget" class="form-label">Budget</label>-->
-<!--                <input th:field="*{tripBudget}" id="tripBudget" name="tripBudget" type="text" class="form-control w-100 shadow-none focus-field" autocomplete="off">-->
-<!--            </div>-->
-<!--            <div class="w-100">-->
-<!--                <label for="startPoint" class="form-label">Start Point: </label>-->
-<!--                <textarea th:field="*{startPoint}" id="startPoint" name="startPoint" rows="1" class="form-control w-100 shadow-none"></textarea>-->
-<!--            </div>-->
-<!--            <div class="w-100">-->
-<!--                <label for="endPoint" class="form-label">End Point: </label>-->
-<!--                <textarea th:field="*{endPoint}" id="endPoint" name="endPoint" rows="1" class="form-control w-100 shadow-none"></textarea>-->
-<!--            </div>-->
-<!--            <div class="w-100 mt-4">-->
-<!--                <input type="submit" value="Submit" class="form-control w-100 shadow-none" id="btn">-->
-<!--            </div>-->
-<!--        </form>-->
-    </div>
-
-
 <div th:replace="partials/maps-scripts-partials :: maps-scripts"></div>
-
 </body>
 </html>
