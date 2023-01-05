@@ -42,7 +42,7 @@ public class ProfileController {
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("sortedTrips", descendingOrderTrips);
 //        model.addAttribute("sortedTrips", userTrips);
-        return "/user_profile/profile_page";
+        return "user_profile/profile_page";
     }
 
 // Get method to show edit.html view with trip object added to model
@@ -54,7 +54,7 @@ public class ProfileController {
             return "redirect:/profile";
         }
         model.addAttribute("user", user);
-        return "/user_profile/edit_user_profile";
+        return "user_profile/edit_user_profile";
     }
 
 
