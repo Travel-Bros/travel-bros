@@ -64,7 +64,7 @@ public class TripController {
             return "redirect:/profile";
         }
         model.addAttribute("trip", trip);
-        return "/trips/edit";
+        return "trips/edit";
     }
 
 
@@ -122,7 +122,7 @@ public class TripController {
         if (currentUser.getUserVehicles().size() == 0) {
             return "redirect:/vehicles/create";
         }
-        return "/trips/trip_planner";
+        return "trips/trip_planner";
     }
 
     @PostMapping("/create")
@@ -167,28 +167,38 @@ public class TripController {
         // create your expense objects using index of list array
         // set each to budget
 
+        System.out.printf("//////////%n/////////%n" +
+                "miscTitle Size:%n" +
+                        "//////////%n/////////%n"
+                );
 
+        /////////////////////////////////////////////////////////////////
+        //////////////// This is souting the proper info ////////////////
+        ////////////////////////////////////////////////////////////////
+        System.out.println(miscTitle.size());
         for (int i = 0; i < miscTitle.size(); i++) {
-//            miscExpenses.setTitle(miscTitle.get(i));
-//            miscExpenses.setCost(miscCost.get(i));
-            miscExpenses.setTitle(miscTitle.get(i));
-            miscExpenses.setCost(miscCost.get(i));
+            MiscExpenses miscExpenses1 = new MiscExpenses();
 
-            emptyMiscList.add(miscExpenses);
+
+            System.out.printf("miscCost Cost %s", miscCost.get(i));
+            System.out.printf("miscTitle title %s", miscTitle.get(i));
+
+            miscExpenses1.setTitle(miscTitle.get(i));
+            miscExpenses1.setCost(miscCost.get(i));
+            miscExpenses1.setBudget(budget);
+
+            //miscExpenses.setCost(miscCost.get(i));
+            emptyMiscList.add(miscExpenses1);
+
+            System.out.printf("%nmiscExpenses [%s, %f] (title, cost)%n", miscExpenses1.getTitle(), miscExpenses1.getCost());
 
         }
-        //budget.setMiscExpenses(emptyMiscList);
-        for (int i = 0; i < emptyMiscList.size(); i++) {
-            budget.setMiscExpenses(emptyMiscList);
-        }
+
+        budget.setMiscExpenses(emptyMiscList);
+        System.out.println(budget.getMiscExpenses());
 
 
 
-
-
-//        budget.setMiscExpenses(new );
-
-        //trip.setTripBudget();
 
         tripDao.save(trip);
 
@@ -200,7 +210,7 @@ public class TripController {
     public String tripMapTest(Model model) {
         User currentUser = userDao.findById(Utils.currentUserId());
         model.addAttribute("createTrip", new Trip());
-        return "/trips/test-trip-planner";
+        return "trips/test-trip-planner";
     }
 
 // Post method to receive post trip and save to database
@@ -209,7 +219,7 @@ public class TripController {
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         tripDao.save(trip);
-    return "/landing_page/splash_page";
+    return "landing_page/splash_page";
     }
 
 }

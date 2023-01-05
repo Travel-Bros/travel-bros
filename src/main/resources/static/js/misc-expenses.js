@@ -28,22 +28,19 @@ $(function() {
         console.log("anything");
         $("#misc-expense-container").append(
 
-            `
-                            <p>Expense: </p>
-                            <input name="miscexp-title" id="expenseCount-title" class="expenseCount">
-                        `
+            `<p>Expense: </p>
+             <input name="miscexp-title" id="expenseCount-title" class="expenseCount">
+             <p>Cost: </p>
+             <input name="miscexp-cost" id="expenseCount-cost" class="expenseCount">`
 
             // `<p>Expense: </p>`
         );
-        $("#misc-expense-cost-container").append(
-
-            `
-                            <p>Cost: </p>
-                            <input name="miscexp-cost" id="expenseCount-cost" class="expenseCount">
-                        `
-
-            // `<p>Expense: </p>`
-        );
+        // $("#misc-expense-cost-container").append(
+        //
+        //     ``
+        //
+        //     // `<p>Expense: </p>`
+        // );
     });
 
 });

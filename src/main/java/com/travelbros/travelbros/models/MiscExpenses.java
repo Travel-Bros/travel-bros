@@ -78,6 +78,12 @@ import javax.persistence.*;
             this.cost = cost;
         }
 
-
-
-}
+        @Override
+        public String toString() {
+            return "MiscExpenses{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", cost=" + cost +
+                    '}';
+        }
+    }

@@ -63,7 +63,7 @@ public class BudgetController {
         model.addAttribute("currentTrip", trip);
 
         model.addAttribute("budget", budget);
-        return "/budget/edit";
+        return "budget/edit";
     }
 
 
