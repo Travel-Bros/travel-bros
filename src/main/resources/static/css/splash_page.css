@@ -48,6 +48,12 @@
 /* ///////////// */
 
 @media only screen and (max-width: 650px) {
+    .signIn-card {
+        margin-left: 50px;
+    }
+    .registration-card {
+        margin-left: 50px;
+    }
     .loginWrapperDN>ul {
         width: 100%;
     }
@@ -68,11 +74,12 @@
         padding: 0;
     }
 }
-@media screen and (max-width: 1440px){
 
-}
 /* Display none on smaller px */
 @media screen and (max-width: 700px) {
+    .signIn-card {
+        margin-left: 50px;
+    }
     .kingKaiPlanet{
         display: none;
     }
