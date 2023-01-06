@@ -83,3 +83,10 @@ $(document).ready(function () {
     });
 });
 
+// $(document).ready(function () {
+//     $("#submit-to-calculator-btn").on('click', function (e) {
+//         window.location.href = "/budget/calculator";
+//     });
+// });
+
+

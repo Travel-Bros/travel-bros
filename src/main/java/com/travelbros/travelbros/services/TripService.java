@@ -20,13 +20,24 @@ public class TripService {
         ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
 
         for (int i = 0; i < miscTitle.size(); i++) {
-            MiscExpenses listOfMiscExpenses = new MiscExpenses();
-            listOfMiscExpenses.setTitle(miscTitle.get(i));
-            listOfMiscExpenses.setCost(miscCost.get(i));
-            listOfMiscExpenses.setBudget(budget);
+                MiscExpenses listOfMiscExpenses = new MiscExpenses();
+            if (miscTitle.size() ==0 ){
+                break;
+            }else {
+                // set miscTitle
+                listOfMiscExpenses.setTitle(miscTitle.get(i));
+                // see what miscTitle is
+                System.out.println(miscTitle.get(i));
+                // set miscCost
+                listOfMiscExpenses.setCost(miscCost.get(i));
+                // see what miscCost is
+                listOfMiscExpenses.setBudget(budget);
 
-            emptyMiscList.add(listOfMiscExpenses);
+                emptyMiscList.add(listOfMiscExpenses);
+
+            }
         } // End for-loop
+
 
         budget.setMiscExpenses(emptyMiscList);
         System.out.printf("%d miscellaneous expenses were added to: %s%n", emptyMiscList.size(), trip.getEndPoint());
@@ -43,6 +54,7 @@ public class TripService {
         miscDao.deleteAll(deleteMe);
 
     }
+
 
     //////////////// Constructors ////////////////
 

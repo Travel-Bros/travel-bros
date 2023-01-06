@@ -1,5 +1,6 @@
 package com.travelbros.travelbros.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 
 import javax.persistence.*;
@@ -55,6 +56,7 @@ public class Budget {
     //////////////////// Getters & Setters ////////////////////
 
 
+    @JsonIgnore
     public Trip getTrip() {
         return trip;
     }

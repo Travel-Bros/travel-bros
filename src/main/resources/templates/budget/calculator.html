@@ -18,7 +18,7 @@
         <div class="chart">
             <div class="chart__overlay">
                 <div id="chartContainer" style="height: 500px; width: 100%;"></div>
-                <h1 class="totalBalance">$2000</h1>
+                <h1 class="totalBalance" th:text="${trip.tripBudget.maxBudget}">$2,000</h1>
             </div><!-- END OF CHART OVERLAY-->
             <div class="chart__content">
                 <div class="hiddenDivRight"></div>
