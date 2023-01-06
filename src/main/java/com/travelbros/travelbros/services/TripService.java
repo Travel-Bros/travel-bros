@@ -18,25 +18,24 @@ public class TripService {
 
     public static Budget budgetToMiscExpenseMethod(Trip trip, Budget budget, List<String> miscTitle, List<Double> miscCost) {
         ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
+        if (miscTitle == null) {
+            return budget;
+        } else {
+            for (int i = 0; i < miscTitle.size(); i++) {
+                    MiscExpenses listOfMiscExpenses = new MiscExpenses();
+                    // set miscTitle
+                    listOfMiscExpenses.setTitle(miscTitle.get(i));
+                    // see what miscTitle is
+                    System.out.println(miscTitle.get(i));
+                    // set miscCost
+                    listOfMiscExpenses.setCost(miscCost.get(i));
+                    // see what miscCost is
+                    listOfMiscExpenses.setBudget(budget);
 
-        for (int i = 0; i < miscTitle.size(); i++) {
-                MiscExpenses listOfMiscExpenses = new MiscExpenses();
-            if (miscTitle.size() ==0 ){
-                break;
-            }else {
-                // set miscTitle
-                listOfMiscExpenses.setTitle(miscTitle.get(i));
-                // see what miscTitle is
-                System.out.println(miscTitle.get(i));
-                // set miscCost
-                listOfMiscExpenses.setCost(miscCost.get(i));
-                // see what miscCost is
-                listOfMiscExpenses.setBudget(budget);
+                    emptyMiscList.add(listOfMiscExpenses);
 
-                emptyMiscList.add(listOfMiscExpenses);
-
-            }
-        } // End for-loop
+            } // End for-loop
+        } // End null check if statement
 
 
         budget.setMiscExpenses(emptyMiscList);

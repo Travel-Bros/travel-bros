@@ -145,7 +145,7 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) throws JsonProcessingException {
+    public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("Inside postTrip. trip received from user: ");
         System.out.println(mapper.writeValueAsString(trip));
