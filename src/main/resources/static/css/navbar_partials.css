@@ -23,12 +23,24 @@
     padding: 0.3125rem 0;
     margin-bottom: 3px;
 }
+@media only screen and (max-width: 414px) {
+    .signInButton, .navButton, .profileButton, tripsButton {
+        width: 100%;
+    }
+    .nav-item {
+        width: 100%;
+        padding: 0;
+    }
+}
 /*Iphone*/
-@media only screen and (max-width: 412px){
+@media only screen and (max-width: 980px) {
+
+    .registration-card {
+        margin-left: 50px;
+    }
     .loginWrapperDN>ul {
         width: 100%;
     }
-
     .loginWrapperDN {
         display: flex;
         justify-content: center;
@@ -38,14 +50,13 @@
         margin-bottom: 3px;
         width: 100%;
     }
-    .signInButton, .navButton {
+    .signInButton, .navButton, .profileButton, tripsButton {
         width: 100%;
     }
     .nav-item {
         width: 100%;
         padding: 0;
     }
-
 }
 /* Desktop */
 @media screen and (max-width: 1440px){
