@@ -1,5 +1,7 @@
 package com.travelbros.travelbros.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -64,6 +66,7 @@ public class User {
         this.password = password;
     }
 
+    @JsonIgnore
     public List<Trip> getTrips() {
         return trips;
     }
@@ -72,6 +75,7 @@ public class User {
         this.trips = trips;
     }
 
+    @JsonIgnore
     public List<Comments> getComments() {
         return comments;
     }

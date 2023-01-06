@@ -1,5 +1,7 @@
 package com.travelbros.travelbros.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -57,6 +59,7 @@ public class Comments {
         this.user = user;
     }
 
+    @JsonIgnore
     public Trip getTrip() {
         return trip;
     }

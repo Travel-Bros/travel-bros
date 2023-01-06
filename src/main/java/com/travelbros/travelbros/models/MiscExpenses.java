@@ -1,5 +1,7 @@
 package com.travelbros.travelbros.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
     @Entity
@@ -54,6 +56,7 @@ import javax.persistence.*;
             this.cost = cost;
         }
 
+        @JsonIgnore
         public Budget getBudget() {
             return budget;
         }

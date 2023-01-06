@@ -96,4 +96,10 @@ public class BudgetController {
         return "redirect:/budget";
     }
 
+    @GetMapping("/calculator")
+    public String showCalculator(Model model) {
+//        model.addAttribute("calculator", new Calculator());
+        return "budget/calculator";
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.travelbros.travelbros.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.travelbros.travelbros.models.*;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
@@ -26,6 +28,8 @@ public class TripController {
     private final UserRepository userDao;
 
     private final BudgetRepository budgetDao;
+
+
 
 // Constructor
     public TripController(TripRepository tripDao, UserRepository userDao, BudgetRepository budgetDao) {
@@ -141,15 +145,22 @@ public class TripController {
     }
 
     @PostMapping("/create")
-    public String postTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
-
-
+    public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println("Inside postTrip. trip received from user: ");
+        System.out.println(mapper.writeValueAsString(trip));
+        System.out.println("Inside postTrip. budget received from user: ");
+        System.out.println(mapper.writeValueAsString(budget));
         // Current user
         User user = userDao.findById(Utils.currentUserId());
+        System.out.printf("User: %s%n", user.getUsername());
         // Current user is set as the trip's user
         trip.setUser(user);
+        tripDao.save(trip);
         // Vehicle is set to the user's trip
         Vehicle vehicle = trip.getVehicle();
+        System.out.println("Vehicle: ");
+        System.out.println(mapper.writeValueAsString(vehicle));
         // Number of stops is calculated using the vehicle's info & trip distance
         trip.setStops(
                 (int)Math.ceil(
@@ -159,12 +170,20 @@ public class TripController {
                 vehicle.getTankSize())
             )
         );
+        System.out.println("Trip: ");
+        System.out.println(mapper.writeValueAsString(trip));
         budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
         trip.setTripBudget(budget);
         tripDao.save(trip);
+        System.out.println("trip after saving: ");
+        System.out.println(mapper.writeValueAsString(trip));
 
-        return "redirect:/dashboard";
+
+        model.addAttribute("trip", trip);
+
+
+        return "budget/calculator";
     }
 
 // Testing trip planner template view
@@ -183,5 +202,13 @@ public class TripController {
         tripDao.save(trip);
     return "landing_page/splash_page";
     }
+
+    @GetMapping("/calculator")
+    public @ResponseBody Trip viewCalculator() {
+        return tripDao.findById(Utils.currentTripId());
+    }
+
+
+
 
 }

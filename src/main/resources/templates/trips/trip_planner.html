@@ -44,8 +44,8 @@
 
                             </div>
                             <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">
-
-
+                                <input hidden name="miscexp-title" value="">
+                                <input hidden name="miscexp-cost" value="">
                             </div>
 <!--                            <button type="button">Send expenses</button>-->
                         </div>
@@ -61,7 +61,7 @@
 <!--                        <input id="input-cost-misc" th:field="${miscExpense.cost}" type="text" name="fname">-->
                         <br>
 
-                        <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
+                        <button type="submit" value="Submit" id="submit-to-calculator-btn">Make Your Trip!</button>
                     </form>
                 </div><!-- END OF inputForm -->
                 <div class="col-12 col-sm-6">

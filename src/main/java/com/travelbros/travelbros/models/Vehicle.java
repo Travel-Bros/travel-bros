@@ -1,5 +1,7 @@
 package com.travelbros.travelbros.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -92,6 +94,7 @@ public class Vehicle {
         this.mpg = mpg;
     }
 
+    @JsonIgnore
     public User getUser() {
         return user;
     }
@@ -108,6 +111,7 @@ public class Vehicle {
         this.tankSize = tankSize;
     }
 
+    @JsonIgnore
     public List<Trip> getTripVehicles() {
         return tripVehicles;
     }
