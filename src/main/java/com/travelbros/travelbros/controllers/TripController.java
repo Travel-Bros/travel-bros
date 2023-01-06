@@ -9,6 +9,7 @@ import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.services.TripService;
 import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
+import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -179,12 +180,12 @@ public class TripController {
         System.out.println("trip after saving: ");
         System.out.println(mapper.writeValueAsString(trip));
 
-
         model.addAttribute("trip", trip);
 
 
-        return "budget/calculator";
+        return "redirect:/trips/calculator";
     }
+
 
 // Testing trip planner template view
     @GetMapping("/testing")
@@ -203,11 +204,39 @@ public class TripController {
     return "landing_page/splash_page";
     }
 
-    @GetMapping("/calculator")
-    public @ResponseBody Trip viewCalculator() {
-        return tripDao.findById(Utils.currentTripId());
-    }
+//    @GetMapping("/calculator")
+//    public @ResponseBody Trip viewCalculator() {
+//        return tripDao.findById(Utils.currentTripId());
+//    }
 
+    @GetMapping("/calculator")
+    public String postingCalculator(Model model) {
+
+
+        // Need to find trips that belong to the logged in user
+        // Need to grab all trips and put them in an array list
+        // need to iterate through array list and find the most recent trip
+        // return most recent trip owned by logged in user
+        Trip lastTrip = new Trip();
+
+        User currentUser = userDao.findById(Utils.currentUserId());
+        List<Trip> currentUserTrips = currentUser.getTrips();
+
+        if (currentUser.getId() <= 0) {
+            return "redirect:/login";
+        }
+
+        for (int i =0; i < currentUserTrips.size(); i++) {
+            if (i == currentUserTrips.size() -1) {
+                lastTrip = currentUserTrips.get(i);
+            }
+
+        }
+
+        model.addAttribute("lastTrip", lastTrip);
+
+        return "budget/calculator";
+    }
 
 
 

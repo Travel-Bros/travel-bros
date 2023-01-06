@@ -6,11 +6,15 @@ import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.services.TripService;
 import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/budget")
@@ -18,30 +22,22 @@ public class BudgetController {
 
 
 // Dependency Injection
+    @Autowired
+    private TripService tripService;
     private final BudgetRepository budgetDao;
     private final TripRepository tripDao;
 
+    private final UserRepository userDao;
+
 
 //////////////////// Constructors ////////////////////
-    public BudgetController (BudgetRepository budgetDao, TripRepository tripDao) {
+    public BudgetController (BudgetRepository budgetDao, TripRepository tripDao, UserRepository userDao) {
         this.budgetDao = budgetDao;
         this.tripDao = tripDao;
+        this.userDao = userDao;
     }
 
 
-    // Get method to show create.html view with empty budget object added to model
-//    @GetMapping("/create")
-//    public String createTrip(Model model) {
-////        User currentUser = userDao.findById(Utils.currentUserId());
-//        model.addAttribute("createTrip", new Trip());
-////        model.addAttribute("currentUser", currentUser);
-//        model.addAttribute("tripBudget", new Budget());
-//        model.addAttribute("calculator", new Calculator());
-////        if (currentUser.getUserVehicles().size() == 0) {
-////            return "redirect:/vehicles/create";
-////        }
-//        return "/trips/trip_planner";
-//    }
     // Post method to receive post budget and save to database
     @PostMapping("/create")
     public String submitBudget(@ModelAttribute Budget budget) {
@@ -98,7 +94,11 @@ public class BudgetController {
 
     @GetMapping("/calculator")
     public String showCalculator(Model model) {
-//        model.addAttribute("calculator", new Calculator());
+//        User currentUser = userDao.findById(Utils.currentUserId());
+//        List<Trip> lastTrip = tripDao.findAllByUserOrderByIdDesc(currentUser);
+
+//        model.addAttribute("trip", tripDao.findById(Utils.currentTripId()));
+        //        model.addAttribute("calculator", new Calculator());
         return "budget/calculator";
     }
 

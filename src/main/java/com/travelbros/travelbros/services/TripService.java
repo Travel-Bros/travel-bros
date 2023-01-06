@@ -15,6 +15,11 @@ import java.util.List;
 @Service
 public class TripService {
     private final MiscExpensesRepository miscDao;
+    private final TripRepository tripDao;
+
+    private final BudgetRepository budgetDao;
+
+
 
     public static Budget budgetToMiscExpenseMethod(Trip trip, Budget budget, List<String> miscTitle, List<Double> miscCost) {
         ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
@@ -42,9 +47,14 @@ public class TripService {
         System.out.printf("%d miscellaneous expenses were added to: %s%n", emptyMiscList.size(), trip.getEndPoint());
 
         return budget;
-    }
-    public TripService(MiscExpensesRepository miscDao) {
+    } // End budgetToMiscExpenseMethod
+
+
+
+    public TripService(MiscExpensesRepository miscDao, TripRepository tripDao, BudgetRepository budgetDao) {
         this.miscDao = miscDao;
+        this.tripDao = tripDao;
+        this.budgetDao = budgetDao;
     }
 
     public void deleteOldMiscExpenseFromBudget(Budget budget) {
