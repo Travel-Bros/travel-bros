@@ -35,7 +35,6 @@
                         <label for="numberOfPeople">Number of people</label>
                         <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}">
                         <br>
-                        <button type="button" id="add-expense">Add other expenses</button>
 
                         <div>
                             <div th:field="${miscExpense.title}" id="misc-expense-container">
@@ -43,6 +42,7 @@
 
 
                             </div>
+                        <button type="button" id="add-expense">Add other expenses</button>
 <!--                            <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">-->
 <!--                                <input hidden name="miscexp-title" value="">-->
 <!--                                <input hidden name="miscexp-cost" value="">-->
