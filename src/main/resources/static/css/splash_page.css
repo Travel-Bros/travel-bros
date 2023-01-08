@@ -1,9 +1,25 @@
+.background-color{
+    background: linear-gradient(to right, #83EAF1, #63A4FF);
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+.app__second-description {
+    background: linear-gradient(to right, #FFFF, #63A4FF);
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: -1;
+}
 .kingKaiPlanet {
     display: flex;
     position: absolute;
-
 }
 .testButton {
+    background: linear-gradient(to right, rgb(101, 176, 253),rgb(100, 166, 255));
     margin-top: 540px;
     margin-left: 400px;
     display: flex;
@@ -13,9 +29,10 @@
     width: 200px;
     padding-right: 56px;
     padding-left: 0px;
-    /*border: black;*/
-    background-color: #ffff;
-    color: black;
+}
+.adventure-description {
+    color: #ffff;
+    z-index: 100;
 }
 .iframe {
     width: 600px;
@@ -40,9 +57,6 @@
     top: 50%;
     -ms-transform: translateY(-50%);
 }
-
-
-
 /* /////////////// */
 /*  Media Queries  */
 /* ///////////// */
