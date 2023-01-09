@@ -373,6 +373,13 @@ public class StateGasPrice {
         }
     }
 
+    public double nationalAverage(double[] stateAvgGasPrices) {
+        double average = 0;
+        for (double stateAvgGasPrice : stateAvgGasPrices) {
+            average += stateAvgGasPrice;
+        }
+        return average / stateAvgGasPrices.length;
+    }
 
 
 
@@ -395,6 +402,17 @@ public class StateGasPrice {
 
         // Once we see that the input is or isn't a real state, we can move onto finding the index of the input
 
+    }
+
+    public static void main(String[] args) {
+        StateGasPrice testState = new StateGasPrice();
+        System.out.println(testState.findStateGasPrice("TX"));
+        System.out.println(testState.findStateGasPrice("Texas"));
+        System.out.println(testState.findStateGasPrice("New York"));
+        System.out.println(testState.findStateGasPrice("NY"));
+        System.out.println(testState.findStateGasPrice("HI"));
+        System.out.println(testState.findStateGasPrice("Hawaii"));
+        System.out.println(testState.nationalAverage(testState.fiftyStateGasPrices));
     }
 
     public StateGasPrice(){};

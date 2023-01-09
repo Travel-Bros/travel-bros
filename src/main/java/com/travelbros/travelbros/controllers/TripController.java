@@ -86,9 +86,10 @@ public class TripController {
 
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
-    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title") List<String> miscTitle, @RequestParam(name = "miscexp-cost") List<Double> miscCost) {
+    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) {
 
         tripService.deleteOldMiscExpenseFromBudget(budget);
+//        budgetDao.delete(trip.getTripBudget());
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);
@@ -136,7 +137,6 @@ public class TripController {
         model.addAttribute("createTrip", new Trip());
         model.addAttribute("tripBudget", new Budget());
         model.addAttribute("currentUser", currentUser);
-//        model.addAttribute("calculator", new Calculator());
         model.addAttribute("miscExpense", new MiscExpenses());
 
         if (currentUser.getUserVehicles().size() == 0) {
@@ -148,6 +148,7 @@ public class TripController {
     @PostMapping("/create")
     public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
+        Calculator calculator = new Calculator();
         System.out.println("Inside postTrip. trip received from user: ");
         System.out.println(mapper.writeValueAsString(trip));
         System.out.println("Inside postTrip. budget received from user: ");
@@ -175,7 +176,11 @@ public class TripController {
         System.out.println(mapper.writeValueAsString(trip));
         budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
+        budget.setGas(calculator.expectedGasConsumptionForTrip(trip));
+
         trip.setTripBudget(budget);
+
+
         tripDao.save(trip);
         System.out.println("trip after saving: ");
         System.out.println(mapper.writeValueAsString(trip));
@@ -195,13 +200,14 @@ public class TripController {
         return "trips/test-trip-planner";
     }
 
-// Post method to receive post trip and save to database
+    // Post method to receive post trip and save to database
     @PostMapping("/testing")
     public String postingTrip(@ModelAttribute Trip trip) {
         User user = userDao.findById(Utils.currentUserId());
         trip.setUser(user);
         tripDao.save(trip);
-    return "landing_page/splash_page";
+        return "landing_page/splash_page";
+
     }
 
 //    @GetMapping("/calculator")
@@ -212,13 +218,12 @@ public class TripController {
     @GetMapping("/calculator")
     public String postingCalculator(Model model) {
 
-
-
-        // Need to find trips that belong to the logged in user
+        // Need to find trips that belong to the logged-in user
         // Need to grab all trips and put them in an array list
         // need to iterate through array list and find the most recent trip
-        // return most recent trip owned by logged in user
+        // return most recent trip owned by logged-in user
         Trip lastTrip = new Trip();
+        Calculator calculator = new Calculator();
 
         User currentUser = userDao.findById(Utils.currentUserId());
         List<Trip> currentUserTrips = currentUser.getTrips();
@@ -226,19 +231,16 @@ public class TripController {
         if (currentUser.getId() <= 0) {
             return "redirect:/login";
         }
-
         for (int i =0; i < currentUserTrips.size(); i++) {
             if (i == currentUserTrips.size() -1) {
                 lastTrip = currentUserTrips.get(i);
             }
-
         }
-        String[] endpointSplit = lastTrip.getEndPoint().split(",", 0);
-        String endpointPostSplit = endpointSplit[0];
+
+
+        model.addAttribute("miscExpTotal", calculator.miscExpenseSum(lastTrip));
 
         model.addAttribute("lastTrip", lastTrip);
-        model.addAttribute("endPoint", endpointPostSplit);
-
         return "budget/calculator";
     }
 

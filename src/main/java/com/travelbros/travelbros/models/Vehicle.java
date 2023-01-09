@@ -148,4 +148,12 @@ public class Vehicle {
         this.tankSize = tankSize;
         this.mpg = mpg;
     }
+
+    public Vehicle(long id, String year, String make, int tankSize, double mpg) {
+        this.id = id;
+        this.year = year;
+        this.make = make;
+        this.tankSize = tankSize;
+        this.mpg = mpg;
+    }
 }
