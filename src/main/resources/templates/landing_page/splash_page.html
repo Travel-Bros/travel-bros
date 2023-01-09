@@ -15,28 +15,30 @@
         <link rel="stylesheet" th:href="@{/css/splash_page.css}">
     </head>
     <body>
-    <div class="page-wrapper">
+<!--    <div class="page-wrapper">-->
         <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
         <div th:if="${param.logout}" class="logoutMessage">You been logged out</div>
-        <div class="background-color"></div>
-        <div class="container app__description">
-            <div class="row">
-                <div class="col-sm-12 col-lg-6 app__description-aboutUs">
-                    <h3 class="adventure-description">Your adventure awaits.</h3>
-                </div>
-                <div class="col-sm-12 col-lg-6 app__description-logo">
-                    <div id="3dLogo" class="kingKaiPlanet">
-                        <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>
+<!--        <div class="background-color"></div>-->
+        <div class="x-container app__description">
+            <div class="app__first-description-img">
+                <div class="app__first-description-overlay">
+                    <div class="app__description-aboutUs">
+                        <h3 class="adventure-description">Your adventure awaits.</h3>
                     </div>
-                    <div class="testButton"></div>
-                </div><!-- END OF APP__DESCRIPTION-LOGO-->
-            </div><!-- END OF ROW-->
+                    <div class="app__description-logo">
+                        <div id="3dLogo" class="kingKaiPlanet">
+                            <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>
+                        </div>
+                        <div class="testButton"></div>
+                    </div><!-- END OF APP__DESCRIPTION-LOGO-->
+                </div><!-- END OF app__first-description-overlay-->
+            </div>
         </div> <!-- END OF APP__DESCRIPTION-->
-        <div class="app__second-description">
-            <img th:src="@{img/iphone13.png}">
-        </div>
+<!--        <div class="app__second-description">-->
+<!--            <img class="app__second-description-img"th:src="@{img/car.jpg}">-->
+<!--        </div>-->
         <div th:replace="partials/footer_partials.html :: footer"></div>
-    </div> <!-- END OF PAGE WRAPPER -->
+<!--    </div> &lt;!&ndash; END OF PAGE WRAPPER &ndash;&gt;-->
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
     </body>
 </html>
