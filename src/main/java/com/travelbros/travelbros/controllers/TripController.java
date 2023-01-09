@@ -237,7 +237,10 @@ public class TripController {
             }
         }
 
+        String[] endPointParser = lastTrip.getEndPoint().split(",", 0);
+        String betterEndPoint = endPointParser[0];
 
+        model.addAttribute("endPoint", betterEndPoint);
         model.addAttribute("miscExpTotal", calculator.miscExpenseSum(lastTrip));
 
         model.addAttribute("lastTrip", lastTrip);
