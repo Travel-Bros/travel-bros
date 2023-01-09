@@ -2,7 +2,10 @@
     display: flex;
     margin: 0 5px;
 }
-
+.x-navbar {
+    background-color: rgba(0, 0, 0, 0.1);
+    /*backdrop-blur: 10px;*/
+}
 .stretch-wrapper {
     width: max-content;
     flex-grow: 1;
