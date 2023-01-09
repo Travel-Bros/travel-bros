@@ -1,27 +1,56 @@
-.background-color{
-    background: linear-gradient(to right, #83EAF1, #63A4FF);
-    margin: auto;
-    height: 100vh;
+/*div {*/
+/*    background-image: url('static/img/beach.jpg');*/
+/*    background-position: center;*/
+/*    background-size: cover;*/
+/*}*/
+.page-wrapper {
     width: 100vw;
-    position: absolute;
-    z-index: -1;
+    height: 100vh;
+}
+.app__description {
+    position: relative;
+    width: 100%;
+}
+.app__first-description-img {
+    width: 100vw;
+    height: 100vh;
+    /*object-fit: fill;*/
+    position: relative;
+    background-image: url("../img/beach.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.beach-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 10;
+}
+.app__first-description-overlay {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+}
+.app__description-aboutUs{
+    align-items: center;
+    display: flex;
+    z-index: 100;
 }
 .app__second-description {
-    background: linear-gradient(to right, #FFFF, #63A4FF);
-    margin: auto;
     height: 100vh;
     width: 100vw;
     position: relative;
     z-index: -1;
     display: flex;
 }
-.app__description-aboutUs{
-    align-items: center;
-    display: flex;
-}
+/*.app__description-logo {*/
+/*    position: absolute;*/
+/*}*/
 .kingKaiPlanet {
     display: flex;
-    position: absolute;
+    position: relative;
 }
 .testButton {
     background: linear-gradient(to right, rgb(101, 176, 253),rgb(100, 166, 255));
@@ -39,6 +68,7 @@
     font-family: Awakenning;
     color: #ffff;
     z-index: 100;
+    position:relative;
 }
 .iframe {
     width: 600px;

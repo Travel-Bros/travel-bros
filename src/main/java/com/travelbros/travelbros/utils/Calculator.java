@@ -65,6 +65,13 @@ public class Calculator {
         }
         return tripStops;
     }
+    public static double expectedGasConsumptionForTrip(Trip trip) {
+        String text = trip.getStartPoint();
+        String[] mutated = text.split(", ", text.length());
+        text = mutated[mutated.length-2];
+        return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), text);
+
+    }
 
     public static double remainingBudget(double maxBudget, double expenses, double numPpl) {
 
@@ -116,10 +123,19 @@ public class Calculator {
 
 
         Calculator calculator = new Calculator();
-        System.out.println("gas consoomer");
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")));
-        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
+//        System.out.println("gas consoomer");
+//        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
+//        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")));
+//        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
+        String text = "Theraleaf Relief, Inc., Timothy Drive, San Jose, CA, USA";
+        String[] mutated = text.split(", ", text.length());
+//        for (int i = 0; i < mutated.length; i++) {
+//            System.out.println(mutated[i]);
+//        }
+
+        //System.out.println(text);
+        System.out.println();
+        System.out.println(mutated[mutated.length-2]);
     }
 
 }
