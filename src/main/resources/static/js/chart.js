@@ -36,9 +36,9 @@ window.addEventListener('load', function() {
         var finalTrip = {
             animationEnabled: true,
             theme: "light2",
-            title: {
-                text: `Your trip to: `
-            },
+            // title: {
+            //     text: `Your trip to: `
+            // },
             // subtitles: [{
             //     text: "Click on Any Segment to Drilldown",
             //     backgroundColor: "#2eacd1",

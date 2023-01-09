@@ -213,6 +213,7 @@ public class TripController {
     public String postingCalculator(Model model) {
 
 
+
         // Need to find trips that belong to the logged in user
         // Need to grab all trips and put them in an array list
         // need to iterate through array list and find the most recent trip
@@ -232,8 +233,11 @@ public class TripController {
             }
 
         }
+        String[] endpointSplit = lastTrip.getEndPoint().split(",", 0);
+        String endpointPostSplit = endpointSplit[0];
 
         model.addAttribute("lastTrip", lastTrip);
+        model.addAttribute("endPoint", endpointPostSplit);
 
         return "budget/calculator";
     }
