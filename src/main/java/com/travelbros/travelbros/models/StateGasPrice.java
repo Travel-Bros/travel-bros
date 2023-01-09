@@ -373,6 +373,13 @@ public class StateGasPrice {
         }
     }
 
+    public double nationalAverage(double[] stateAvgGasPrices) {
+        double average = 0;
+        for (double stateAvgGasPrice : stateAvgGasPrices) {
+            average += stateAvgGasPrice;
+        }
+        return average / stateAvgGasPrices.length;
+    }
 
 
 
@@ -405,6 +412,7 @@ public class StateGasPrice {
         System.out.println(testState.findStateGasPrice("NY"));
         System.out.println(testState.findStateGasPrice("HI"));
         System.out.println(testState.findStateGasPrice("Hawaii"));
+        System.out.println(testState.nationalAverage(testState.fiftyStateGasPrices));
     }
 
     public StateGasPrice(){};
