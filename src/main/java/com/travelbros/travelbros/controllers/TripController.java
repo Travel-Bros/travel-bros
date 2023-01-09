@@ -237,6 +237,7 @@ public class TripController {
             }
         }
 
+
         model.addAttribute("miscExpTotal", calculator.miscExpenseSum(lastTrip));
 
         model.addAttribute("lastTrip", lastTrip);
