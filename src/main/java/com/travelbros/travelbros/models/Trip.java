@@ -133,7 +133,18 @@ public class Trip {
 
     public Trip(){}
 
+    public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, Vehicle vehicle) {
+        this.id = id;
+        this.user = user;
+        this.tripBudget = tripBudget;
+        this.startPoint = startPoint;
+        this.endPoint = endPoint;
+        this.stops = stops;
+        this.distance = distance;
+        this.numPpl = numPpl;
+        this.vehicle = vehicle;
 
+    }
 
     public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, List<Comments> comments, Vehicle vehicle) {
         this.id = id;

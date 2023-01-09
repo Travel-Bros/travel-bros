@@ -397,5 +397,15 @@ public class StateGasPrice {
 
     }
 
+    public static void main(String[] args) {
+        StateGasPrice testState = new StateGasPrice();
+        System.out.println(testState.findStateGasPrice("TX"));
+        System.out.println(testState.findStateGasPrice("Texas"));
+        System.out.println(testState.findStateGasPrice("New York"));
+        System.out.println(testState.findStateGasPrice("NY"));
+        System.out.println(testState.findStateGasPrice("HI"));
+        System.out.println(testState.findStateGasPrice("Hawaii"));
+    }
+
     public StateGasPrice(){};
 }

@@ -1,7 +1,12 @@
 package com.travelbros.travelbros.utils;
 
-public class Calculator {
+import com.travelbros.travelbros.models.*;
+import com.travelbros.travelbros.repositories.TripRepository;
 
+import javax.swing.plaf.nimbus.State;
+import java.util.List;
+
+public class Calculator {
 
     ///// Methods
     public static double convertMetersToMiles(double meters) {
@@ -15,6 +20,52 @@ public class Calculator {
         System.out.printf("%nYour expected number of stops: %s%n", numberOfStopsAnswer);
         return numberOfStopsAnswer;
     }
+
+    public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, String startingPoint){
+        StateGasPrice gasPrice = new StateGasPrice();
+        double tripStops = 0;
+        int numberOfStops = numberOfStops(distance, mpg, tankSize);
+        distance = convertMetersToMiles(distance);
+        double range = (.8 * (tankSize));
+        double avgGasPrice = (gasPrice.findStateGasPrice(startingPoint));
+
+        if (numberOfStops == 0) {
+            System.out.println("Here's your expected gas cost for the trip");
+            return  tripStops= (range * avgGasPrice);
+        } else if (numberOfStops >=1) {
+            System.out.println("Here's your expected gas cost for the trip");
+            // return estimated gas cost for trip
+            for (int i = 0; i <= numberOfStops; i++) {
+                System.out.println("fill up for the " + i + ": stop");
+                tripStops += (range * avgGasPrice);
+            }
+            return tripStops;
+        }
+        return tripStops;
+    }
+
+    public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, String startingPoint, String endPoint){
+        StateGasPrice gasPrice = new StateGasPrice();
+        double tripStops = 0;
+        int numberOfStops = numberOfStops(distance, mpg, tankSize);
+        distance = convertMetersToMiles(distance);
+        double range = (.8 * (tankSize));
+        double avgGasPrice = ((gasPrice.findStateGasPrice(startingPoint) * gasPrice.findStateGasPrice(endPoint)) / 2);
+
+        if (numberOfStops == 0) {
+            System.out.println("Here's your expected gas cost for the trip");
+            return  tripStops= (range * avgGasPrice);
+        } else if (numberOfStops >=1) {
+            System.out.println("Here's your expected gas cost for the trip");
+            // return estimated gas cost for trip
+            for (int i = 0; i < numberOfStops; i++) {
+                tripStops += (range * avgGasPrice);
+            }
+                return tripStops;
+        }
+        return tripStops;
+    }
+
     public static double remainingBudget(double maxBudget, double expenses, double numPpl) {
 
         if (numPpl <= 0) {
@@ -45,14 +96,30 @@ public class Calculator {
         return (maxBudget - expenses);
     }
 
+
+    public static double miscExpenseSum(Trip trip) {
+        double sum = 0;
+        List<MiscExpenses> miscExpensesList = trip.getTripBudget().getMiscExpenses();
+        for (int i = 0; i < miscExpensesList.size(); i++) {
+            sum += miscExpensesList.get(i).getCost();
+        }
+        System.out.println("Here's your sum: ");
+        return sum;
+    }
+
+
+
     //// Constructor
     public Calculator() {};
 
-
-
-
     public static void main(String[] args) {
-        
 
+
+        Calculator calculator = new Calculator();
+        System.out.println("gas consoomer");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")));
+        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
     }
+
 }
