@@ -31,7 +31,8 @@ public class Calculator {
 
         if (numberOfStops == 0) {
             System.out.println("Here's your expected gas cost for the trip");
-            return  tripStops= (range * avgGasPrice);
+            tripStops = Double.parseDouble(String.format("%.2f", tripStops));
+            return  tripStops = (range * avgGasPrice);
         } else if (numberOfStops >=1) {
             System.out.println("Here's your expected gas cost for the trip");
             // return estimated gas cost for trip
@@ -39,8 +40,10 @@ public class Calculator {
                 System.out.println("fill up for the " + i + ": stop");
                 tripStops += (range * avgGasPrice);
             }
+            tripStops = Double.parseDouble(String.format("%.2f", tripStops));
             return tripStops;
         }
+
         return tripStops;
     }
 
