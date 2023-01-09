@@ -21,8 +21,13 @@
 
                 </div>
 <!--                <div id="dataFromUser2" th:attr="data-gas-tank=${trip.vehicle.gas_tank}"></div>-->
-                <div id="dataFromUser" data-misc-Expense="300" data-budget="8000" data-gas="250"></div>
-                <h1 class="totalBalance" th:text="${lastTrip.tripBudget.maxBudget}">$2,000</h1>
+                <div id="dataFromUser" th:data-misc-Expense="${miscExpTotal}" th:data-budget="${lastTrip.tripBudget.maxBudget}" th:data-gas="${lastTrip.tripBudget.getGas()}">
+<!--                    <div th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">-->
+<!--                                                <p th:text="${tripMiscExp.cost}"></p>-->
+<!--                    </div>-->
+                </div>
+
+                <h1 class="totalBalance" th:text="${lastTrip.tripBudget.maxBudget}"></h1>
 <!--                <div th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">-->
 <!--                        <p th:text="${tripMiscExp.title}"></p>-->
 <!--                        <p th:text="${tripMiscExp.cost}"></p>-->
@@ -36,7 +41,18 @@
             <div class="hiddenDivRight"></div>
             <div class="hiddenDivLeft"></div>
         </div><!-- END OF CHART-->
-
+            <div id="listOfCaclulatorData" >
+                <h3 class="displayMaxBudget" th:text="${lastTrip.tripBudget.maxBudget}">max budget supposed to be here</h3>
+                <br>
+        <!--        <h3 class="displayGasCost" th:text="${lastTrip. ...}"></h3>-->
+                <br>
+                <h3 class="displayTotalMiscExp" th:text="${miscExpTotal}">total of misc exps</h3>
+<!--                <h4 class="displayMiscExp" th:each="expense : ${lastTrip.tripBudget.miscExpenses}"></h4>-->
+                <h4 th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
+                                            <p th:text="${tripMiscExp.title}"></p>
+                                            <p th:text="${tripMiscExp.cost}"></p>
+                </h4>
+            </div> <!-- END OF LIST OF CALCULATOR DATA -->
     </div><!-- END OF PAGE WRAPPER -->
 <!--    <div id="dataFromUser" data-misc-Expense="300" data-budget="8000" data-gas="250"></div>-->
 
@@ -49,3 +65,5 @@
     <script th:src="@{/js/traveling.js}"></script>
     </body>
 </html>
+
+

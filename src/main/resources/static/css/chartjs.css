@@ -60,3 +60,9 @@
     top: 15rem;
     left: 46%;
 }
+
+#listOfCaclulatorData {
+    align-items: center;
+    position: absolute;
+    z-index: 1500;
+}

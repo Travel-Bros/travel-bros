@@ -148,6 +148,7 @@ public class TripController {
     @PostMapping("/create")
     public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
+        Calculator calculator = new Calculator();
         System.out.println("Inside postTrip. trip received from user: ");
         System.out.println(mapper.writeValueAsString(trip));
         System.out.println("Inside postTrip. budget received from user: ");
@@ -175,7 +176,11 @@ public class TripController {
         System.out.println(mapper.writeValueAsString(trip));
         budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
+        budget.setGas(calculator.expectedGasConsumptionForTrip(trip));
+
         trip.setTripBudget(budget);
+
+
         tripDao.save(trip);
         System.out.println("trip after saving: ");
         System.out.println(mapper.writeValueAsString(trip));
@@ -218,6 +223,7 @@ public class TripController {
         // need to iterate through array list and find the most recent trip
         // return most recent trip owned by logged-in user
         Trip lastTrip = new Trip();
+        Calculator calculator = new Calculator();
 
         User currentUser = userDao.findById(Utils.currentUserId());
         List<Trip> currentUserTrips = currentUser.getTrips();
@@ -230,9 +236,13 @@ public class TripController {
                 lastTrip = currentUserTrips.get(i);
             }
         }
+
+        model.addAttribute("miscExpTotal", calculator.miscExpenseSum(lastTrip));
+
         model.addAttribute("lastTrip", lastTrip);
         return "budget/calculator";
     }
+
 
 
 }
