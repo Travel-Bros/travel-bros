@@ -1,3 +1,7 @@
+@font-face {
+    font-family: Awakenning;
+    src: url("../fonts/Awakenning.tff");
+}
 .background-color{
     background: linear-gradient(to right, #83EAF1, #63A4FF);
     margin: auto;
@@ -13,6 +17,11 @@
     width: 100vw;
     position: relative;
     z-index: -1;
+    display: flex;
+}
+.app__description-aboutUs{
+    align-items: center;
+    display: flex;
 }
 .kingKaiPlanet {
     display: flex;
