@@ -2,6 +2,7 @@ package com.travelbros.travelbros.services;
 
 import com.travelbros.travelbros.models.MiscExpenses;
 import com.travelbros.travelbros.models.Budget;
+import com.travelbros.travelbros.models.StateGasPrice;
 import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.MiscExpensesRepository;
@@ -64,9 +65,10 @@ public class TripService {
 
     }
 
-
     //////////////// Constructors ////////////////
 
-    //public TripService(){};
+//    public TripService(){};
+
+
 
 }
