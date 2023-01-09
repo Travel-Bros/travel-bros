@@ -46,7 +46,7 @@
                 <br>
         <!--        <h3 class="displayGasCost" th:text="${lastTrip. ...}"></h3>-->
                 <br>
-                <h3 class="displayTotalMiscExp" >total of misc exps</h3>
+                <h3 class="displayTotalMiscExp" th:text="${lastTrip.tripBudget.}">total of misc exps</h3>
 <!--                <h4 class="displayMiscExp" th:each="expense : ${lastTrip.tripBudget.miscExpenses}"></h4>-->
                 <h4 th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
                                             <p th:text="${tripMiscExp.title}"></p>
