@@ -2,6 +2,10 @@
     font-family: AWAKENNING;
     src: url("../fonts/Awakenning.ttf");
 }
+.page-wrapper {
+    /*width: 100vw;*/
+    /*height: 100vh;*/
+}
 .app__home-page-1 {
     position: relative;
     width: 100%;
@@ -27,8 +31,15 @@
 }
 .app__home-page-2 {
     display: flex;
-    position: absolute;
+    position: relative;
+    flex-wrap: wrap;
 }
+.app__home-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 /* THIS IS FOR THE CARDS */
 .card {
     display: flex;
