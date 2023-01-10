@@ -4,10 +4,11 @@
 <head th:replace="partials/head-partials.html :: head ('Travel Bros: Your Vehicles')"></head>
 <head>
     <link rel="stylesheet" th:href="@{css/vehicle_page.css}">
+    <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
 </head>
 <body>
     <div class="page-wrapper">
-        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
         <!-- app__vehicle-1 -->
         <div class="app__vehicle-1">
             <div id="add-vehicle-button-wrapper">
