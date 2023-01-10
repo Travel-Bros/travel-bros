@@ -5,18 +5,22 @@
 </head>
 <head>
     <link rel="stylesheet" th:href="@{css/profile_page.css}">
+    <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
 </head>
 <body>
-    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-    <div sec:authorize="isAuthenticated()">Welcome &nbsp;
-        <h1 th:text="${currentUser.username}"></h1>
+    <nav th:replace="partials/navbar-auth :: site-bar"></nav>
+    <div sec:authorize="isAuthenticated()">
+        <h1>Welcome &nbsp;<span th:text="${currentUser.username.toUpperCase()}"></span></h1>
     </div>
 
 <!--    <span th:text="${#lists.sort(currentUser.id, reverse)}"/>-->
     <section class="app__profile">
         <div class="app__profile-tripCard ">
             <div class="app__profile-tripCard_container">
-                    <h1>Trips</h1>
+
+                    <button id="tripsButton">Start a new trip!</button>
+
+                <h1>Your Trips:</h1>
                 <div class="indivTripCard row" th:each="i : ${#numbers.sequence(currentUser.trips.size() - 1, 0, -1)}">
 <!--                            information for trip-->
                     <div class="col-6">
@@ -26,13 +30,6 @@
                         <h5>Number of Stops:&nbsp;<span th:text="${currentUser.trips[i].getStops()}"></span></h5>
                         <h5>Number of People:&nbsp;<span th:text="${currentUser.trips[i].getNumPpl()}"></span></h5>
 
-                        <ul>
-                <!--            <h1>Used Vehicle For <span th:text="${trip.getEndPoint()}"> Trip</span></h1>-->
-                <!--&lt;!&ndash;            <li>Make: <h3><span th:text="${trip.vehicleId.make}"></span></h3> </li>&ndash;&gt;-->
-                <!--            <li>Model: <h3><span th:text="${trip.vehicleId.model}"></span></h3> </li>-->
-                <!--            <li>year: <h3><span th:text="${trip.vehicleId.year}"></span></h3> </li>-->
-
-                        </ul>
                         <p>
                             <button th:data-id="${currentUser.trips[i].id}" class="editButton btn btn-danger">Edit</button>
 
@@ -99,6 +96,6 @@
     <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     <div th:replace="partials/scripts-partials.html :: scripts" th:remove="tag">
     </div>
-
+    <script th:src="@{/js/button-linking.js}"></script>
 </body>
 </html>
