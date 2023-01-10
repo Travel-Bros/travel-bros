@@ -53,11 +53,10 @@
 }
 .kingKaiPlanet {
     display: flex;
-    position: relative;
+    position: absolute;
 }
 .testButton {
-    background: linear-gradient(to right, rgb(101, 176, 253),rgb(100, 166, 255));
-    margin-top: 540px;
+    background-color:#ffff;
     margin-left: 400px;
     display: flex;
     position: relative;
@@ -66,6 +65,7 @@
     width: 200px;
     padding-right: 56px;
     padding-left: 0px;
+    top:510px;
 }
 
 .iframe {
