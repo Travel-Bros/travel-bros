@@ -2,26 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
 <head th:replace="partials/head-partials.html :: head ('Travel Bros: Your Vehicles')"></head>
+<head>
+    <link rel="stylesheet" th:href="@{css/vehicle_page.css}">
+</head>
 <body>
-    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
-    <button type="button" class="add-new-vehicle">Add a new vehicle</button>
+    <div class="page-wrapper">
+        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+        <!-- app__vehicle-1 -->
+        <div class="app__vehicle-1">
+            <div id="add-vehicle-button-wrapper">
+                <button type="button" class="add-new-vehicle">Add a new vehicle</button>
+            </div>
+        </div>
+        <!-- End app__vehicle-1 -->
 
-    <div class="card" th:each="vehicle : ${allVehicles}">
-<!--        <span th:text="${vehicle.user.username}"></span>-->
-        <span th:text="${vehicle.getMake()}"></span>
-        <span th:text="${vehicle.getModel()}"></span>
-        <span th:text="${vehicle.getYear()}"></span>
-        <span th:text="${vehicle.getMpg()}"></span>
-        <span th:text="${vehicle.getTankSize()}"></span>
-        <p>
-            <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
-        </p>
-        <p>
-            <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
-        </p>
+        <!-- app__vehicle-2 -->
+        <div class="app__vehicle-2">
+            <div class="vehicle-card-container">
+
+
+            </div>
+
+            <div class="vehicle-card" th:each="vehicle : ${allVehicles}">
+        <!--        <span th:text="${vehicle.user.username}"></span>-->
+                <p th:text="${vehicle.getMake()}"></p>
+                <p th:text="${vehicle.getModel()}"></p>
+                <p th:text="${vehicle.getYear()}"></p>
+                <p th:text="${vehicle.getMpg()}"></p>
+                <p th:text="${vehicle.getTankSize()}"></p>
+                <div>
+                    <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
+                </d>
+                <div>
+                    <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
+                </d>
+            </div>
+        </div>
+        <!-- End app__vehicle-2 -->
+
+        <!-- app__vehicle-3 -->
+        <div class="app__vehicle-3">
+
+        </div>
+        <!-- app__vehicle-3 -->
+
 
     </div>
-
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
 </body>
 </html>
