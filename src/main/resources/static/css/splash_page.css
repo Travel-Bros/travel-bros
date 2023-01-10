@@ -33,7 +33,7 @@
 .adventure-description {
     padding: 3rem;
     font-family: AWAKENNING;
-    font-size: 6rem;
+    font-size: 8rem;
     color: #ffff;
     z-index: 100;
     position:relative;
@@ -48,6 +48,11 @@
     z-index: -1;
     display: flex;
 }
+
+.adventure-description-container{
+    margin-top: 10rem;
+}
+
 .app__description-logo {
     margin-top: 6rem;
 }

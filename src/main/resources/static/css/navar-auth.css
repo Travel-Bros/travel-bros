@@ -26,6 +26,18 @@
     padding: 0.3125rem 0;
     margin-bottom: 3px;
 }
+
+/*Navbar links */
+x-navbar-links{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50rem;
+    width: 100%;
+}
+
+
+
+
 @media only screen and (max-width: 414px) {
     .signInButton, .navButton, .profileButton, tripsButton {
         width: 100%;
