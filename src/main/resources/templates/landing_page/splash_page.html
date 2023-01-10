@@ -15,8 +15,6 @@
         <link rel="stylesheet" th:href="@{/css/splash_page.css}">
     </head>
     <body>
-<!--    <div class="page-wrapper">-->
-<!--        <div class="background-color"></div>-->
         <div class="x-container app__description">
             <div class="app__first-description-img">
                 <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
@@ -25,22 +23,15 @@
                     <div class="app__description-aboutUs">
                         <div class="adventure-description-container">
                             <h3 class="adventure-description">Your adventure awaits</h3>
-                        </div>
-                    </div>
-<!--                    <div class="app__description-logo">-->
-<!--                        <div id="3dLogo" class="kingKaiPlanet">-->
-<!--                            <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>-->
-<!--                        </div>-->
-<!--&lt;!&ndash;                        <div class="testButton"></div>&ndash;&gt;-->
-<!--                    </div>&lt;!&ndash; END OF APP__DESCRIPTION-LOGO&ndash;&gt;-->
-                </div><!-- END OF app__first-description-overlay-->
-            </div>
-        </div> <!-- END OF APP__DESCRIPTION-->
-<!--        <div class="app__second-description">-->
-<!--            <img class="app__second-description-img"th:src="@{img/car.jpg}">-->
-<!--        </div>-->
+                        </div><!-- END OF adventure-description-container -->
+                    </div><!-- END OF app__description-aboutUs -->
+                </div> <!-- END of app__first-description-overlay-->
+            </div> <!-- END OF app__first-description-img-->
+                <div class="app__second-description">
+                    <img class="app__second-description-img"th:src="@{img/iphone13.png}">
+                </div><!-- END OF app__second-description -->
+        </div><!-- END OF APP__DESCRIPTION-->
         <div th:replace="partials/footer_partials.html :: footer"></div>
-<!--    </div> &lt;!&ndash; END OF PAGE WRAPPER &ndash;&gt;-->
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
     </body>
 </html>
