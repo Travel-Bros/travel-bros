@@ -1,0 +1,41 @@
+.indivTripCard {
+
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2rem 4rem;
+}
+
+/* On mouse-over, add a deeper shadow */
+.indivTripCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.app__profile-tripCard_container {
+    padding: 2px 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+}
+
+/*.app__profile-tripCard_container-card{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
+
+.indivTripCard {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.vl {
+    border-left: 4px solid green;
+    height: 100px;
+}
