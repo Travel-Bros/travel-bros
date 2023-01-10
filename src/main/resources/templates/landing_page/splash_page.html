@@ -15,6 +15,7 @@
         <link rel="stylesheet" th:href="@{/css/splash_page.css}">
     </head>
     <body>
+    <div class="page-wrapper">
         <div class="x-container app__description">
             <div class="app__first-description-img">
                 <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
@@ -27,11 +28,12 @@
                     </div><!-- END OF app__description-aboutUs -->
                 </div> <!-- END of app__first-description-overlay-->
             </div> <!-- END OF app__first-description-img-->
-                <div class="app__second-description">
-                    <img class="app__second-description-img"th:src="@{img/iphone13.png}">
-                </div><!-- END OF app__second-description -->
+            <div class="app__second-description">
+                <img class="app__second-description-img"th:src="@{img/iphone13.png}">
+            </div><!-- END OF app__second-description -->
         </div><!-- END OF APP__DESCRIPTION-->
         <div th:replace="partials/footer_partials.html :: footer"></div>
-    <div th:replace="partials/scripts-partials.html :: scripts"></div>
+        <div th:replace="partials/scripts-partials.html :: scripts"></div>
+    </div><!-- END OF PAGE WRAPPER -->
     </body>
 </html>
