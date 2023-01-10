@@ -8,26 +8,25 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
         <link rel="icon" type="img/x-icon" th:href="@{img/Travel-Bros-Logo.png}">
-        <script>
-            window.onresize = function(event) {
-                console.log("x: " + window.innerWidth+"      y: " + window.innerHeight);
-            }
-        </script>
     </head>
     <body>
     <div class="page-wrapper">
-        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-lg-6">
-                    <h3>Plan your next adventure!</h3><br>
-                    <button class="addTripButton">Add Trip</button>
+        <div class="app_home-page-1">
+            <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
+            <div class="app__home-page-img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6">
+                            <h3>Plan your next adventure!</h3><br>
+                            <button class="addTripButton">Add Trip</button>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <img th:src="@{img/Travel-Bros-Big-Logo.png}">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-lg-6">
-                    <img th:src="@{img/Travel-Bros-Big-Logo.png}">
-                </div>
-            </div>
-        </div>
+            </div><!-- app__home-page-img -->
+        </div><!-- END OF HOME PAGE 1 -->
     </div> <!-- END OF PAGE WRAPPER -->
     <div th:replace="partials/scripts-partials :: scripts"></div>
     </body>
