@@ -28,8 +28,16 @@
     color: #ffff;
 }
 .bi:hover {
-    color: red;
+    color: green;
+    text-decoration: none;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active { text-decoration: none; }
 .app__footer-links {
     width: 100%;
     display: flex;
