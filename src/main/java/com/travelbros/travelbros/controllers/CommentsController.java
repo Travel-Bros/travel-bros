@@ -35,8 +35,13 @@ public class CommentsController {
     @GetMapping("/{id}/create")
     public String showCommentForm(Model model, @PathVariable long id) {
         Trip trip = tripDao.findById(id);
+
         model.addAttribute("trip", trip);
         model.addAttribute("comment", new Comments());
+
+        String[] endPointParser = trip.getEndPoint().split(",", 0);
+        String betterEndPoint = endPointParser[0];
+        model.addAttribute("endPoint", betterEndPoint);
         return "user_profile/comments";
     }
 
