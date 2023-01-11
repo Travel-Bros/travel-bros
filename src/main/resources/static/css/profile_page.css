@@ -39,3 +39,67 @@
     border-left: 4px solid green;
     height: 100px;
 }
+
+.editButton {
+    background-color: white;
+    color: #2846a9;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.commentsButton {
+    background-color: white;
+    color: #2846a9;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.deleteButton {
+    background-color: white;
+    color: #9f1e1e;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.deleteCommentButton {
+    background-color: white;
+    color: #9f1e1e;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.editButton:hover {
+    background-color: #2846a9;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.commentsButton:hover {
+    background-color: #2846a9;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.deleteButton:hover {
+    background-color: #9f1e1e;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+.deleteCommentButton:hover {
+    background-color: #9f1e1e;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}

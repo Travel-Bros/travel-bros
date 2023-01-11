@@ -31,16 +31,17 @@
                         <h5>Number of People:&nbsp;<span th:text="${currentUser.trips[i].getNumPpl()}"></span></h5>
 
                         <p>
-                            <button th:data-id="${currentUser.trips[i].id}" class="editButton btn btn-danger">Edit</button>
+                            <button  th:data-id="${currentUser.trips[i].id}" class="editButton ">Edit</button>
 
-                            <button th:data-id="${currentUser.trips[i].id}" class="deleteButton btn btn-danger">Delete</button>
+                            <button  th:data-id="${currentUser.trips[i].id}" class="commentsButton ">Comment</button>
 
-                            <button th:data-id="${currentUser.trips[i].id}" class="commentsButton btn btn-danger">Comment</button>
+                            <button  th:data-id="${currentUser.trips[i].id}" class="deleteButton ">Delete</button>
+
                         </p>
                         <div th:each="comment : ${currentUser.trips[i].comments}">
                             <p th:text="${comment.body}"></p>
                             <p>
-                                <button th:data-id="${comment.id}" class="deleteCommentButton btn btn-danger">Delete</button>
+                                <button  th:data-id="${comment.id}" class="deleteCommentButton ">Delete</button>
                             </p>
                         </div>
 <!--                                End of information for div-->
