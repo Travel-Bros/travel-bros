@@ -7,9 +7,10 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: green;
+    background-color: rgb(34, 37,31);
     padding-top: 0;
     padding-bottom: 0px;
+    color: white;
 }
 .bi-facebook{
     color: #ffff;
@@ -27,8 +28,16 @@
     color: #ffff;
 }
 .bi:hover {
-    color: red;
+    color: green;
+    text-decoration: none;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active { text-decoration: none; }
 .app__footer-links {
     width: 100%;
     display: flex;

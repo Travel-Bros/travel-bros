@@ -29,7 +29,51 @@
                 </div> <!-- END of app__first-description-overlay-->
             </div> <!-- END OF app__first-description-img-->
             <div class="app__second-description">
-                <img class="app__second-description-img"th:src="@{img/iphone13.png}">
+
+<!--                This is the container for the image-->
+                <div class="app__second-description-img">
+                    <img th:src="@{img/iphone13.png}">
+                </div>
+
+<!--                THis is the contatiner for the slider-->
+<!--                <div class="app__second-description-slider">-->
+                    <div class="app__second-description-slider_container">
+<!--                        <div class="app__gallery-images_card flex__center" >-->
+
+<!--                            Step One card -->
+                            <div class="x-card">
+                                <div class="x-card-body">
+                                    <div class="x-step">Step 1</div>
+                                    <p class="x-card-text">Some text about this step.</p>
+                                </div>
+                            </div>
+
+<!--                            Step two card -->
+                            <div class="x-card">
+                                <div class="x-card-body">
+                                    <div class="x-step">Step 1</div>
+                                    <p class="x-card-text">Some text about this step.</p>
+                                </div>
+                            </div>
+
+<!--                            Step three card-->
+                            <div class="x-card">
+                                <div class="x-card-body">
+                                    <div class="x-step">Step 1</div>
+                                    <p class="x-card-text">Some text about this step.</p>
+                                </div>
+                            </div>
+
+
+<!--                            <img src={image} alt="gallery" />-->
+<!--                           <h1> Hello how are you</h1>-->
+<!--                            <h1> Hello how are you</h1>-->
+<!--                            <h1> Hello how are you</h1>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+<!--                End o the container for the slider-->
+
             </div><!-- END OF app__second-description -->
         </div><!-- END OF APP__DESCRIPTION-->
         <div th:replace="partials/footer_partials.html :: footer"></div>

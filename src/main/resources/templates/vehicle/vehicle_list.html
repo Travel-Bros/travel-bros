@@ -4,10 +4,11 @@
 <head th:replace="partials/head-partials.html :: head ('Travel Bros: Your Vehicles')"></head>
 <head>
     <link rel="stylesheet" th:href="@{css/vehicle_page.css}">
+    <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
 </head>
 <body>
     <div class="page-wrapper">
-        <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
         <!-- app__vehicle-1 -->
         <div class="app__vehicle-1">
             <div id="add-vehicle-button-wrapper">
@@ -23,20 +24,24 @@
 
             </div>
 
+
+            <!-- vehicle-card -->
             <div class="vehicle-card" th:each="vehicle : ${allVehicles}">
-        <!--        <span th:text="${vehicle.user.username}"></span>-->
+
                 <p th:text="${vehicle.getMake()}"></p>
                 <p th:text="${vehicle.getModel()}"></p>
                 <p th:text="${vehicle.getYear()}"></p>
                 <p th:text="${vehicle.getMpg()}"></p>
                 <p th:text="${vehicle.getTankSize()}"></p>
+
+                <!-- edit/delete vehicle buttons -->
                 <div>
                     <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
-                </d>
-                <div>
                     <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
-                </d>
+                </div>
+                <!-- End edit/delete vehicle buttons -->
             </div>
+            <!-- End vehicle-card -->
         </div>
         <!-- End app__vehicle-2 -->
 

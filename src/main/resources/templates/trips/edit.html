@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
-<head th:replace="partials/maps-head-partials.html :: head ('test-edit')">
+<head
+    th:replace="partials/maps-head-partials.html :: head ('test-edit')">
+</head>
+<head>
+    <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
 </head>
 <body>
-    <nav th:replace="partials/navbar_partials.html :: site-bar"></nav>
+    <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
     <h1 class="text-center" id="form-title">Edit Trips</h1>
     <div class="page-wrapper" style="height: 100%">
         <div class="container">
@@ -42,40 +46,45 @@
                             <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${trip.numPpl}">
                             <br>
 
-                            <button type="button" id="add-expense">Add other expenses</button>
-
                             <div>
                                 <div th:field="${miscExpense.title}" id="misc-expense-container">
 
 
 
                                 </div>
-                                <div th:field="${miscExpense.cost}" id="misc-expense-cost-container">
+                                <button type="button" id="add-expense">Add other expenses</button>
 
 
-                                </div>
-                                <!--                            <button type="button">Send expenses</button>-->
                             </div>
+
 
                             <button type="button"  id="planYourTrip">Your trip</button>
                             <br>
                             <label for="totalDistance"> Distance Traveled</label>
                             <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname">
                             <br>
-                            <button type="submit" value="Submit" id="submit-btn">Make Your Trip!</button>
+                            <button type="submit" value="Submit" id="submit-edit-btn">Make Your Trip!</button>
                         </form>
-                    </div><!-- END OF inputForm -->
+                    </div>
+                    <!-- END OF inputForm -->
+
+                    <!-- google map canvas view -->
                     <div class="col-12 col-sm-6">
                         <div class="googleMap"style="height: 50vh;" id="map"></div>
                         <div id="distance">
                             <h3 id="yourTripDistance"></h3>
                             <h3 id="yourTravelDistance"></h3>
                         </div>
-                    </div><!-- END OF COL FOR GOOGLE MAPS-->
-                </div> <!-- End OF ROW 2 -->
-            </div><!-- END OF ROW -->
-        </div><!-- END OF CONTAINER -->
-    </div><!-- END OF PAGE-WRAPPER -->
+                    </div>
+                    <!-- END OF COL FOR GOOGLE MAPS-->
+                </div>
+                <!-- End OF ROW 2 -->
+            </div>
+            <!-- END OF ROW -->
+        </div>
+        <!-- END OF CONTAINER -->
+    </div>
+    <!-- END OF PAGE-WRAPPER -->
 <div th:replace="partials/maps-scripts-partials :: maps-scripts"></div>
 </body>
 </html>
