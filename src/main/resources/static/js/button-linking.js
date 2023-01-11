@@ -83,6 +83,15 @@ $(document).ready(function () {
     });
 });
 
+// Recalculate button for trips/{id}/calculator & trips/calculator
+$(document).ready(function(){
+    // Event listener to redirect when .recalculate-button clicked
+    $(".recalculate-button").on('click', function(e){
+        console.log("recalculate-button clicked!");
+        window.location.replace(`/trips/${$(this).attr("data-id")}/edit`);
+    });
+});
+
 // $(document).ready(function () {
 //     $("#submit-to-calculator-btn").on('click', function (e) {
 //         window.location.href = "/budget/calculator";

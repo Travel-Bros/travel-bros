@@ -21,7 +21,6 @@ public class TripService {
     private final BudgetRepository budgetDao;
 
 
-
     public static Budget budgetToMiscExpenseMethod(Trip trip, Budget budget, List<String> miscTitle, List<Double> miscCost) {
         ArrayList<MiscExpenses> emptyMiscList = new ArrayList<MiscExpenses>();
         if (miscTitle == null) {
@@ -64,6 +63,8 @@ public class TripService {
         miscDao.deleteAll(deleteMe);
 
     }
+
+
 
     //////////////// Constructors ////////////////
 
