@@ -64,12 +64,6 @@ public class TripController {
         Trip trip = tripDao.findById(id);
         Budget budget = trip.getTripBudget();
         List<MiscExpenses> miscExpenses = budget.getMiscExpenses();
-    //        User currentUser = userDao.findById(Utils.currentUserId());
-    //        model.addAttribute("createTrip", new Trip());
-    //        model.addAttribute("tripBudget", new Budget());
-    //        model.addAttribute("currentUser", currentUser);
-    ////        model.addAttribute("calculator", new Calculator());
-    //        model.addAttribute("miscExpense", new MiscExpenses());
 
         model.addAttribute("tripBudget", budget);
         model.addAttribute("miscExpenses", miscExpenses);
@@ -86,13 +80,20 @@ public class TripController {
 
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
-    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) {
-
-        tripService.deleteOldMiscExpenseFromBudget(budget);
+    public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println("Inside editTrip");
+        System.out.printf("What is this miscExpenses? %n%s%n", mapper.writeValueAsString(miscExpenses));
+        System.out.printf("List of miscExp titles: %n%s%n", mapper.writeValueAsString(miscTitle));
+        Calculator calculator = new Calculator();
 //        budgetDao.delete(trip.getTripBudget());
         User user = userDao.findById(Utils.currentUserId());
-        trip.setUser(user);
+//        trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);
+
+//        tripService.deleteOldMiscExpenseFromBudget(budget);
+        tripService.deleteOldMiscExpenseFromBudget(currentTrip.getTripBudget());
+        System.out.printf("SUPPOSEDLY the prev expenses are gone%n%s%n", mapper.writeValueAsString(currentTrip));
         Vehicle vehicle = trip.getVehicle();
 
         // Only edits post if correct user sending post request
@@ -106,13 +107,16 @@ public class TripController {
                 vehicle.getMpg(),
                 vehicle.getTankSize()))
             );
+            budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
+            budget.setGas(calculator.expectedGasConsumptionForTrip(trip));
 
 
             trip.setTripBudget(budget);
             tripDao.save(trip);
+        } else {
+            trip.setUser(user);
+            tripDao.save(trip);
         }
-        trip.setUser(user);
-        tripDao.save(trip);
         return "redirect:/profile";
     }
 
@@ -262,7 +266,7 @@ public class TripController {
 
         model.addAttribute("lastTrip", selectedTrip);
 
-        return "budget/trip-id-chart";
+        return "budget/calculator";
     }
 
 
