@@ -1,0 +1,69 @@
+#back-button {
+    border-radius: 4px;
+    padding: 8px;
+    border: none;
+    font-size: 16px;
+    background-color: #2eacd1;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.invisible {
+    display: none;
+}
+
+.chart{
+    position: relative;
+}
+
+.chart__overlay {
+    position: absolute;
+    inset:0;
+}
+
+#chart-container {
+    position: relative;
+    align-items: center;
+    z-index: 0;
+}
+
+.chart__content{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hiddenDivLeft {
+    margin-top: 470px;
+    height: 40px;
+    width: 74px;
+    position: absolute;
+    z-index: 1500;
+    background-color: white;
+}
+
+.hiddenDivRight {
+    position: absolute;
+    /*display: flex;*/
+    height: 40px;
+    width: 74px;
+    z-index: 1500;
+    background-color: white;
+}
+.totalBalance {
+    align-items: center;
+    position: absolute;
+    z-index: 1500;
+    top: 15rem;
+    left: 46%;
+}
+
+#list-calc-data {
+    align-items: center;
+    position: absolute;
+    z-index: 1500;
+}
+
