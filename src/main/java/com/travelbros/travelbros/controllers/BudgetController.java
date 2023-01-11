@@ -2,19 +2,15 @@ package com.travelbros.travelbros.controllers;
 
 import com.travelbros.travelbros.models.Budget;
 import com.travelbros.travelbros.models.Trip;
-import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.services.TripService;
-import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/budget")
@@ -100,6 +96,12 @@ public class BudgetController {
 //        model.addAttribute("trip", tripDao.findById(Utils.currentTripId()));
         //        model.addAttribute("calculator", new Calculator());
         return "budget/calculator";
+    }
+
+    @GetMapping("/{id}/calculator")
+    public String showCalculator(long id, Model model) {
+
+        return "trip-id-chart";
     }
 
 }

@@ -24,6 +24,8 @@
                 <div class="indivTripCard row" th:each="i : ${#numbers.sequence(currentUser.trips.size() - 1, 0, -1)}">
 <!--                            information for trip-->
                     <div class="col-6">
+
+                        <h5>Id:&nbsp;<span th:text="${currentUser.trips[i].getId()}"></span></h5>
                         <h5>Start Point:&nbsp;<span th:text="${currentUser.trips[i].getStartPoint()}"></span></h5>
                         <h5>End Point:&nbsp;<span th:text="${currentUser.trips[i].getEndPoint()}"></span></h5>
                         <!--        <h1>Budget:&nbsp;$<span th:text="${currentUser.trips[i].tripBudget.maxBudget}"></span></h1>-->
@@ -31,17 +33,17 @@
                         <h5>Number of People:&nbsp;<span th:text="${currentUser.trips[i].getNumPpl()}"></span></h5>
 
                         <p>
-                            <button  th:data-id="${currentUser.trips[i].id}" class="editButton ">Edit</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="editButton btn btn-danger">Edit</button>
 
-                            <button  th:data-id="${currentUser.trips[i].id}" class="commentsButton ">Comment</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="deleteButton btn btn-danger">Delete</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="budgetBreakdown btn btn-danger">Budget Breakdown</button>
 
-                            <button  th:data-id="${currentUser.trips[i].id}" class="deleteButton ">Delete</button>
-
+                            <button th:data-id="${currentUser.trips[i].id}" class="commentsButton btn btn-danger">Comment</button>
                         </p>
                         <div th:each="comment : ${currentUser.trips[i].comments}">
                             <p th:text="${comment.body}"></p>
                             <p>
-                                <button  th:data-id="${comment.id}" class="deleteCommentButton ">Delete</button>
+                                <button th:data-id="${comment.id}" class="deleteCommentButton btn btn-danger">Delete</button>
                             </p>
                         </div>
 <!--                                End of information for div-->
@@ -97,6 +99,7 @@
     <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     <div th:replace="partials/scripts-partials.html :: scripts" th:remove="tag">
     </div>
+    <script th:src="@{/js/budget-breakdown.js}"></script>
     <script th:src="@{/js/button-linking.js}"></script>
 </body>
 </html>

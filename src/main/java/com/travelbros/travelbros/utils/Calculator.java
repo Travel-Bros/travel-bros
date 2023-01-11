@@ -68,11 +68,49 @@ public class Calculator {
         }
         return tripStops;
     }
+    public static double expectedGasConsumptionForTripNatAvg(double distance, double mpg, double tankSize) {
+        StateGasPrice gasPrice = new StateGasPrice();
+        double tripStops = 0;
+        int numberOfStops = numberOfStops(distance, mpg, tankSize);
+//        distance = convertMetersToMiles(distance);
+        double range = (.8*(tankSize));
+        double avgGasPrice = gasPrice.nationalAverage(gasPrice.fiftyStateGasPrices);
+
+        if (numberOfStops == 0) {
+            System.out.println("Here's your expected gas cost for the trip");
+            return  tripStops= (range * avgGasPrice);
+        } else if (numberOfStops >=1) {
+            System.out.println("Here's your expected gas cost for the trip");
+            // return estimated gas cost for trip
+            for (int i = 0; i < numberOfStops; i++) {
+                tripStops += (range * avgGasPrice);
+            }
+            return tripStops;
+        }
+        return tripStops;
+    }
+
     public static double expectedGasConsumptionForTrip(Trip trip) {
+        StateGasPrice gasPrice = new StateGasPrice();
         String text = trip.getStartPoint();
+        String textStart = trip.getStartPoint();
+        String textEnd = trip.getEndPoint();
         String[] mutated = text.split(", ", text.length());
+        String[] mutatedStart = text.split(", ", textStart.length());
+        String[] mutatedEnd = textEnd.split(", ", textEnd.length());
+        textStart = mutatedStart[mutatedStart.length-2];
+        textEnd = mutatedEnd[mutatedEnd.length-2];
         text = mutated[mutated.length-2];
-        return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), text);
+
+        if (gasPrice.findAbbreviatedStateBool(textStart) && gasPrice.findAbbreviatedStateBool(textEnd)) {
+            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart, textEnd);
+        } else if (gasPrice.findAbbreviatedStateBool(textStart) && !gasPrice.findAbbreviatedStateBool(textEnd)) {
+            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart);
+        } else {
+            return expectedGasConsumptionForTripNatAvg(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
+        }
+
+//        return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), text);
 
     }
 
@@ -128,17 +166,19 @@ public class Calculator {
         Calculator calculator = new Calculator();
 //        System.out.println("gas consoomer");
 //        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
-//        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")));
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "tx")) + " end and start");
 //        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
-        String text = "Theraleaf Relief, Inc., Timothy Drive, San Jose, CA, USA";
-        String[] mutated = text.split(", ", text.length());
+//        String text = "Fort Lauderdale-Hollywood International Airport (FLL), Terminal Drive, Fort Lauderdale, FL, USA";
+//        String endText = "Williamsburg Bridge, Williamsburg Bridge Bicycle Path, New York, NY, USA";
+//        String[] mutated = endText.split(", ", endText.length());
 //        for (int i = 0; i < mutated.length; i++) {
 //            System.out.println(mutated[i]);
 //        }
 
         //System.out.println(text);
-        System.out.println();
-        System.out.println(mutated[mutated.length-2]);
+//        System.out.println();
+//        System.out.println(mutated[mutated.length-2]);
     }
 
 }

@@ -247,6 +247,23 @@ public class TripController {
         return "budget/calculator";
     }
 
+    @GetMapping("/{id}/calculator")
+    public String postingEditedTripCalculator(@PathVariable long id,Model model) {
+        Trip selectedTrip = tripDao.findById(id);
+        System.out.println(selectedTrip.getTripBudget().getGas() + " gas");
+        Calculator calculator = new Calculator();
+        User currentUser = userDao.findById(Utils.currentUserId());
+
+        String[] endPointParser = selectedTrip.getEndPoint().split(",", 0);
+        String betterEndPoint = endPointParser[0];
+
+        model.addAttribute("endPoint", betterEndPoint);
+        model.addAttribute("miscExpTotal", calculator.miscExpenseSum(selectedTrip));
+
+        model.addAttribute("lastTrip", selectedTrip);
+
+        return "budget/trip-id-chart";
+    }
 
 
 }
