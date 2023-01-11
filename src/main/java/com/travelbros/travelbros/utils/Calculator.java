@@ -166,8 +166,9 @@ public class Calculator {
         Calculator calculator = new Calculator();
 //        System.out.println("gas consoomer");
 //        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "tx")) + " end and start");
+//        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "CA")) + " end and start same state");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "HI")) + " end and start tx - HI");
 //        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
 //        String text = "Fort Lauderdale-Hollywood International Airport (FLL), Terminal Drive, Fort Lauderdale, FL, USA";
 //        String endText = "Williamsburg Bridge, Williamsburg Bridge Bicycle Path, New York, NY, USA";
