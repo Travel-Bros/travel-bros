@@ -121,14 +121,10 @@
     margin-bottom: 0.5rem;
 }
 
-
-
-
-
-
-
 .adventure-description-container{
     margin-top: 10rem;
+    display:flex;
+    justify-content: center;
 }
 .app__description-logo {
     margin-top: 6rem;
