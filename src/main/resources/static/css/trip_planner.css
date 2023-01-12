@@ -54,9 +54,28 @@ form > button {
     background-color: black;
     color: white;
     border: none;
-    border-radius: 40px;
     cursor: pointer;
 }
+
+.button-1{
+    margin-bottom: 20px;
+}
+
+.button-2{
+    margin-top: 20px;
+}
+
+.button-form{
+    width: 100%;
+    padding: 12px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
     outline: 2px solid black;
