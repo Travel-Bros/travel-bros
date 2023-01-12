@@ -6,11 +6,20 @@
 <head>
     <link rel="stylesheet" th:href="@{css/profile_page.css}">
     <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
+    <link rel="stylesheet" th:href="@{/css/Footer.css}">
+
 </head>
 <body>
     <nav th:replace="partials/navbar-auth :: site-bar"></nav>
+
     <div sec:authorize="isAuthenticated()">
-        <h1>Welcome &nbsp;<span th:text="${currentUser.username.toUpperCase()}"></span></h1>
+        <div class="app__profile-page-img">
+            <h3 class="profile-page-text">Welcome &nbsp;<span th:text="${currentUser.username.toUpperCase()}"></span></h3>
+            <div class="buttonInImgDiv">
+                <button id="tripsButton">Plan your next adventure ↠</button>
+            </div>
+        </div>
+
     </div>
 
 <!--    <span th:text="${#lists.sort(currentUser.id, reverse)}"/>-->
@@ -18,7 +27,7 @@
         <div class="app__profile-tripCard ">
             <div class="app__profile-tripCard_container">
 
-                    <button id="tripsButton">Start a new trip!</button>
+<!--                    <button id="tripsButton">Start a new trip!</button>-->
 
                 <h1>Your Trips:</h1>
                 <div class="indivTripCard row" th:each="i : ${#numbers.sequence(currentUser.trips.size() - 1, 0, -1)}">
@@ -44,11 +53,23 @@
 
                         <hr class="hrLine">
 
-                        <div th:each="comment : ${currentUser.trips[i].comments}">
-                            <p th:text="${comment.body}"></p>
-                            <p>
-                                <button th:data-id="${comment.id}" class="deleteCommentButton ">Delete</button>
-                            </p>
+                        <div class="lisOfNotesWrapper">
+                            <div class="listOfNotes">
+                                <div class="w-85" th:each="comment : ${currentUser.trips[i].comments}">
+                                    <div class="d-flex justify-content-between notes-wrapper">
+                                        <div>
+                                            -<span th:text="${comment.body}"></span>
+                                        </div>
+                                        <div>
+                                            <button th:data-id="${comment.id}" class="deleteCommentButton transparent">Delete</button>
+                                        </div>
+                                    </div>
+        <!--                            <p>- <span> <p th:text="${comment.body}">-->
+        <!--                                <button th:data-id="${comment.id}" class="deleteCommentButton ">Delete</button>-->
+        <!--                            </p></span></p>-->
+
+                                </div>
+                            </div>
                         </div>
 <!--                                End of information for div-->
 
@@ -60,7 +81,9 @@
                         <div class="indivBudgetCard ">
                             <h5>Budget:&nbsp;<span th:text="${currentUser.trips[i].getTripBudget.maxBudget}"></span></h5>
                             <h5>Gas:&nbsp;<span th:text="${currentUser.trips[i].getTripBudget.getGas()}"></span></h5>
+                            <h5>Other Expenses: </h5>
 
+                            <hr class="hrLine-2">
     <!--                        <div th:each="miscExpObject : ${currentUser.trips[i].getTripBudget().getMiscExpenses()}">-->
     <!--                            <div th:each="index : ${miscExpObject[i]}">-->
     <!--                                <h5 th:text="${title}"></h5>-->
@@ -69,11 +92,11 @@
                                 <span></span>
                                 </div>
 
-                            <div th:if="${currentUser.trips[i].tripBudget.getMiscExpenses() != null}">
+                            <div class="listOfMiscExp" th:if="${currentUser.trips[i].tripBudget.getMiscExpenses() != null}">
                                 <div th:each="miscExpItem : ${currentUser.trips[i].tripBudget.getMiscExpenses()}">
     <!--                                <div th:if="${currentUser.trips[i].getTripBudget.getMiscExpenses().size() > 0 }">-->
-                                        <h5>Other expenses:&nbsp;<span th:text="${miscExpItem.getTitle()}"></span></h5>
-                                        <h5>Other expenses:&nbsp;<span th:text="${miscExpItem.getCost()}"></span></h5>
+                                        <h5><span th:text="${miscExpItem.getTitle()}"></span>
+                                        <span th:text="${miscExpItem.getCost()}"></span></h5>
     <!--                                </div>-->
                                 </div>
                             </div>
@@ -99,7 +122,7 @@
 
     </section>
 
-
+    <div th:replace="partials/footer_partials.html :: footer"></div>
     <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     <div th:replace="partials/scripts-partials.html :: scripts" th:remove="tag">
     </div>
