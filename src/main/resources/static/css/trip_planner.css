@@ -48,7 +48,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-button {
+form > button {
     width: 100%;
     padding: 12px 20px;
     background-color: black;
@@ -66,12 +66,12 @@ input[type="submit"]:hover {
     background-color: black;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
+/*.container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
 
-.container > * {
-    flex: 1;
-    margin: 10px;
-}
+/*.container > * {*/
+/*    flex: 1;*/
+/*    margin: 10px;*/
+/*}*/
