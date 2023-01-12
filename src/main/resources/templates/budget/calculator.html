@@ -1,59 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"lang="en">
+    <head th:replace="partials/head-partials"></head>
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Calculator</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link rel="stylesheet" th:href="@{css/navbar_partials.css}">
+        <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
         <link rel="icon" type="img/x-icon" th:href="@{img/Travel-Bros-Logo.png}">
         <script th:src="@{/js/traveling.js}"></script>
         <link rel="stylesheet" th:href="@{/css/chartjs.css}">
-<!--        <meta charset="UTF-8">-->
         <title>Final Budget</title>
         <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     </head>
     <body>
-<!--    <div class="hiddenDivRight"></div>-->
     <div class="page-wrapper">
-            <h1>Your trip to <span th:text="${endPoint}"></span></h1>
-        <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>
+        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
+        <h1 class="calc-title">Your trip to <span th:text="${endPoint}"></span></h1>
         <div class="chart">
-            <div class="chart__overlay">
-                <div id="chartContainer" style="height: 500px; width: 100%;"></div>
-                <div id="dataFromUser" th:data-misc-Expense="${miscExpTotal}" th:data-budget="${lastTrip.tripBudget.maxBudget}" th:data-gas="${lastTrip.tripBudget.getGas()}">
-                </div>
+            <div class="chartOverlay">
+                <div id="chartContainer" style="height: 500px; width: 60%;"></div>
                 <h1 class="totalBalance" th:text="${lastTrip.tripBudget.maxBudget}"></h1>
             </div><!-- END OF CHART OVERLAY-->
-            <div class="chart__content">
+            <div class="chartContent">
                 <div class="hiddenDivRight"></div>
                 <div class="hiddenDivLeft"></div>
             </div> <!-- END OF CHART CONTENT -->
             <div class="hiddenDivRight"></div>
             <div class="hiddenDivLeft"></div>
         </div><!-- END OF CHART-->
-            <div id="listOfCaclulatorData" >
-                <h3 class="displayMaxBudget" th:text="${lastTrip.tripBudget.maxBudget}">max budget supposed to be here</h3>
-                <br>
-                <br>
-            </div> <!-- END OF LIST OF CALCULATOR DATA -->
-        <div class="container__2">
-            <h3 class="displayTotalMiscExp" th:text="${miscExpTotal}">total of misc exps</h3>
-            <h4 th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
-                <p th:text="${tripMiscExp.title}"></p>
-                <p th:text="${tripMiscExp.cost}"></p>
-            </h4>
-        </div>
+       <div class="x-col">
+           <div class="container__2">
+               <div id="dataFromUser"
+                    th:data-misc-Expense="${miscExpTotal}"
+                    th:data-budget="${lastTrip.tripBudget.maxBudget}"
+                    th:data-gas="${lastTrip.tripBudget.getGas()}">
+               </div>
+               <h3 class="maxBudget">Your Max Budget
+                   <br>
+                   <span class="displayMaxBudget" th:text="${lastTrip.tripBudget.maxBudget}"></span>
+               </h3>
+               <br>
+               <h4 class="miscExp"th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
+                   <span th:text="${tripMiscExp.title}">
+                   </span>
+                   <span th:text="${tripMiscExp.cost}">
+                   </span>
+               </h4>
+               <div class="recalculate-button-main">
+                   <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>
+               </div>
+               <br>
+               <!--               <div>-->
+<!--                   <h3 class="displayTotalMiscExp" th:text="${miscExpTotal}"></h3>-->
+<!--               </div>-->
+           </div>
+       </div><!-- END OF x-col -->
     </div><!-- END OF PAGE WRAPPER -->
-
-    <button class="btn invisible" id="backButton">Back</button>
-    <script th:src="@{/js/traveling.js}"></script>
-    <script th:src="@{/js/chart.js}"></script>
-    <script th:src="@{/js/button-linking.js}"></script>
-<!--    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>-->
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+        <button class="btn invisible" id="backButton">Back</button>
+        <div th:replace="partials/scripts-partials :: scripts"></div>
+        <script th:src="@{/js/traveling.js}"></script>
+        <script th:src="@{/js/chart.js}"></script>
+        <script th:src="@{/js/button-linking.js}"></script>
+        <!--        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>-->
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     </body>
 </html>
+
+
+<!--<div class="chartContent">-->
+<!--    <div class="hiddenDivRight"></div>-->
+<!--    <div class="hiddenDivLeft"></div>-->
+<!--</div> &lt;!&ndash; END OF CHART CONTENT &ndash;&gt;-->
+<!--<div class="hiddenDivRight"></div>-->
+<!--<div class="hiddenDivLeft"></div>-->
 
 
