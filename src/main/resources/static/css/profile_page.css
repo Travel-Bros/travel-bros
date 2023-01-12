@@ -26,11 +26,15 @@
 }
 
 .buttonInImgDiv {
+
     padding-top: 11rem;
     padding-left: 4rem;
 }
 
 #tripsButton {
+    padding-top: .75rem;
+    padding-left: .75rem;
+    font-family: AWAKENNING;
     background: none;
     border: none;
     cursor: pointer;
@@ -42,7 +46,7 @@
 }
 
 #tripsButton:hover {
-    background-color: #005272;
+    background-color: #009600;
     color: white;
     border-radius: 20px;
 }
@@ -85,7 +89,7 @@
 }
 
 .listOfMiscExp {
-    height: 8rem;
+    height: 11rem;
     width: 90%;
     overflow-x: scroll;
     overflow-y: scroll;

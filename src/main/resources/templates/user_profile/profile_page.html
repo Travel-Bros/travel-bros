@@ -13,12 +13,15 @@
     <nav th:replace="partials/navbar-auth :: site-bar"></nav>
 
     <div sec:authorize="isAuthenticated()">
-        <div class="app__profile-page-img">
-            <h3 class="profile-page-text">Welcome &nbsp;<span th:text="${currentUser.username.toUpperCase()}"></span></h3>
-            <div class="buttonInImgDiv">
-                <button id="tripsButton">Plan your next adventure ↠</button>
+        <div class="imgParent">
+            <div class="app__profile-page-img">
+                <h3 class="profile-page-text">Welcome &nbsp;<span th:text="${currentUser.username.toUpperCase()}"></span></h3>
+                <div class="buttonInImgDiv">
+                    <button id="tripsButton">Plan your next adventure ↠</button>
+                </div>
             </div>
         </div>
+
 
     </div>
 
