@@ -1,3 +1,52 @@
+@font-face {
+    font-family: AWAKENNING;
+    src: url("../fonts/Awakenning.ttf");
+}
+
+.app__profile-page-img{
+    width: 100%;
+    height:35rem;
+    position: relative;
+    object-fit: fill;
+    background-image: url("../img/guy-looking-over-mountains.jpeg");
+    background-position: center;
+    background-size: cover;
+    z-index: 100;
+}
+
+.profile-page-text {
+    padding-top: 5rem;
+    padding-left: 4rem;
+    font-family: AWAKENNING;
+    font-size: 6rem;
+    color: #ffff;
+    z-index: -1;
+    position:relative;
+    top: 8rem;
+}
+
+.buttonInImgDiv {
+    padding-top: 11rem;
+    padding-left: 4rem;
+}
+
+#tripsButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: bold;
+    z-index: 2000;
+    transition: 0.5s;
+}
+
+#tripsButton:hover {
+    background-color: #005272;
+    color: white;
+    border-radius: 20px;
+}
+
 .indivTripCard {
 
     /* Add shadows to create the "card" effect */
@@ -35,10 +84,47 @@
     align-items: center;
 }
 
-.vl {
-    border-left: 4px solid green;
-    height: 100px;
+.listOfMiscExp {
+    height: 8rem;
+    width: 90%;
+    overflow-x: scroll;
+    overflow-y: scroll;
 }
+
+.listOfMiscExp::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.listOfMiscExp::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.listOfNotes {
+    height: 6rem;
+    width: 90%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.listOfNotes::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.listOfNotes::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+/*.vl {*/
+/*    border-left: 4px solid green;*/
+/*    height: 100px;*/
+/*}*/
 
 .editButton {
     background-color: white;
@@ -46,6 +132,10 @@
     font-weight: bold;
     border: none;
     border-radius: 5px;
+}
+
+.transparent {
+    opacity: 0;
 }
 
 .commentsButton {
@@ -128,4 +218,8 @@
 
 .hrLine {
     width: 75%;
+}
+
+.hrLine-2 {
+    width: 25%;
 }

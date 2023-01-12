@@ -99,3 +99,13 @@ $(document).ready(function(){
 // });
 
 
+$(document).ready(function() {
+    $(".notes-wrapper")
+        .on("mouseenter", function() {
+            $(this).find("button").removeClass("transparent");
+        })
+        .on("mouseleave", function() {
+            $(this).find("button").addClass("transparent");
+        })
+    ;
+});
