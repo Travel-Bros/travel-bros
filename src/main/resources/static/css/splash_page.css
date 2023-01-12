@@ -11,7 +11,7 @@
 }
 .app__first-description-img {
     width: 100%;
-    height: 110vh;
+    height: 90vh;
     /*object-fit: fill;*/
     position: relative;
     background-image: url("../img/landscape_edits.jpg");
@@ -121,14 +121,9 @@
     margin-bottom: 0.5rem;
 }
 
-
-
-
-
-
-
 .adventure-description-container{
-    margin-top: 10rem;
+    display:flex;
+    justify-content: center;
 }
 .app__description-logo {
     margin-top: 6rem;
@@ -256,7 +251,8 @@
         display: none;
     }
     .adventure-description {
-        justify-content: center;
+        font-size: 6rem;
+        padding: 20px;
     }
 }
 
