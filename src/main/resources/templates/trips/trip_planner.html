@@ -32,7 +32,7 @@
                         <label for="endLocation">End Location:</label>
                         <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
                         <br>
-                        <button class="button-form" type="button"  id="planYourTrip">Your trip</button>
+                        <button class="button-form button-1" type="button"  id="planYourTrip">Your trip</button>
                         <br>
                         <select name="user-car" id="user-car-select" th:field="${createTrip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">
                             <option
@@ -53,7 +53,7 @@
 
 
                             </div>
-                        <button class="button-form" type="button" id="add-expense">&plus; Add other expenses</button>
+                        <button class="button-form button-2" type="button" id="add-expense">&plus; Add other expenses</button>
 
 
                         </div>
