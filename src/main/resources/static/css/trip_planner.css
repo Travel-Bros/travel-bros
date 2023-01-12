@@ -1,10 +1,17 @@
 form {
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     padding: 30px;
-    background-color: #f9f9f9;
-    border: .1rem solid black;
-    border-radius: 20px;
+    /*background-color: #f9f9f9;*/
+    /*border: .1rem solid black;*/
+    /*border-radius: 20px;*/
+}
+
+.x-img-background{
+    object-fit: fill;
+    background-image: url("../img/snowy-forest.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 label {

@@ -13,13 +13,14 @@
     <body>
     <div class="page-wrapper" style="height: 100%">
     <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
-        <div class="container">
-            <div class="row"> <!-- row 1 -->
-            <div>
-                <h1> Let's plan your Trip! </h1>
-            </div>
+        <div class="x-container">
+            <div class="x-row"> <!-- row 1 -->
+
             <div class="row"> <!-- row 2 -->
                 <div class="inputForm col-6 col-sm-6">
+                    <div>
+                        <h1> Let's plan your Trip! </h1>
+                    </div>
                     <form id="create-trip-form" th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
                         <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
@@ -64,7 +65,7 @@
                         <button type="submit" value="Submit" id="submit-to-calculator-btn">Make Your Trip!</button>
                     </form>
                 </div><!-- END OF inputForm -->
-                <div class="col-12 col-sm-6">
+                <div class="x-img-background col-12 col-sm-6">
                     <div class="googleMap"style="height: 50vh;" id="map"></div>
                     <div id="distance">
                         <h3 id="yourTripDistance"></h3>
