@@ -181,6 +181,7 @@ public class TripController {
         budget = TripService.budgetToMiscExpenseMethod(trip, budget, miscTitle, miscCost);
 
         budget.setGas(calculator.expectedGasConsumptionForTrip(trip));
+//        budget.setGas(calculator.expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
 
         trip.setTripBudget(budget);
 

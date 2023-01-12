@@ -15,6 +15,10 @@ public class Calculator {
         return (meters/1609.344);
     }
 
+    public static double cashDoubleFormatter(double cash) {
+        return cash = Double.parseDouble(String.format("%.2f", cash));
+    }
+
     public static int numberOfStops(double distance, double mpg, double tankSize) {
         int numberOfStopsAnswer = (int) (convertMetersToMiles(distance)/ (0.8* (mpg * tankSize)));
         System.out.printf("%nYour expected number of stops: %s%n", numberOfStopsAnswer);
@@ -103,11 +107,14 @@ public class Calculator {
         text = mutated[mutated.length-2];
 
         if (gasPrice.findAbbreviatedStateBool(textStart) && gasPrice.findAbbreviatedStateBool(textEnd)) {
-            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart, textEnd);
+            System.out.println("expectedGasConsumptionForTrip IF (First condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart, textEnd));
         } else if (gasPrice.findAbbreviatedStateBool(textStart) && !gasPrice.findAbbreviatedStateBool(textEnd)) {
-            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart);
+            System.out.println("expectedGasConsumptionForTrip ELSE IF (Second condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart));
         } else {
-            return expectedGasConsumptionForTripNatAvg(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
+            System.out.println("expectedGasConsumptionForTrip ELSE (final condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTripNatAvg(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize()));
         }
 
 //        return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), text);
@@ -166,8 +173,9 @@ public class Calculator {
         Calculator calculator = new Calculator();
 //        System.out.println("gas consoomer");
 //        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "tx")) + " end and start");
+//        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "CA")) + " end and start same state");
+        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "HI")) + " end and start tx - HI");
 //        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
 //        String text = "Fort Lauderdale-Hollywood International Airport (FLL), Terminal Drive, Fort Lauderdale, FL, USA";
 //        String endText = "Williamsburg Bridge, Williamsburg Bridge Bicycle Path, New York, NY, USA";
