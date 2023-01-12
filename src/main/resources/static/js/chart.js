@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
                 innerRadius: "90%",
                 legendMarkerType: "square",
                 name: "Your trip to: ",
-                radius: "100%",
+                radius: "80%",
                 showInLegend: true,
                 startAngle: 90,
                 type: "doughnut",
