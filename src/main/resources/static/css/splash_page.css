@@ -31,7 +31,7 @@
     position: relative;
     width: 100vw;
 }
-.adventure-description {
+.adventure-description{
     padding: 3rem;
     font-family: AWAKENNING;
     font-size: 8rem;
@@ -178,8 +178,6 @@
 /* ///////////// */
 
 @media screen and (max-width: 1260px){
-    .x-card {}
-
 
 }
 
@@ -188,8 +186,8 @@
         font-size: 6rem;
     }
     .app__second-description-img img{
-        width: 200px;
-        height: 300px;
+        width: 230px;
+        height: 490px;
     }
     .signIn-card {
         margin-left: 50px;
@@ -257,6 +255,8 @@
     .kingKaiPlanet{
         display: none;
     }
-
+    .adventure-description {
+        justify-content: center;
+    }
 }
 
