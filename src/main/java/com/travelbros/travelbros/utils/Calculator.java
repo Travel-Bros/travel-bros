@@ -15,6 +15,10 @@ public class Calculator {
         return (meters/1609.344);
     }
 
+    public static double cashDoubleFormatter(double cash) {
+        return cash = Double.parseDouble(String.format("%.2f", cash));
+    }
+
     public static int numberOfStops(double distance, double mpg, double tankSize) {
         int numberOfStopsAnswer = (int) (convertMetersToMiles(distance)/ (0.8* (mpg * tankSize)));
         System.out.printf("%nYour expected number of stops: %s%n", numberOfStopsAnswer);
@@ -103,11 +107,14 @@ public class Calculator {
         text = mutated[mutated.length-2];
 
         if (gasPrice.findAbbreviatedStateBool(textStart) && gasPrice.findAbbreviatedStateBool(textEnd)) {
-            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart, textEnd);
+            System.out.println("expectedGasConsumptionForTrip IF (First condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart, textEnd));
         } else if (gasPrice.findAbbreviatedStateBool(textStart) && !gasPrice.findAbbreviatedStateBool(textEnd)) {
-            return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart);
+            System.out.println("expectedGasConsumptionForTrip ELSE IF (Second condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), textStart));
         } else {
-            return expectedGasConsumptionForTripNatAvg(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
+            System.out.println("expectedGasConsumptionForTrip ELSE (final condition)");
+            return cashDoubleFormatter(expectedGasConsumptionForTripNatAvg(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize()));
         }
 
 //        return expectedGasConsumptionForTrip(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize(), text);
