@@ -4,7 +4,10 @@
 <head th:replace="partials/head-partials.html :: head ('test-comments')">
 </head>
 <head>
+    <link rel="stylesheet" th:href="@{/css/Footer.css}">
     <link rel="stylesheet" th:href="@{/css/comments.css}">
+    <link rel="stylesheet" th:href="@{/css/trip_planner.css}">
+
 </head>
 
 <body>
@@ -40,9 +43,10 @@
     </div>
 
 </section>
-
+<div th:replace="partials/footer_partials.html :: footer"></div>
 
 <div th:replace="partials/scripts-partials.html :: scripts"></div>
+
 
 </body>
 
