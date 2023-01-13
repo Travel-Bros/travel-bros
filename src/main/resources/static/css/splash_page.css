@@ -8,9 +8,10 @@
 /* IPHONE IMG STEP 1 */
 /* PARENT OF STEP 1 */
 .app__second-step-1 {
+    position: relative;
     display: flex;
     justify-content: center;
-    margin-top: 6rem;
+    margin-top: 3rem;
 }
 .app__second-description-step-1 {
     width: 30%;
@@ -29,6 +30,7 @@
 }
 /* IPHONE IMG STEP 2 */
 .app__second-step-2 {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-top: 6rem;
