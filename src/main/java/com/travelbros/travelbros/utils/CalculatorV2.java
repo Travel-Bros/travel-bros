@@ -1,0 +1,123 @@
+package com.travelbros.travelbros.utils;
+
+import com.travelbros.travelbros.models.StateGasPrice;
+import com.travelbros.travelbros.models.Trip;
+import com.travelbros.travelbros.repositories.TripRepository;
+
+import java.util.List;
+import java.util.Locale;
+
+public class CalculatorV2 {
+    //////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////// Methods //////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    //// Method 1
+    // This method in the old Calculator class is to convert meters to miles:
+
+    //     public static double convertMetersToMiles(double meters) {
+    //        double metersToMiles = (meters/1609.344);
+    //        System.out.printf("%n%s meters: %s miles%n", meters, metersToMiles);
+    //        return (meters/1609.344);
+    //    }
+
+    //// Method 2
+    // This method is to return a double in a $ format (i.e. 3.878964 => 3.87 || 3.89)
+
+        public static double cashDoubleFormatter(double cash) {
+            return Double.parseDouble(String.format("%.2f", cash));
+        }
+
+    //// Method 3 ****
+    // This method is to calculate the number of stops based on trip distance, vehicle mpg and vehicle tank size
+
+         public static int numberOfStops(double distance, double mpg, double tankSize) {
+            int numberOfStopsAnswer = (int) (distance / (0.8* (mpg * tankSize)));
+            System.out.printf("%nYour expected number of stops: %s%n", numberOfStopsAnswer);
+            return numberOfStopsAnswer;
+        }
+
+    //// Method 4 ****
+    // This method is used to calculate the expected cost for gas, taking into account: distance, mpg, tank-size, and a location value (starting or ending point or both)
+
+         public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, double avgGasPrice){
+            StateGasPrice gasPrice = new StateGasPrice();
+            double tripStops = 0;
+
+
+            int numberOfStops = numberOfStops(distance, mpg, tankSize);
+            double range = findRange(tankSize);
+
+            if (numberOfStops == 0) {
+                System.out.println("Here's your expected gas cost for the trip");
+                return (range * avgGasPrice);
+            } else if (numberOfStops >= 1) {
+                System.out.println("Here's your expected gas cost for the trip (2nd condition)");
+                for (int i = 0; i < numberOfStops; i++){
+                    tripStops += (range * avgGasPrice);
+                }
+                return tripStops;
+            } else {
+                return tripStops;
+            }
+        }
+
+
+    //// Method 5
+    // This method is used to return the expected price each person will likely have to pay equally for the budget
+    public static double budgetPricePerPerson(double maxBudget, double numPpl) {
+        double budgetPricePerPersonAnswer = cashDoubleFormatter((maxBudget/numPpl));
+        System.out.printf("%nEach person will need to pay %s for the %s budget.%n", budgetPricePerPersonAnswer, maxBudget);
+        return  cashDoubleFormatter(budgetPricePerPersonAnswer);
+    }
+
+    //// Method 6
+    public static double findRange (double tankSize) {
+        return tankSize * 0.8;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////// The next several methods ////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //// Method 7
+    // This method will be used to find avg gas price for a trip with the same state as starting and ending location
+
+    public static double findAggregateGas(String location){
+
+            LocationDataUtilities locationDataUtilities = new LocationDataUtilities();
+            StateGasPrice stateGasPrice = new StateGasPrice();
+            if (locationDataUtilities.locationCheck(location)) {
+                return stateGasPrice.findStateGasPrice(location);
+            } else {
+                System.out.println("Location not found");
+                return -1;
+            }
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+        CalculatorV2 calculatorV2 = new CalculatorV2();
+        LocationDataUtilities locationDataUtilities = new LocationDataUtilities();
+        System.out.println(budgetPricePerPerson(1000, 3));
+        System.out.println(locationDataUtilities.locationCheck("tExAs"));
+        System.out.println(locationDataUtilities.locationCheck("cA"));
+        System.out.println(locationDataUtilities.locationCheck("FlORida"));
+        System.out.println(locationDataUtilities.locationCheck("Nbreaska"));
+
+        System.out.println(findAggregateGas("tx"));
+        System.out.println(findAggregateGas("tExAs"));
+        System.out.println(findAggregateGas("FlORida"));
+        System.out.println(findAggregateGas("Nbreaska"));
+        System.out.println(findAggregateGas("Nebraska"));
+
+
+    }
+
+
+
+
+}
