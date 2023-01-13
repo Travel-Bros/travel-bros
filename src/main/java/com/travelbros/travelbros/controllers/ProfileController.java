@@ -7,6 +7,7 @@ import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.models.User;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
+import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,12 +36,17 @@ public class ProfileController {
 
     @GetMapping
     public String showPreviousTrips(Model model) throws JsonProcessingException {
+        Calculator calculator = new Calculator();
         User currentUser = userDao.findById(Utils.currentUserId());
 //        List<Trip> sortedList = currentUser
         List<Trip> descendingOrderTrips = tripDao.findAllByUserOrderByIdDesc(currentUser);
 //        List<Trip> userTrips = currentUser.getTrips();
         model.addAttribute("currentUser", currentUser);
         model.addAttribute("sortedTrips", descendingOrderTrips);
+
+//        descendingOrderTrips.forEach(trip -> {
+//            model.addAttribute("miscExpTotal", calculator.miscExpenseSum(trip));
+//        });
 //        model.addAttribute("sortedTrips", userTrips);
         return "user_profile/profile_page";
     }

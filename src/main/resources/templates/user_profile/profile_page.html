@@ -37,21 +37,20 @@
 <!--                            information for trip-->
                     <div class="col-4">
 
-<!--                        <h5>Id:&nbsp;<span th:text="${currentUser.trips[i].getId()}"></span></h5>-->
+                        <!--                        <h5>Id:&nbsp;<span th:text="${currentUser.trips[i].getId()}"></span></h5>-->
                         <h5>Start Point:&nbsp;<span th:text="${currentUser.trips[i].getStartPoint()}"></span></h5>
                         <h5>End Point:&nbsp;<span th:text="${currentUser.trips[i].getEndPoint()}"></span></h5>
+                        <h5>Distance:&nbsp;<span th:text="${currentUser.trips[i].getDistance()}"></span></h5>
                         <!--        <h1>Budget:&nbsp;$<span th:text="${currentUser.trips[i].tripBudget.maxBudget}"></span></h1>-->
                         <h5>Number of Stops:&nbsp;<span th:text="${currentUser.trips[i].getStops()}"></span></h5>
                         <h5>Number of People:&nbsp;<span th:text="${currentUser.trips[i].getNumPpl()}"></span></h5>
 
                         <p>
-                            <button th:data-id="${currentUser.trips[i].id}" class="editButton ">Edit</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="editButton ">Edit Trip</button>
 
-                            <button th:data-id="${currentUser.trips[i].id}" class="commentsButton ">Notes</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="commentsButton ">Add Note</button>
 
-                            <button th:data-id="${currentUser.trips[i].id}" class="budgetBreakdown ">Budget Breakdown</button>
-
-                            <button th:data-id="${currentUser.trips[i].id}" class="deleteButton ">Delete</button>
+                            <button th:data-id="${currentUser.trips[i].id}" class="deleteButton ">Delete Trip</button>
                         </p>
 
                         <hr class="hrLine">
@@ -82,27 +81,24 @@
 <!--                    <div class="vl"></div>-->
                     <div class="budgetMiscExpWrapper col-3">
                         <div class="indivBudgetCard ">
-                            <h5>Budget:&nbsp;<span th:text="${currentUser.trips[i].getTripBudget.maxBudget}"></span></h5>
-                            <h5>Gas:&nbsp;<span th:text="${currentUser.trips[i].getTripBudget.getGas()}"></span></h5>
-                            <h5>Other Expenses: </h5>
+                            <h3>Budget:&nbsp;<span>$</span><span th:text="${currentUser.trips[i].getTripBudget.maxBudget}"></span></h3>
+                            <h3>Gas:&nbsp;<span>$</span><span th:text="${currentUser.trips[i].getTripBudget.getGas()}"></span></h3>
+                            <h3>Other Expenses: $<span th:text="${currentUser.trips[i].tripBudget.getMiscExpensesTotal()}"></span> </h3>
 
-                            <hr class="hrLine-2">
-    <!--                        <div th:each="miscExpObject : ${currentUser.trips[i].getTripBudget().getMiscExpenses()}">-->
-    <!--                            <div th:each="index : ${miscExpObject[i]}">-->
-    <!--                                <h5 th:text="${title}"></h5>-->
-    <!--                                <h5 th:text="${cost}"></h5>-->
-    <!--                                   <h5>Other expenses:&nbsp;<span th:text="${currentUser.trips[i].getTripBudget.getMiscExpenses()}"></span></h5>-->
-                                <span></span>
-                                </div>
+                            <button th:data-id="${currentUser.trips[i].id}" class="budgetBreakdown ">Budget Breakdown</button>
+<!--                            <hr class="hrLine-2">-->
+                        </div>
 
-                            <div class="listOfMiscExp" th:if="${currentUser.trips[i].tripBudget.getMiscExpenses() != null}">
-                                <div th:each="miscExpItem : ${currentUser.trips[i].tripBudget.getMiscExpenses()}">
-    <!--                                <div th:if="${currentUser.trips[i].getTripBudget.getMiscExpenses().size() > 0 }">-->
-                                        <h5><span th:text="${miscExpItem.getTitle()}"></span>
-                                        <span th:text="${miscExpItem.getCost()}"></span></h5>
-    <!--                                </div>-->
-                                </div>
-                            </div>
+<!--                            <div class="listOfMiscExp" th:if="${currentUser.trips[i].tripBudget.getMiscExpenses() != null}">-->
+<!--                                <div th:each="miscExpItem : ${currentUser.trips[i].tripBudget.getMiscExpenses()}">-->
+<!--    &lt;!&ndash;                                <div th:if="${currentUser.trips[i].getTripBudget.getMiscExpenses().size() > 0 }">&ndash;&gt;-->
+<!--                                        <h5><span th:text="${miscExpItem.getTitle()}"> </span>-->
+<!--                                            <span>$</span><span th:text="${miscExpItem.getCost()}"></span></h5>-->
+<!--    &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
                     </div>
                 </div>
 
