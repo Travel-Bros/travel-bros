@@ -14,63 +14,74 @@
 
 </head>
 <body>
-<div class="page-wrapper">
-    <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
+<nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
 
-    <form th:object="${vehicle}" th:method="post" th:action="@{/vehicles/create}">
-        <div class="container-fluid">
-            <div th:if="${currentUser.getUserVehicles().size() == 0}" class="row">
-                <h1>Please enter your vehicle information to continue!</h1>
+<div class="page-wrapper-add-vehicle">
 
 
-<!--                    <div class="row">-->
-                        <div class="col-6">
-                            <div  th:data="user-vehicle-input">
-                                <div class="vehicleMake">
-                                    <label for="vehicle-make" class="stretch-wrapper">Vehicle Name:</label>
-                                    <input th:field="${vehicle.make}" id="vehicle-make">
-                                </div>
-            <!--                    <div class="col-6">-->
-            <!--                        <label for="vehicle-model" class="stretch-wrapper">Vehicle Model:</label>-->
-            <!--                        <input th:field="${vehicle.model}" id="vehicle-model">-->
-            <!--                    </div>-->
-                                <div class="vehicleMPG">
-                                    <label for="vehicle-mpg" class="stretch-wrapper">Vehicle MPG:</label>
-                                    <input th:field="${vehicle.mpg}" id="vehicle-mpg">
-                                </div>
-                                <div class="vehicleTankSize">
-                                    <label for="vehicle-tank-size" class="stretch-wrapper">Vehicle Tank Size:</label>
-                                    <input th:field="${vehicle.tankSize}" id="vehicle-tank-size">
-                                </div>
-                                <div class="vehicleYear">
-                                    <label for="vehicle-year" class="stretch-wrapper">Vehicle Year:</label>
-                                    <input type="text" th:field="${vehicle.year}" id="vehicle-year">
-                                </div>
-                                <div class="addVehicleSubmit">
-                                    <label for="submit-vehicle"></label>
-                                    <input id="submit-vehicle" value="Add vehicle" type="submit">
-                                </div>
-            <!--                    <button type="button"  id="get-vehical"> Add your Vehical!</button>-->
+    <div class="container-fluid">
+        <div class="row">
+                <!--                    <div class="row">-->
+                <div class="col-6">
+                    <div th:if="${currentUser.getUserVehicles().size() == 0}" >
+                        <h1>Please enter your vehicle information to continue!</h1>
+                    </div> <!-- end of conditional div if no vehicles exist -->
+                    <div class="vehicleFormWrapper">
+                        <form th:object="${vehicle}" th:method="post" th:action="@{/vehicles/create}">
+                        <div  th:data="user-vehicle-input">
+                            <div class="vehicleMake">
+                                <label for="vehicle-make" class="stretch-wrapper">Vehicle Name:</label>
+                                <input th:field="${vehicle.make}" id="vehicle-make">
                             </div>
+                            <!--                    <div class="col-6">-->
+                            <!--                        <label for="vehicle-model" class="stretch-wrapper">Vehicle Model:</label>-->
+                            <!--                        <input th:field="${vehicle.model}" id="vehicle-model">-->
+                            <!--                    </div>-->
+                            <div class="vehicleMPG">
+                                <label for="vehicle-mpg" class="stretch-wrapper">Vehicle MPG:</label>
+                                <input th:field="${vehicle.mpg}" id="vehicle-mpg">
+                            </div>
+                            <div class="vehicleTankSize">
+                                <label for="vehicle-tank-size" class="stretch-wrapper">Vehicle Tank Size:</label>
+                                <input th:field="${vehicle.tankSize}" id="vehicle-tank-size">
+                            </div>
+                            <div class="vehicleYear">
+                                <label for="vehicle-year" class="stretch-wrapper">Vehicle Year:</label>
+                                <input type="text" th:field="${vehicle.year}" id="vehicle-year">
+                            </div>
+                            <div class="addVehicleSubmit">
+                                <label for="submit-vehicle"></label>
+                                <input id="submit-vehicle" value="Add vehicle" type="submit">
+                            </div>
+                            <!--                    <button type="button"  id="get-vehical"> Add your Vehical!</button>-->
                         </div>
+                        </form><!-- End form -->
+                    </div>
+                </div>
 
-                        <div class="imgWrapper col-6">
-        <!--                        <h1>ICON COMING SOON</h1>-->
-                                <img class="jeepInSandImg" th:src="@{/img/jeep-on-sanddunes.png}">
-                        </div>
 
-<!--                    </div> &lt;!&ndash; End row (row1)&ndash;&gt;-->
 
-<!--            <div class="row">-->
-<!--                <div class="col-6">-->
-<!--                    <label for="cancel-vehicle"></label>-->
-<!--                    <input id="cancel-vehicle" value="Cancel" type="reset">-->
-<!--                </div>-->
-            </div> <!-- End row -->
-<!--            </div> &lt;!&ndash; End Cancel / Submit row (row2)  &ndash;&gt;-->
-        </div><!-- End container -->
+                <!--                    </div> &lt;!&ndash; End row (row1)&ndash;&gt;-->
 
-    </form> <!-- End form -->
+                <!--            <div class="row">-->
+                <!--                <div class="col-6">-->
+                <!--                    <label for="cancel-vehicle"></label>-->
+                <!--                    <input id="cancel-vehicle" value="Cancel" type="reset">-->
+                <!--                </div>-->
+
+            <!--            </div> &lt;!&ndash; End Cancel / Submit row (row2)  &ndash;&gt;-->
+
+
+
+
+            <div class="imgWrapper col-6">
+                <!--                        <h1>ICON COMING SOON</h1>-->
+                <img class="jeepInSandImg" th:src="@{/img/jeep-on-sanddunes.png}">
+            </div>
+        </div>
+
+    </div>
+
 
 </div> <!-- End page-wrapper -->
     <div th:replace="partials/scripts-partials.html :: scripts"></div>

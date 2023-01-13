@@ -99,8 +99,10 @@ public class Budget {
 
     public double getMiscExpensesTotal() {
         double total = 0;
-        for (MiscExpenses miscExpense : miscExpenses) {
-            total += miscExpense.getCost();
+        if (miscExpenses != null){
+            for (MiscExpenses miscExpense : miscExpenses) {
+                total += miscExpense.getCost();
+            }
         }
         return total;
     }
