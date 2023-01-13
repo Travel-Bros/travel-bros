@@ -13,6 +13,7 @@
         <link rel="stylesheet" th:href="@{/css/global_travel.css}">
         <link rel="stylesheet" th:href="@{/css/Footer.css}">
         <link rel="stylesheet" th:href="@{/css/splash_page.css}">
+<!--        <link rel="stylesheet" th:href="@{/css/splash_page_line.css}">-->
     </head>
     <body>
     <div class="page-wrapper">
@@ -28,41 +29,93 @@
                     </div><!-- END OF app__description-aboutUs -->
                 </div> <!-- END of app__first-description-overlay-->
             </div> <!-- END OF app__first-description-img-->
-            <div class="app__second-description">
 
-<!--                This is the container for the image-->
-                <div class="app__second-description-img">
-                    <img th:src="@{img/iphone14.png}">
-                </div>
+            <div class="app__second-step">
+                <div class="line-container">
+                    <svg viewBox="0 0 340 2094" fill="none" preserveAspectRatio="xMidYMax meet">
+                        <path d="M339.5 0V322.25C339.5 415.724 263.724 491.5 170.25 491.5V491.5C76.7758 491.5 1 567.276 1 660.75V899.5V930.75C1 1024.22 76.7758 1100 170.25 1100V1100C263.724 1100 339.5 1175.78 339.5 1269.25V1349.25C339.5 1442.72 263.724 1518.5 170.25 1518.5V1518.5C76.7758 1518.5 1 1594.28 1 1687.75V1768.25C1 1861.72 76.7758 1937.5 170.25 1937.5H183C269.433 1937.5 339.5 2007.57 339.5 2094V2094" stroke="black"/>
+                    </svg>
+                </div><!-- END OF Line-Container -->
+                <div class="app__second-step-1">
+                    <div class="app__second-description-step-1">
+                        <div class="app__second-description-img-1">
+                            <img class="iphone-step-1"th:src="@{img/iphone14.png}">
+                        </div>
+                    </div><!-- END OF app__second-description-step-1-->
+                    <div class="app__second-step-1_description">
+                        <div class="x-card-1">
+                            <div class="x-card-body-1">
+                                <div class="x-step-1">Step 1</div>
+                                <p class="x-card-text-1">Some text about this step for step 1</p>
+                            </div>
+                        </div><!-- END OF X-CARD-1-->
+                    </div><!-- END OF app__second-step-1_description-->
+                </div><!-- END OF STEP 1 -->
 
-<!--                THis is the contatiner for the slider-->
+                <div class="app__second-step-2">
+                    <div class="app__second-step-2_description">
+                        <div class="x-card-1">
+                            <div class="x-card-body-2">
+                                <div class="x-step-2">Step 2</div>
+                                <p class="x-card-text-2">Some text about this step for step 1</p>
+                            </div>
+                        </div><!-- END OF X-CARD-2-->
+                    </div><!-- END OF app__second-step-2_description-->
+                    <div class="app__second-description-step-2">
+                        <div class="app__second-description-img-2">
+                            <img class="iphone-step-2"th:src="@{img/iphone14.png}">
+                        </div>
+                    </div><!-- END OF app__second-description-step-1-->
+                </div><!-- END OF STEP 2 -->
+
+
+                <div class="app__second-step-3">
+                    <div class="app__second-description-step-3">
+                        <div class="app__second-description-img-3">
+                            <img class="iphone-step-3"th:src="@{img/iphone14.png}">
+                        </div>
+                    </div><!-- END OF app__second-description-step-1-->
+                    <div class="app__second-step-3_description">
+                        <div class="x-card-3">
+                            <div class="x-card-body-3">
+                                <div class="x-step-3">Step 1</div>
+                                <p class="x-card-text-3">Some text about this step for step 1</p>
+                            </div>
+                        </div><!-- END OF X-CARD-1-->
+                    </div><!-- END OF app__second-step-1_description-->
+                </div><!-- END OF STEP 1 -->
+
+
+
+            </div><!-- END OF app__second-description-->
+<!--                This is the container for the slider-->
 <!--                <div class="app__second-description-slider">-->
-                    <div class="app__second-description-slider_container">
-<!--                        <div class="app__gallery-images_card flex__center" >-->
+<!--                    <div class="app__second-description-slider_container">-->
+<!--&lt;!&ndash;                        <div class="app__gallery-images_card flex__center" >&ndash;&gt;-->
 
-<!--                            Step One card -->
-                            <div class="x-card">
-                                <div class="x-card-body">
-                                    <div class="x-step">Step 1</div>
-                                    <p class="x-card-text">Some text about this step.</p>
-                                </div>
-                            </div>
+<!--&lt;!&ndash;                            Step One card &ndash;&gt;-->
+<!--                            <div class="x-card">-->
+<!--                                <div class="x-card-body">-->
+<!--                                    <div class="x-step">Step 1</div>-->
+<!--                                    <p class="x-card-text">Some text about this step.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
-<!--                            Step two card -->
-                            <div class="x-card">
-                                <div class="x-card-body">
-                                    <div class="x-step">Step 1</div>
-                                    <p class="x-card-text">Some text about this step.</p>
-                                </div>
-                            </div>
+<!--&lt;!&ndash;                            Step two card &ndash;&gt;-->
+<!--                            <div class="x-card">-->
+<!--                                <div class="x-card-body">-->
+<!--                                    <div class="x-step">Step 1</div>-->
+<!--                                    <p class="x-card-text">Some text about this step.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
-<!--                            Step three card-->
-                            <div class="x-card">
-                                <div class="x-card-body">
-                                    <div class="x-step">Step 1</div>
-                                    <p class="x-card-text">Some text about this step.</p>
-                                </div>
-                            </div>
+<!--&lt;!&ndash;                            Step three card&ndash;&gt;-->
+<!--                            <div class="x-card">-->
+<!--                                <div class="x-card-body">-->
+<!--                                    <div class="x-step">Step 1</div>-->
+<!--                                    <p class="x-card-text">Some text about this step.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
 
 <!--                            <img src={image} alt="gallery" />-->
@@ -71,11 +124,10 @@
 <!--                            <h1> Hello how are you</h1>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                </div>
-<!--                End o the container for the slider-->
-
-            </div><!-- END OF app__second-description -->
-        </div><!-- END OF APP__DESCRIPTION-->
+                <!--                End o the container for the slider-->
+            </div><!-- END OF x-container app__description -->
+        <link rel="stylesheet" th:href="@{/css/splash_page.css}">
+        <script th:src="@{/js/splash_page_test.js}"></script>
         <div th:replace="partials/footer_partials.html :: footer"></div>
         <div th:replace="partials/scripts-partials.html :: scripts"></div>
     </div><!-- END OF PAGE WRAPPER -->
