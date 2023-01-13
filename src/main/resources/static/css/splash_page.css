@@ -25,7 +25,7 @@
     object-fit: fill;
 }
 .iphone-step-1 {
-    width: 30vh;
+    width: 35vh;
 }
 /* IPHONE IMG STEP 2 */
 .app__second-step-2 {
@@ -46,13 +46,14 @@
     object-fit: fill;
 }
 .iphone-step-2 {
-    width: 30vh;
+    width: 35vh;
 }
 /* IPHONE IMG STEP 3 */
 .app__second-step-3 {
     display: flex;
     justify-content: center;
     margin-top: 6rem;
+    margin-bottom: 6rem;
 }
 .app__second-description-step-3 {
     width: 30%;
@@ -67,7 +68,7 @@
     object-fit: fill;
 }
 .iphone-step-3 {
-    width: 30vh;
+    width: 35vh;
 }
 
 
@@ -80,6 +81,7 @@
     height: 100%;
     text-align: center;
     overflow: hidden;
+    z-index: -1;
 }
 svg {
     display: inline-block;
