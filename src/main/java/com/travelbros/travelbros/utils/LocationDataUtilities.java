@@ -21,7 +21,7 @@ public class LocationDataUtilities {
     //// Method 2
     // This method streamlines the process of checking a string to see if it's either a state or abbreviated state name
 
-    public static boolean locationCheck(String location) {
+    public boolean locationCheck(String location) {
         StateGasPrice stateGasPrice = new StateGasPrice();
         return (stateGasPrice.findAbbreviatedStateBool(location) || stateGasPrice.findStateBool(location));
     }

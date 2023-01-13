@@ -40,13 +40,67 @@ public class CalculatorV2 {
     //// Method 4 ****
     // This method is used to calculate the expected cost for gas, taking into account: distance, mpg, tank-size, and a location value (starting or ending point or both)
 
-         public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, double avgGasPrice){
+         public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, String location){
+
             StateGasPrice gasPrice = new StateGasPrice();
+            double avgGasPrice = gasPrice.findStateGasPrice(location);
             double tripStops = 0;
+
 
 
             int numberOfStops = numberOfStops(distance, mpg, tankSize);
             double range = findRange(tankSize);
+
+            if (numberOfStops == 0) {
+                System.out.println("Here's your expected gas cost for the trip");
+                return (range * avgGasPrice);
+            } else if (numberOfStops >= 1) {
+                System.out.println("Here's your expected gas cost for the trip (2nd condition)");
+                for (int i = 0; i < numberOfStops; i++){
+                    tripStops += (range * avgGasPrice);
+                }
+                return tripStops;
+            } else {
+                return tripStops;
+            }
+        }
+
+
+
+        public static double expectedGasConsumptionForTrip(Trip trip) {
+            StateGasPrice gasPrice = new StateGasPrice();
+            LocationDataUtilities locationReFormat = new LocationDataUtilities();
+            String formattedStartPoint = "";
+            String formattedEndPoint = "";
+            double avgGasPrice = gasPrice.findStateGasPrice((trip.getStartPoint()));
+            double tripStops = 0;
+            int numberOfStops = numberOfStops(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
+            double range = findRange(trip.getVehicle().getTankSize());
+
+            // Check if trip start AND end are accepted in gas array
+            if (locationReFormat.locationCheck(trip.getStartPoint()) && locationReFormat.locationCheck(trip.getEndPoint())) {
+                System.out.println("Starting and Ending location accepted");
+                formattedStartPoint = locationReFormat.locationStateTrimmer(trip.getStartPoint());
+                formattedEndPoint = locationReFormat.locationStateTrimmer(trip.getEndPoint());
+                if (numberOfStops == 0) {
+                    System.out.println("Here's your expected gas cost for the trip");
+                    return (range * avgGasPrice);
+                } else if (numberOfStops >= 1) {
+                    System.out.println("Here's your expected gas cost for the trip (2nd condition)");
+                    for (int i = 0; i < numberOfStops; i++){
+                        tripStops += (range * avgGasPrice);
+                    }
+                    return tripStops;
+                } else {
+                    return tripStops;
+                }
+
+            } else if (locationReFormat.locationCheck(trip.getStartPoint()) && !locationReFormat.locationCheck(trip.getEndPoint())) {
+                System.out.println("Starting location accepted, but Ending location not accepted");
+            }
+
+
+
 
             if (numberOfStops == 0) {
                 System.out.println("Here's your expected gas cost for the trip");
@@ -101,18 +155,15 @@ public class CalculatorV2 {
 
     public static void main(String[] args) {
         CalculatorV2 calculatorV2 = new CalculatorV2();
+        StateGasPrice stateGas = new StateGasPrice();
         LocationDataUtilities locationDataUtilities = new LocationDataUtilities();
-        System.out.println(budgetPricePerPerson(1000, 3));
-        System.out.println(locationDataUtilities.locationCheck("tExAs"));
-        System.out.println(locationDataUtilities.locationCheck("cA"));
-        System.out.println(locationDataUtilities.locationCheck("FlORida"));
-        System.out.println(locationDataUtilities.locationCheck("Nbreaska"));
 
-        System.out.println(findAggregateGas("tx"));
-        System.out.println(findAggregateGas("tExAs"));
-        System.out.println(findAggregateGas("FlORida"));
-        System.out.println(findAggregateGas("Nbreaska"));
-        System.out.println(findAggregateGas("Nebraska"));
+        System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "tx"));
+        System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "texAS"));
+        System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "CA"));
+        System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "CAlifornia"));
+        System.out.println(expectedGasConsumptionForTrip(1275, 23, 11, "tx"));
+
 
 
     }
