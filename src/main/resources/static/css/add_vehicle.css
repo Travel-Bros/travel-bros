@@ -1,0 +1,14 @@
+.jeepInSandImg {
+    width: 100%;
+    height: 82vh;
+    object-fit: fill;
+}
+
+.vehicleYear {
+    width: 35%;
+}
+
+.addVehicleSubmit {
+    width: 35%;
+
+}

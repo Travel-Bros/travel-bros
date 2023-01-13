@@ -97,6 +97,14 @@ public class Budget {
         return miscExpenses;
     }
 
+    public double getMiscExpensesTotal() {
+        double total = 0;
+        for (MiscExpenses miscExpense : miscExpenses) {
+            total += miscExpense.getCost();
+        }
+        return total;
+    }
+
     public void setMiscExpenses(List<MiscExpenses> miscExpenses) {
         this.miscExpenses = miscExpenses;
     }

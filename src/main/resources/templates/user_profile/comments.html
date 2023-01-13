@@ -20,12 +20,12 @@
             <div class="commentCardContainer row">
                 <div class="comment col-6">
                     <h1>Your trip to <span th:text="${endPoint}"></span></h1>
-                    <h3 class="text-center" id="form-title">Add a Note</h3>
+                    <h3 class="text-center addNoteTitle" id="form-title">Add a Note</h3>
                     <div class="form-wrapper">
                         <form th:action="@{|/comments/${trip.id}/create|}" th:method="post" class="w-100 mx-auto" th:object="${comment}">
                             <div class="w-100">
                                 <label for="body" class="form-label">Note: </label>
-                                <textarea th:field="${comment.body}" id="body" name="comment" rows="6" class="form-control shadow-none focus-field"></textarea>
+                                <textarea placeholder="Add a note to your trip" th:field="${comment.body}" id="body" name="comment" rows="6" class="form-control shadow-none focus-field"></textarea>
                             </div>
                             <div class="w-100 mt-4">
                                 <input type="submit" value="Submit" class="note-btn" id="btn">
@@ -35,7 +35,7 @@
                 </div><!-- END OF COMMENT div -->
                 <div class="imgWrapper col-6">
 
-                        <img class="sandDuneJeepImg" th:src="@{/img/jeep-on-sanddunes.png}">
+                        <img class="campfireNightImg" th:src="@{/img/sitting-by-campfire-ss.png}">
 
                 </div><!-- END OF IMGWRAPPER div -->
             </div><!-- END OF COMMENT CARD CONTAINER  row-->
