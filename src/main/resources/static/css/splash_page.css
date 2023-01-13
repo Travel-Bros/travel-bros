@@ -5,6 +5,92 @@
 .page-wrapper {
 
 }
+/* IPHONE IMG STEP 1 */
+/* PARENT OF STEP 1 */
+.app__second-step-1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.app__second-description-step-1 {
+    width: 30%;
+    position: relative;
+    margin-right: 3rem;
+}
+.app__second-description-img-1 {
+    width: 70vw;
+    display: block;
+}
+.app__second-description-img-1 img {
+    object-fit: fill;
+}
+.iphone-step-1 {
+    width: 35vh;
+}
+/* IPHONE IMG STEP 2 */
+.app__second-step-2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+.app__second-description-step-2 {
+    width: 30%;
+    position: relative;
+    margin-right: 3rem;
+}
+.app__second-description-img-2 {
+    width: 30vw;
+    display: block;
+}
+.app__second-description-img-2 img {
+    object-fit: fill;
+}
+.iphone-step-2 {
+    width: 35vh;
+}
+/* IPHONE IMG STEP 3 */
+.app__second-step-3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+.app__second-description-step-3 {
+    width: 30%;
+    position: relative;
+    margin-right: 3rem;
+}
+.app__second-description-img-3 {
+    width: 70vw;
+    display: block;
+}
+.app__second-description-img-3 img {
+    object-fit: fill;
+}
+.iphone-step-3 {
+    width: 35vh;
+}
+
+
+/* Center line edit */
+.line-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    z-index: -1;
+}
+svg {
+    display: inline-block;
+    height: 100%;
+}
+
+/* end of line edit */
 .app__description {
     position: relative;
     width: 100%;
@@ -41,44 +127,55 @@
     top: 2rem;
 }
 
+
 /*////////////////////////*/
-    /*For the slider*/
+/* Second Description */
 /*/////////////////////////*/
 
-.app__second-description {
-    /*height: 100vh;*/
-    width: 100%;
-    position: relative;
-    /*z-index: -1;*/
-    /*display: flex;*/
-    /*justify-content: space-between;*/
+.app__second-step{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 4rem 0 4rem 6rem;
+    flex-direction: column;
+    margin: auto;
 }
 
-.app__second-description-slider{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    position: relative;
-}
 
-.app__second-description-slider_container {
-    display: flex;
-    flex-direction: row;
-    width: max-content;
-    /*margin: 2rem 0rem;*/
-    justify-content: space-between;
-    flex-wrap: wrap;
-    /*overflow-x: scroll;*/
-    /*-ms-overflow-style: none;*/
-    /*scrollbar-width: none;*/
-}
+/*.app__second-description {*/
+/*    !*height: 100vh;*!*/
+/*    width: 100%;*/
+/*    position: relative;*/
+/*    !*z-index: -1;*!*/
+/*    !*display: flex;*!*/
+/*    !*justify-content: space-between;*!*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    !*justify-content: space-around;*!*/
+/*    !*padding: 4rem 0 4rem 6rem;*!*/
+/*}*/
 
-.app__second-description-img{}
+/*.app__second-description-slider{*/
+/*    flex: 1;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    max-width: 100%;*/
+/*    position: relative;*/
+/*}*/
+
+/*.app__second-description-slider_container {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    width: max-content;*/
+/*    !*margin: 2rem 0rem;*!*/
+/*    justify-content: space-between;*/
+/*    flex-wrap: wrap;*/
+/*    !*overflow-x: scroll;*!*/
+/*    !*-ms-overflow-style: none;*!*/
+/*    !*scrollbar-width: none;*!*/
+/*}*/
+
+/*.app__second-description-img-1{*/
+/*   display: flex;*/
+
+/*}*/
 
 
 
@@ -90,36 +187,50 @@
 /*////////////////////////////*/
 /*CSS for the individual Cards*/
 /*////////////////////////////*/
+/*.app__second-description-step-1{*/
+/*    display: flex;*/
+/*}*/
+/*.x-card-1 {*/
+/*    width: 18rem;*/
+/*    border: 1px solid #ccc;*/
+/*    margin-bottom: 1rem;*/
+/*    margin-right: 1rem;*/
+/*}*/
+/*.x-step-1 {*/
 
-.x-card {
-    width: 18rem;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-}
+/*}*/
+/*.x-card-text-1 {*/
 
-.x-step {
-    background-color: black;
-    color: white;
-    padding: 0.5rem;
-    width: 75%;
+/*}*/
+/*.x-card {*/
+/*    width: 18rem;*/
+/*    border: 1px solid #ccc;*/
+/*    margin-bottom: 1rem;*/
+/*    margin-right: 1rem;*/
+/*}*/
 
-}
+/*.x-step {*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*    padding: 0.5rem;*/
+/*    width: 75%;*/
 
-.x-card-header {
-    background-color: #f7f7f7;
-    padding: 1rem;
-    text-align: center;
-}
+/*}*/
 
-.x-card-body {
-    padding: 1rem;
+/*.x-card-header {*/
+/*    background-color: #f7f7f7;*/
+/*    padding: 1rem;*/
+/*    text-align: center;*/
+/*}*/
 
-}
+/*.x-card-body {*/
+/*    padding: 1rem;*/
 
-.x-card-title {
-    margin-bottom: 0.5rem;
-}
+/*}*/
+
+/*.x-card-title {*/
+/*    margin-bottom: 0.5rem;*/
+/*}*/
 
 .adventure-description-container{
     display:flex;
@@ -217,11 +328,11 @@
         /*z-index: -1;*/
         /*display: flex;*/
         /*justify-content: space-between;*/
-        /*display: flex;*/
-        flex-direction: column;
-        justify-content: space-around;
+        display: flex;
+        /*flex-direction: column;*/
+        /*justify-content: space-around;*/
         /*padding: 2rem 0 2rem 2rem;*/
-        padding: 0;
+        /*padding: 0;*/
     }
 
     .app__second-description-slider_container {

@@ -398,6 +398,8 @@ function initMap() {
                     destinations: [locationInfo.endLocation],
                     // "100 Congress Ave., Austin, TX 78701"
                     travelMode: "DRIVING",
+                    unitSystem: google.maps.UnitSystem.IMPERIAL
+
                 }, callback)
 
             function callback(response, status) {
@@ -422,7 +424,7 @@ function initMap() {
 
 
                     //////////////  Display the result on the page  /////////////////
-                    let miles = ((locationInfo.tripDistance / 1000) / 1.609)
+                    let miles = locationInfo.tripDistance;
                     let milesRound = miles.toFixed(1)
                     document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${milesRound} mi`;
                     document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
