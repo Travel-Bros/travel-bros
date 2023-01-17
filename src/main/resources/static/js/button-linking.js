@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 // THIS LINKS ADD VEHICLE BUTTON TO CREATE VEHICLE FORM
 $(document).ready(function () {
-    $(".add-new-vehicle").on('click', function (e) {
+    $("#addVehicleButton").on('click', function (e) {
         window.location.replace("/vehicles/create");
     });
 });
