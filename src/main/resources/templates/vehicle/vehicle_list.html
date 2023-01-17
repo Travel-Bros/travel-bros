@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
     <link rel="stylesheet" th:href="@{/css/Footer.css}">
 
+
 </head>
 <body>
 
@@ -48,7 +49,7 @@
             <!-- vehicle-card -->
             <div class="vehicle-card" th:each="vehicle : ${allVehicles}">
 
-                <p th:text="${vehicle.getMake()}"></p>
+                <h5 th:text="${vehicle.getMake()}"></h5>
                 <p th:text="${vehicle.getModel()}"></p>
                 <p th:text="${vehicle.getYear()}"></p>
                 <p th:text="${vehicle.getMpg()}"></p>
@@ -56,8 +57,8 @@
 
                 <!-- edit/delete vehicle buttons -->
                 <div>
-                    <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
-                    <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
+                    <button th:data-id="${vehicle.id}" class="editVehicleButton">Edit</button>
+                    <button th:data-id="${vehicle.id}" class="deleteVehicleButton">Delete</button>
                 </div>
                 <!-- End edit/delete vehicle buttons -->
             </div>
