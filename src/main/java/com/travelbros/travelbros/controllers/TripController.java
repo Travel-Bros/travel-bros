@@ -8,6 +8,7 @@ import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.services.TripService;
 import com.travelbros.travelbros.utils.Calculator;
+import com.travelbros.travelbros.utils.CalculatorV2;
 import com.travelbros.travelbros.utils.Utils;
 import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +102,7 @@ public class TripController {
             trip.setUser(user);
             trip.setStops(
                 (int)
-                Math.ceil(Calculator.numberOfStops
+                Math.ceil(CalculatorV2.numberOfStops
                 (Calculator.convertMetersToMiles
                 (trip.getDistance()),
                 vehicle.getMpg(),
