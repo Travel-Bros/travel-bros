@@ -1,6 +1,4 @@
 
-
-
 ///////////////////////////////////////////////
 ///  Getting the values from the input  //////
 //////////////////////////////////////////////
@@ -175,6 +173,8 @@ function initMap() {
                 let miles = locationInfo.tripDistance
                 document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${miles} mi`;
                 document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
+                let button = document.getElementById("submit-to-calculator-btn");
+                button.disabled = false;
 
                 // var origins = response.originAddresses;
                 // var destinations = response.destinationAddresses;
@@ -270,7 +270,7 @@ function initMap() {
         componentRestrictions: { country: "us" },
         fields: ["address_components", "geometry", "icon", "name"],
         strictBounds: false,
-        types: ["establishment"],
+        // types: ["establishment"],
     };
     const autocomplete = new google.maps.places.Autocomplete(input, options);
     autocomplete.setFields(["place_id", "geometry", "name"]);
