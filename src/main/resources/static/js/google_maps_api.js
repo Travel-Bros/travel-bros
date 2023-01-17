@@ -143,16 +143,21 @@ function initMap() {
                 destinations:[locationInfo.endLocation],
                 // "100 Congress Ave., Austin, TX 78701"
                 travelMode: "DRIVING",
+                unitSystem: google.maps.UnitSystem.IMPERIAL,
             }, callback)
 
         function callback(response, status) {
-            console.log(response)
 
             if (status == 'OK') {
 
                 //////////////////// Setting the trip distance, and trip time  ///////////////////
-                locationInfo.tripDistance = response.rows[0].elements[0].distance
-                    .value;
+                let textTrip = response.rows[0].elements[0].distance
+                    .text;
+
+                let milesTrip = textTrip.replace(' mi', '');
+
+                locationInfo.tripDistance = milesTrip;
+
                 locationInfo.tripTime = response.rows[0].elements[0].duration
                     .text;
 
@@ -167,9 +172,8 @@ function initMap() {
 
 
                 //////////////  Display the result on the page  /////////////////
-                let miles = ((locationInfo.tripDistance/1000)/1.609)
-                let milesRound = miles.toFixed(1)
-                document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${milesRound} mi`;
+                let miles = locationInfo.tripDistance
+                document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${miles} mi`;
                 document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
 
                 // var origins = response.originAddresses;
@@ -418,8 +422,13 @@ function initMap() {
                 if (status == 'OK') {
 
                     //////////////////// Setting the trip distance, and trip time  ///////////////////
-                    locationInfo.tripDistance = response.rows[0].elements[0].distance
-                        .value;
+                    let textTrip1 = response.rows[0].elements[0].distance
+                        .text;
+
+                    let milesTrip1 = textTrip1.replace(' mi', '');
+
+                    locationInfo.tripDistance = milesTrip1;
+
                     locationInfo.tripTime = response.rows[0].elements[0].duration
                         .text;
 
@@ -435,8 +444,7 @@ function initMap() {
 
                     //////////////  Display the result on the page  /////////////////
                     let miles = locationInfo.tripDistance
-                    let milesRound = miles.toFixed(1)
-                    document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${milesRound} mi`;
+                    document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${miles} mi`;
                     document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
 
                     // var origins = response.originAddresses;
