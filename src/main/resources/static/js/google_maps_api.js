@@ -268,9 +268,9 @@ function initMap() {
     const options = {
         bounds: defaultBounds,
         componentRestrictions: { country: "us" },
-        fields: ["address_components", "geometry", "icon", "name"],
+        // fields: ["address_components", "geometry", "icon", "name"],
         strictBounds: false,
-        types: ["establishment"],
+        // types: ["establishment"],
     };
     const autocomplete = new google.maps.places.Autocomplete(input, options);
     autocomplete.setFields(["place_id", "geometry", "name"]);
