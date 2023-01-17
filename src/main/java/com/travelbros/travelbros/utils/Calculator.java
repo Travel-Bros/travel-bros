@@ -121,6 +121,10 @@ public class Calculator {
 
     }
 
+    public static double expectedGasConsumptionForTripMiles() {
+        return 0;
+    }
+
     public static double remainingBudget(double maxBudget, double expenses, double numPpl) {
 
         if (numPpl <= 0) {
@@ -174,8 +178,8 @@ public class Calculator {
 //        System.out.println("gas consoomer");
 //        System.out.println((expectedGasConsumptionForTrip(563270.4, 30, 10, "tx")));
 //        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx")) + " only start");
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "CA")) + " end and start same state");
-        System.out.println((expectedGasConsumptionForTrip(563270.4, 17, 36, "tx", "HI")) + " end and start tx - HI");
+        System.out.println((expectedGasConsumptionForTrip(886749, 23, 11, "CA")) + " end and start same state");
+        System.out.println((expectedGasConsumptionForTrip(886749, 23, 11, "tx", "HI")) + " end and start tx - HI");
 //        System.out.println((expectedGasConsumptionForTrip(1902245, 17, 36, "tx")));
 //        String text = "Fort Lauderdale-Hollywood International Airport (FLL), Terminal Drive, Fort Lauderdale, FL, USA";
 //        String endText = "Williamsburg Bridge, Williamsburg Bridge Bicycle Path, New York, NY, USA";
