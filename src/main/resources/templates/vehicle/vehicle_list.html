@@ -5,16 +5,37 @@
 <head>
     <link rel="stylesheet" th:href="@{css/vehicle_page.css}">
     <link rel="stylesheet" th:href="@{css/navbar_auth.css}">
+    <link rel="stylesheet" th:href="@{/css/Footer.css}">
+
+
 </head>
 <body>
-    <div class="page-wrapper">
-        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
-        <!-- app__vehicle-1 -->
-        <div class="app__vehicle-1">
-            <div id="add-vehicle-button-wrapper">
-                <button type="button" class="add-new-vehicle">Add a new vehicle</button>
+
+<section class="vehicle-list-img-section">
+<nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
+
+<div sec:authorize="isAuthenticated()">
+    <div class="vehicleImgParent">
+        <div class="app__vehicle-img">
+            <h3 class="vehicle-list-text"><span th:text="${currentUser.username.toUpperCase()}"></span>'s Vehicles</h3>
+            <div class="buttonInVehicleImgDiv" id="add-vehicle-button-wrapper">
+                <button class="add-new-vehicle-button" id="addVehicleButton">Add vehicle ↠</button>
             </div>
         </div>
+    </div>
+</div>
+</section>
+
+    <div class="page-wrapper">
+
+
+
+        <!-- app__vehicle-1 -->
+<!--        <div class="app__vehicle-1">-->
+<!--            <div id="add-vehicle-button-wrapper">-->
+<!--                <button type="button" class="add-new-vehicle">Add a new vehicle</button>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- End app__vehicle-1 -->
 
         <!-- app__vehicle-2 -->
@@ -28,7 +49,7 @@
             <!-- vehicle-card -->
             <div class="vehicle-card" th:each="vehicle : ${allVehicles}">
 
-                <p th:text="${vehicle.getMake()}"></p>
+                <h5 th:text="${vehicle.getMake()}"></h5>
                 <p th:text="${vehicle.getModel()}"></p>
                 <p th:text="${vehicle.getYear()}"></p>
                 <p th:text="${vehicle.getMpg()}"></p>
@@ -36,8 +57,8 @@
 
                 <!-- edit/delete vehicle buttons -->
                 <div>
-                    <button th:data-id="${vehicle.id}" class="editVehicleButton btn btn-danger">Edit</button>
-                    <button th:data-id="${vehicle.id}" class="deleteVehicleButton btn btn-danger">Delete</button>
+                    <button th:data-id="${vehicle.id}" class="editVehicleButton">Edit</button>
+                    <button th:data-id="${vehicle.id}" class="deleteVehicleButton">Delete</button>
                 </div>
                 <!-- End edit/delete vehicle buttons -->
             </div>
@@ -53,6 +74,8 @@
 
 
     </div>
+
+    <div th:replace="partials/footer_partials.html :: footer"></div>
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
 </body>
 </html>

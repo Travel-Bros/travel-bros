@@ -19,22 +19,22 @@
 
             <div class="row"> <!-- row 2 -->
                 <div class="inputForm col-6 col-sm-6">
-                    <div>
-                        <h1> Let's plan your Trip! </h1>
+                    <div class="form__title">
+                        <h1 class="form__title-htag"> Let's plan your Trip! </h1>
                     </div>
                     <form id="create-trip-form" th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
-                        <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget">
+                        <input th:value="${tripBudget.id}" th:field="${tripBudget.maxBudget}" type="text" id="budget" name="budget" required>
                         <br>
                         <label for="startLocation">Start Location:</label>
-                        <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname">
+                        <input th:field="${createTrip.startPoint}" type="text" id="startLocation" name="fname" required>
                         <br>
                         <label for="endLocation">End Location:</label>
-                        <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname">
+                        <input th:field="${createTrip.endPoint}" type="text" id="endLocation" name="fname" required>
                         <br>
                         <button class="button-form button-1" type="button"  id="planYourTrip">Your trip</button>
                         <br>
-                        <select name="user-car" id="user-car-select" th:field="${createTrip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">
+                        <select name="user-car" id="user-car-select" th:field="${createTrip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}" required>
                             <option
                                     th:each="vehicle : ${currentUser.userVehicles}"
                                     th:value="${vehicle.id}"
@@ -44,7 +44,7 @@
 
                         <br>
                         <label for="numberOfPeople">Number of people</label>
-                        <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}">
+                        <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}" required>
                         <br>
 
                         <div>
@@ -61,9 +61,9 @@
 
                         <br>
                         <label for="totalDistance"> Distance Traveled</label>
-                        <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname">
+                        <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname" required>
                         <br>
-                        <button class="button-form" type="submit" value="Submit" id="submit-to-calculator-btn">Make Your Trip!</button>
+                        <button class="button-form" type="submit" value="Submit" id="submit-to-calculator-btn" disabled>Make Your Trip!</button>
                     </form>
                 </div><!-- END OF inputForm -->
                 <div class="x-img-background col-12 col-sm-6">

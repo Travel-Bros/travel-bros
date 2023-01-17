@@ -1,6 +1,4 @@
 
-
-
 ///////////////////////////////////////////////
 ///  Getting the values from the input  //////
 //////////////////////////////////////////////
@@ -156,7 +154,7 @@ function initMap() {
 
                 let milesTrip = textTrip.replace(' mi', '');
 
-                locationInfo.tripDistance = milesTrip;
+                locationInfo.tripDistance = parseFloat(milesTrip);
 
                 locationInfo.tripTime = response.rows[0].elements[0].duration
                     .text;
@@ -175,6 +173,8 @@ function initMap() {
                 let miles = locationInfo.tripDistance
                 document.getElementById("yourTripDistance").innerHTML = `Your trip distance: ${miles} mi`;
                 document.getElementById("yourTravelDistance").innerHTML = `Your trip will take: ${locationInfo.tripTime}`;
+                let button = document.getElementById("submit-to-calculator-btn");
+                button.disabled = false;
 
                 // var origins = response.originAddresses;
                 // var destinations = response.destinationAddresses;
@@ -427,7 +427,7 @@ function initMap() {
 
                     let milesTrip1 = textTrip1.replace(' mi', '');
 
-                    locationInfo.tripDistance = milesTrip1;
+                    locationInfo.tripDistance = parseFloat(milesTrip1);
 
                     locationInfo.tripTime = response.rows[0].elements[0].duration
                         .text;
