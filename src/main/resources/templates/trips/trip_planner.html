@@ -19,8 +19,8 @@
 
             <div class="row"> <!-- row 2 -->
                 <div class="inputForm col-6 col-sm-6">
-                    <div>
-                        <h1> Let's plan your Trip! </h1>
+                    <div class="form__title">
+                        <h1 class="form__title-htag"> Let's plan your Trip! </h1>
                     </div>
                     <form id="create-trip-form" th:method="post" th:action="@{/trips/create}" th:object="${createTrip}" th:if="${currentUser.userVehicles.size() > 0}">
                         <label for="budget">Enter your Budget:</label>
