@@ -268,7 +268,7 @@ function initMap() {
     const options = {
         bounds: defaultBounds,
         componentRestrictions: { country: "us" },
-        // fields: ["address_components", "geometry", "icon", "name"],
+        fields: ["address_components", "geometry", "icon", "name"],
         strictBounds: false,
         // types: ["establishment"],
     };
