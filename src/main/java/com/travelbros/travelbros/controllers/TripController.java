@@ -7,8 +7,9 @@ import com.travelbros.travelbros.repositories.BudgetRepository;
 import com.travelbros.travelbros.repositories.TripRepository;
 import com.travelbros.travelbros.repositories.UserRepository;
 import com.travelbros.travelbros.services.TripService;
-import com.travelbros.travelbros.utils.Calculator;
+//import com.travelbros.travelbros.utils.Calculator;
 import com.travelbros.travelbros.utils.CalculatorV2;
+import com.travelbros.travelbros.utils.LocationDataUtilities;
 import com.travelbros.travelbros.utils.Utils;
 import jdk.jshell.execution.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.stream.Location;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +72,7 @@ public class TripController {
         model.addAttribute("miscExpenses", miscExpenses);
         model.addAttribute("currentUser", user);
         model.addAttribute("miscExpense", new MiscExpenses());
+        model.addAttribute("locationUtils", new LocationDataUtilities());
 
         if(!user.equals(trip.getUser())) {
             return "redirect:/profile";
@@ -82,12 +85,16 @@ public class TripController {
     // Post method to receive trip object and save to database
     @PostMapping("/{id}/edit")
     public String editTrip(@ModelAttribute Trip trip, @ModelAttribute Budget budget, @PathVariable long id, @ModelAttribute MiscExpenses miscExpenses, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
+
         ObjectMapper mapper = new ObjectMapper();
+        LocationDataUtilities locationUtils = new LocationDataUtilities();
         System.out.println("Inside editTrip");
+        System.out.printf("Trip passed in: %n%s%n", mapper.writeValueAsString(trip));
         System.out.printf("What is this miscExpenses? %n%s%n", mapper.writeValueAsString(miscExpenses));
         System.out.printf("List of miscExp titles: %n%s%n", mapper.writeValueAsString(miscTitle));
-        Calculator calculator = new Calculator();
+//        Calculator calculator = new Calculator();
 //        budgetDao.delete(trip.getTripBudget());
+        CalculatorV2 calculator = new CalculatorV2();
         User user = userDao.findById(Utils.currentUserId());
 //        trip.setUser(user);
         Trip currentTrip = tripDao.findById(id);
@@ -102,8 +109,7 @@ public class TripController {
             trip.setUser(user);
             trip.setStops(
                 (int)
-                Math.ceil(CalculatorV2.numberOfStops
-                (Calculator.convertMetersToMiles
+                Math.ceil(calculator.numberOfStops(
                 (trip.getDistance()),
                 vehicle.getMpg(),
                 vehicle.getTankSize()))
@@ -153,7 +159,7 @@ public class TripController {
     @PostMapping("/create")
     public String postTrip(Model model, @ModelAttribute Trip trip, @ModelAttribute Budget budget, @RequestParam(name = "miscexp-title", required = false) List<String> miscTitle, @RequestParam(name = "miscexp-cost", required = false) List<Double> miscCost) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        Calculator calculator = new Calculator();
+        CalculatorV2 calculator = new CalculatorV2();
         System.out.println("Inside postTrip. trip received from user: ");
         System.out.println(mapper.writeValueAsString(trip));
         System.out.println("Inside postTrip. budget received from user: ");
@@ -171,7 +177,7 @@ public class TripController {
         // Number of stops is calculated using the vehicle's info & trip distance
         trip.setStops(
                 (int)Math.ceil(
-                Calculator.numberOfStops(
+                calculator.numberOfStops(
                 trip.getDistance(),
                 vehicle.getMpg(),
                 vehicle.getTankSize())
@@ -229,7 +235,7 @@ public class TripController {
         // need to iterate through array list and find the most recent trip
         // return most recent trip owned by logged-in user
         Trip lastTrip = new Trip();
-        Calculator calculator = new Calculator();
+        CalculatorV2 calculator = new CalculatorV2();
 
         User currentUser = userDao.findById(Utils.currentUserId());
         List<Trip> currentUserTrips = currentUser.getTrips();
@@ -257,7 +263,7 @@ public class TripController {
     public String postingEditedTripCalculator(@PathVariable long id,Model model) {
         Trip selectedTrip = tripDao.findById(id);
         System.out.println(selectedTrip.getTripBudget().getGas() + " gas");
-        Calculator calculator = new Calculator();
+        CalculatorV2 calculator = new CalculatorV2();
         User currentUser = userDao.findById(Utils.currentUserId());
 
         String[] endPointParser = selectedTrip.getEndPoint().split(",", 0);
