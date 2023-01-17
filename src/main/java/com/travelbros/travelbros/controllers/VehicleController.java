@@ -37,6 +37,7 @@ public class VehicleController {
         User currentUser = usersDao.findById(Utils.currentUserId());
         List<Vehicle> allVehicles = currentUser.getUserVehicles();
 //        List<Vehicle> allVehicles = vehicleDao.findAll();
+        model.addAttribute("currentUser", currentUser);
         model.addAttribute("allVehicles", allVehicles);
         return "vehicle/vehicle_list";
     }

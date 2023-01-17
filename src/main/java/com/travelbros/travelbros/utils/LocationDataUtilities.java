@@ -26,6 +26,11 @@ public class LocationDataUtilities {
         return (stateGasPrice.findAbbreviatedStateBool(location) || stateGasPrice.findStateBool(location));
     }
 
+    //// Method 3
+    public double parseTripDistance(String distance) {
+        return Double.parseDouble(distance);
+    }
+
     public static void main(String[] args) {
         CalculatorV2 calculatorV2 = new CalculatorV2();
         System.out.println(locationStateTrimmer("Big Bend National Park, Big Bend National Park, TX, USA"));
