@@ -12,15 +12,6 @@ public class CalculatorV2 {
     /////////////////////////////////////// Methods //////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////
 
-    //// Method 1
-    // This method in the old Calculator class is to convert meters to miles:
-
-    //     public static double convertMetersToMiles(double meters) {
-    //        double metersToMiles = (meters/1609.344);
-    //        System.out.printf("%n%s meters: %s miles%n", meters, metersToMiles);
-    //        return (meters/1609.344);
-    //    }
-
     //// Method 2
     // This method is to return a double in a $ format (i.e. 3.878964 => 3.87 || 3.89)
 
@@ -45,23 +36,20 @@ public class CalculatorV2 {
             StateGasPrice gasPrice = new StateGasPrice();
             double avgGasPrice = gasPrice.findStateGasPrice(location);
             double tripStops = 0;
-
-
-
             int numberOfStops = numberOfStops(distance, mpg, tankSize);
             double range = findRange(tankSize);
 
             if (numberOfStops == 0) {
                 System.out.println("Here's your expected gas cost for the trip");
-                return (range * avgGasPrice);
+                return cashDoubleFormatter(range * avgGasPrice);
             } else if (numberOfStops >= 1) {
                 System.out.println("Here's your expected gas cost for the trip (2nd condition)");
                 for (int i = 0; i < numberOfStops; i++){
                     tripStops += (range * avgGasPrice);
                 }
-                return tripStops;
+                return cashDoubleFormatter(tripStops);
             } else {
-                return tripStops;
+                return cashDoubleFormatter(tripStops);
             }
         }
 
@@ -84,15 +72,15 @@ public class CalculatorV2 {
                 formattedEndPoint = locationReFormat.locationStateTrimmer(trip.getEndPoint());
                 if (numberOfStops == 0) {
                     System.out.println("Here's your expected gas cost for the trip");
-                    return (range * avgGasPrice);
+                    return cashDoubleFormatter(range * avgGasPrice);
                 } else if (numberOfStops >= 1) {
                     System.out.println("Here's your expected gas cost for the trip (2nd condition)");
                     for (int i = 0; i < numberOfStops; i++){
                         tripStops += (range * avgGasPrice);
                     }
-                    return tripStops;
+                    return cashDoubleFormatter(tripStops);
                 } else {
-                    return tripStops;
+                    return cashDoubleFormatter(tripStops);
                 }
 
             } else if (locationReFormat.locationCheck(trip.getStartPoint()) && !locationReFormat.locationCheck(trip.getEndPoint())) {
@@ -104,15 +92,15 @@ public class CalculatorV2 {
 
             if (numberOfStops == 0) {
                 System.out.println("Here's your expected gas cost for the trip");
-                return (range * avgGasPrice);
+                return cashDoubleFormatter(range * avgGasPrice);
             } else if (numberOfStops >= 1) {
                 System.out.println("Here's your expected gas cost for the trip (2nd condition)");
                 for (int i = 0; i < numberOfStops; i++){
                     tripStops += (range * avgGasPrice);
                 }
-                return tripStops;
+                return cashDoubleFormatter(tripStops);
             } else {
-                return tripStops;
+                return cashDoubleFormatter(tripStops);
             }
         }
 
@@ -163,6 +151,7 @@ public class CalculatorV2 {
         System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "CA"));
         System.out.println(expectedGasConsumptionForTrip(551, 23, 11, "CAlifornia"));
         System.out.println(expectedGasConsumptionForTrip(1275, 23, 11, "tx"));
+        System.out.println(expectedGasConsumptionForTrip(490, 23, 11, "tx"));
 
 
 
