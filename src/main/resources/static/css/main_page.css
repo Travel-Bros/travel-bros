@@ -111,3 +111,9 @@
     justify-content: space-between;
     min-height: 100vh;
 }
+/* Display none on smaller px */
+@media screen and (max-width: 700px) {
+    .section__padding {
+        padding:3rem;
+    }
+}
