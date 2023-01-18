@@ -17,3 +17,14 @@
     padding: 0;
 }
 
+@media screen and (max-width: 700px) {
+    .jeepInSandImg {
+        display: none;
+    }
+    #vehicle-year{
+        padding: 2px 100px;
+    }
+    .addVehicleSubmit {
+        width: 150px;
+    }
+}
