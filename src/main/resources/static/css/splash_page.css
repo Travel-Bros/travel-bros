@@ -41,7 +41,7 @@
 .app__second-description-step-2 {
     width: 30%;
     position: relative;
-    margin-right: 3rem;
+    margin-left: 3rem;
 }
 .app__second-description-img-2 {
     width: 30vw;
@@ -196,53 +196,21 @@ svg {
 .x-step {
     background-color: #323232;
     color: #e1dbdb;
+    border-radius: .3rem;
 
 
 }
 
 .x-card-1 {
+    z-index: 100;
+    background-color: #ffff;
     width: 18rem;
     border: 1px solid #ccc;
     padding: .05rem;
     margin-bottom: 1rem;
     margin-right: 1rem;
+    border-radius: .5rem;
 }
-/*.x-step-1 {*/
-
-/*}*/
-/*.x-card-text-1 {*/
-
-/*}*/
-/*.x-card {*/
-/*    width: 18rem;*/
-/*    border: 1px solid #ccc;*/
-/*    margin-bottom: 1rem;*/
-/*    margin-right: 1rem;*/
-/*}*/
-
-/*.x-step {*/
-/*    background-color: black;*/
-/*    color: white;*/
-/*    padding: 0.5rem;*/
-/*    width: 75%;*/
-
-/*}*/
-
-/*.x-card-header {*/
-/*    background-color: #f7f7f7;*/
-/*    padding: 1rem;*/
-/*    text-align: center;*/
-/*}*/
-
-/*.x-card-body {*/
-/*    padding: 1rem;*/
-
-/*}*/
-
-/*.x-card-title {*/
-/*    margin-bottom: 0.5rem;*/
-/*}*/
-
 .adventure-description-container{
     display:flex;
     justify-content: center;
@@ -366,6 +334,10 @@ svg {
 
 /* Display none on smaller px */
 @media screen and (max-width: 700px) {
+    .iphone-14 {
+        justify-content: center;
+        padding-right: 3rem;
+    }
     .signIn-card {
         margin-left: 50px;
     }
@@ -375,6 +347,12 @@ svg {
     .adventure-description {
         font-size: 6rem;
         padding: 20px;
+    }
+    .x-card-1 {
+        display: none;
+    }
+    .line-container {
+        display: none;
     }
 }
 
