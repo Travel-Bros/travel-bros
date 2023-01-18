@@ -193,12 +193,20 @@ svg {
 /*.app__second-description-step-1{*/
 /*    display: flex;*/
 /*}*/
-/*.x-card-1 {*/
-/*    width: 18rem;*/
-/*    border: 1px solid #ccc;*/
-/*    margin-bottom: 1rem;*/
-/*    margin-right: 1rem;*/
-/*}*/
+.x-step {
+    background-color: #323232;
+    color: #e1dbdb;
+
+
+}
+
+.x-card-1 {
+    width: 18rem;
+    border: 1px solid #ccc;
+    padding: .05rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
 /*.x-step-1 {*/
 
 /*}*/
