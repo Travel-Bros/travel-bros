@@ -237,7 +237,8 @@
     }
     .buttonInImgDiv {
         padding-top: 9rem;
-        padding-left: 0rem;
+        font-size: 2rem;
+        padding-left: 2rem;
     }
     h5{
         font-size: 20px;
