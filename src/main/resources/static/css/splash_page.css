@@ -352,7 +352,7 @@ svg {
         display: none;
     }
     .line-container {
-        display: none;
+        width: 40%;
     }
 }
 
