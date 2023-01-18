@@ -152,7 +152,7 @@ function initMap() {
                 let textTrip = response.rows[0].elements[0].distance
                     .text;
 
-                let milesTrip = textTrip.replace(' mi', '');
+                let milesTrip = textTrip.replace(' mi', '').replace(',', '');
 
                 locationInfo.tripDistance = parseFloat(milesTrip);
 
@@ -425,7 +425,7 @@ function initMap() {
                     let textTrip1 = response.rows[0].elements[0].distance
                         .text;
 
-                    let milesTrip1 = textTrip1.replace(' mi', '');
+                    let milesTrip1 = textTrip1.replace(' mi', '').replace(',', '');
 
                     locationInfo.tripDistance = parseFloat(milesTrip1);
 
