@@ -1,5 +1,6 @@
 package com.travelbros.travelbros.utils;
 
+import com.travelbros.travelbros.models.MiscExpenses;
 import com.travelbros.travelbros.models.StateGasPrice;
 import com.travelbros.travelbros.models.Trip;
 import com.travelbros.travelbros.repositories.TripRepository;
@@ -41,10 +42,12 @@ public class CalculatorV2 {
 
             if (numberOfStops == 0) {
                 System.out.println("Here's your expected gas cost for the trip");
+                System.out.println(tripStops + " see here your trip cost for stops");
                 return cashDoubleFormatter(range * avgGasPrice);
             } else if (numberOfStops >= 1) {
                 System.out.println("Here's your expected gas cost for the trip (2nd condition)");
                 for (int i = 0; i < numberOfStops; i++){
+                    System.out.println(tripStops + " see here your trip cost for stops");
                     tripStops += (range * avgGasPrice);
                 }
                 return cashDoubleFormatter(tripStops);
@@ -60,7 +63,9 @@ public class CalculatorV2 {
             LocationDataUtilities locationReFormat = new LocationDataUtilities();
             String formattedStartPoint = "";
             String formattedEndPoint = "";
-            double avgGasPrice = gasPrice.findStateGasPrice((trip.getStartPoint()));
+            double avgGasPrice = gasPrice.findStateGasPrice(
+                    locationReFormat.locationStateTrimmer((trip.getStartPoint()))
+                    );
             double tripStops = 0;
             int numberOfStops = numberOfStops(trip.getDistance(), trip.getVehicle().getMpg(), trip.getVehicle().getTankSize());
             double range = findRange(trip.getVehicle().getTankSize());
@@ -137,6 +142,15 @@ public class CalculatorV2 {
             }
     }
 
+        public static double miscExpenseSum(Trip trip) {
+        double sum = 0;
+        List<MiscExpenses> miscExpensesList = trip.getTripBudget().getMiscExpenses();
+        for (int i = 0; i < miscExpensesList.size(); i++) {
+            sum += miscExpensesList.get(i).getCost();
+        }
+        System.out.println("Here's your sum: ");
+        return sum;
+    }
 
 
 

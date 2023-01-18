@@ -1,6 +1,8 @@
 package com.travelbros.travelbros.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.travelbros.travelbros.repositories.*;
+import com.travelbros.travelbros.utils.LocationDataUtilities;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -112,6 +114,12 @@ public class Trip {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+
+    public void setDistance(String distance) {
+        LocationDataUtilities locationDataUtilities = new LocationDataUtilities();
+        this.distance = (double) locationDataUtilities.parseTripDistance(distance);
     }
 
 
