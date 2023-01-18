@@ -17,7 +17,7 @@
 <div sec:authorize="isAuthenticated()">
     <div class="vehicleImgParent">
         <div class="app__vehicle-img">
-            <h3 class="vehicle-list-text"><span th:text="${currentUser.username.toUpperCase()}"></span>'s Vehicles</h3>
+            <h3 class="vehicle-list-text"><span th:text="${currentUser.username.toUpperCase()} "></span>Vehicles</h3>
             <div class="buttonInVehicleImgDiv" id="add-vehicle-button-wrapper">
                 <button class="add-new-vehicle-button" id="addVehicleButton">Add vehicle ↠</button>
             </div>
