@@ -11,16 +11,17 @@
 </head>
 <body>
     <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
-    <h1 class="text-center" id="form-title">Edit Trips</h1>
+<!--    <h1 class="text-center" id="form-title">Edit Trips</h1>-->
     <div class="page-wrapper" style="height: 100%">
-        <div class="container">
-            <div class="row"> <!-- row 1 -->
-                <div>
-                    <h1> Let's plan your Trip! </h1>
-                </div>
+        <div class="x-container">
+            <div class="x-row"> <!-- row 1 -->
+
                 <div class="row"> <!-- row 2 -->
                     <div class="inputForm col-6 col-sm-6">
-
+                        <div class="form__title">
+                            <h1 class="form__title-htag"> Let's Edit your Trip! </h1>
+                        </div>
+<!--                     The Div that allows f -->
                         <div style="display: none" th:action="@{|/trips/${id}/edit|}" >
                         <p id="startingLocation" th:text="${trip.startPoint}"></p>
                         <p id="endingLocation" th:text="${trip.endPoint}"></p>
@@ -35,6 +36,8 @@
                             <br>
                             <label for="endLocation">End Location:</label>
                             <input th:field="${trip.endPoint}" type="text" id="endLocation" name="fname">
+                            <br>
+                            <button class="button-form button-1" type="button"  id="planYourTrip">Your trip</button>
                             <br>
                             <select name="user-car" id="user-car-select" th:field="${trip.vehicle}"  th:if="${currentUser.userVehicles.size() > 0}">
                                 <option
@@ -54,18 +57,19 @@
 
 
                                 </div>
-                                <button type="button" id="add-expense">Add other expenses</button>
-
+<!--                                <button type="button" id="add-expense">Add other expenses</button>-->
+                                <button class="button-form button-2" type="button" id="add-expense">&plus; Add other expenses</button>
 
                             </div>
 
 
-                            <button type="button"  id="planYourTrip">Your trip</button>
+<!--                            <button type="button"  id="planYourTrip">Your trip</button>-->
+
                             <br>
                             <label for="totalDistance"> Distance Traveled</label>
                             <input th:field="${trip.distance}" type="text" id="totalDistance" name="fname">
                             <br>
-                            <button type="submit" value="Submit" id="submit-edit-btn">Make Your Trip!</button>
+                            <button class="button-form" type="submit" value="Submit" id="submit-to-calculator-btn">Make Your Trip!</button>
                         </form>
                     </div>
                     <!-- END OF inputForm -->
