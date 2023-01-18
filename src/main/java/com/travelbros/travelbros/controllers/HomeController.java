@@ -32,5 +32,10 @@ public class HomeController {
     }
 
 
+    @GetMapping("/about-us")
+    public String aboutUsPage() {
+        return  "main_pages/about_us";
+    }
+
 
 }
