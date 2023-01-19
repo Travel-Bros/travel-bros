@@ -12,6 +12,7 @@
         <link rel="stylesheet" th:href="@{/css/register-login.css}">
         <link rel="stylesheet" th:href="@{/css/navbar_partials.css}">
         <link rel="stylesheet" th:href="@{/css/splash_page.css}">
+        <link rel="stylesheet" th:href="@{/css/Footer.css}">
     </head>
     <body>
     <div class="page-wrapper">
@@ -51,15 +52,16 @@
                         </div>
                     </div>
                 </div><!-- END OF COL -->
-                <div class="col-sm-12 col-lg-6">
-                    <div class="kingKaiPlanet">
-                        <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>
-                    </div>
-                    <div class="testButton"></div>
-                </div>
+<!--                <div class="col-sm-12 col-lg-6">-->
+<!--                    <div class="kingKaiPlanet">-->
+<!--                        <iframe src='https://my.spline.design/planet-ad96d8e81eec4920efc2e1d7620a5fe3/' frameborder='0' width='600' height='600'></iframe>-->
+<!--                    </div>-->
+<!--                    <div class="testButton"></div>-->
+<!--                </div>-->
             </div><!-- END OF ROW-->
         </div><!-- END OF CONTAINER-->
     </div><!-- END OF PAGE WRAPPER -->
+    <div th:replace="partials/footer_partials.html :: footer"></div>
     <div th:replace="partials/scripts-partials.html :: scripts"></div>
     </body>
 </html>
