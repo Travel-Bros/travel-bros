@@ -84,9 +84,9 @@
 
 .indivTripCard {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
 }
 
 .listOfMiscExp {
