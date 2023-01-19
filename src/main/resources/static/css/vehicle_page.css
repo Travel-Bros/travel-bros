@@ -34,6 +34,7 @@
     z-index: -1;
     position:relative;
     top: 8rem;
+    letter-spacing: .3rem;
 }
 
 .buttonInVehicleImgDiv {
@@ -56,6 +57,7 @@
     font-weight: bold;
     z-index: 2000;
     transition: 0.5s;
+    letter-spacing: .3rem;
 }
 
 .add-new-vehicle-button:hover {
