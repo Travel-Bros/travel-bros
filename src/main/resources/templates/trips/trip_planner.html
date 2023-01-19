@@ -45,7 +45,7 @@
 
                         <br>
                         <label for="numberOfPeople">Number of people</label>
-                        <input name="numPpl" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}" required>
+                        <input name="numPpl" th:value="1" class="splitAmount" min="1" max="100" type="number" id="numberOfPeople" th:field="${createTrip.numPpl}" required>
                         <br>
 
                         <div>
@@ -59,7 +59,7 @@
 
                         <br>
                         <label for="totalDistance"> Distance Traveled</label>
-                        <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname" required>
+                        <input th:field="${createTrip.distance}" type="text" id="totalDistance" name="fname" required disabled>
                         <br>
                         <button class="button-form" type="submit" value="Submit" id="submit-to-calculator-btn" disabled>Make Your Trip!</button>
                     </form>
