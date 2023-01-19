@@ -139,7 +139,9 @@ public class Trip {
         this.comments = comments;
     }
 
-    public Trip(){}
+    public Trip(){
+        this.numPpl = 1;
+    }
 
     public Trip(long id, User user, Budget tripBudget, String startPoint, String endPoint, int stops, double distance, int numPpl, Vehicle vehicle) {
         this.id = id;
