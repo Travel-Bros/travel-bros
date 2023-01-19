@@ -256,6 +256,7 @@ public class TripController {
         model.addAttribute("miscExpTotal", calculator.miscExpenseSum(lastTrip));
 
         model.addAttribute("lastTrip", lastTrip);
+        model.addAttribute("costPerPerson", calculator.budgetPricePerPerson(lastTrip.getTripBudget().getMaxBudget(), lastTrip.getNumPpl()));
         return "budget/calculator";
     }
 
@@ -273,6 +274,7 @@ public class TripController {
         model.addAttribute("miscExpTotal", calculator.miscExpenseSum(selectedTrip));
 
         model.addAttribute("lastTrip", selectedTrip);
+        model.addAttribute("costPerPerson", calculator.budgetPricePerPerson(selectedTrip.getTripBudget().getMaxBudget(), selectedTrip.getNumPpl()));
 
         return "budget/calculator";
     }
