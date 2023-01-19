@@ -15,166 +15,86 @@
         <title>Final Budget</title>
         <script th:src="@{/js/jquery-3.6.1.min.js}"></script>
     </head>
-    <body>
+<body onload="formatCurrency('currency-format')" >
 
-<!--    //////////////////////Redo  for the chart  //////////////////////-->
+    <!--    //////////////////////Redo  for the chart  //////////////////////-->
 
-<div class="page-wrapper">
-    <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
-    <h1 class="calc-title">Your trip to <span th:text="${endPoint}"></span></h1>
-    <div class="app__chart">
-        <div id="chartContainer" style="height: 500px; width: 100%;"></div>
-        <div class="totalBalance">
-            <h1>
-                $<span th:text="${lastTrip.tripBudget.maxBudget}"></span>
-            </h1>
+    <div class="page-wrapper">
+        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>
+        <h1 class="calc-title">Your trip to <span th:text="${endPoint}"></span></h1>
+        <div class="app__chart">
+            <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+            <div class="totalBalance">
+                <h1>
+                    <span class="currency-format" th:text="${lastTrip.tripBudget.maxBudget}"></span>
+                </h1>
+            </div>
         </div>
-    </div>
 
-    <div class="chart">
-        <div class="chartOverlay">
+        <div class="chart">
+            <div class="chartOverlay">
 
 
-        </div><!-- END OF CHART OVERLAY-->
-        <div class="chartContent">
+            </div><!-- END OF CHART OVERLAY-->
+            <div class="chartContent">
+                <div class="hiddenDivRight"></div>
+                <div class="hiddenDivLeft"></div>
+            </div> <!-- END OF CHART CONTENT -->
             <div class="hiddenDivRight"></div>
             <div class="hiddenDivLeft"></div>
-        </div> <!-- END OF CHART CONTENT -->
-        <div class="hiddenDivRight"></div>
-        <div class="hiddenDivLeft"></div>
-    </div><!-- END OF CHART-->
+        </div><!-- END OF CHART-->
 
 
-    <div class="x-col">
-        <div class="container__2">
+        <div class="x-col">
+            <div class="container__2">
 
-<!--            This is data for the chart                -->
-            <div id="dataFromUser"
-                 th:data-misc-Expense="${miscExpTotal}"
-                 th:data-budget="${lastTrip.tripBudget.maxBudget}"
-                 th:data-gas="${lastTrip.tripBudget.getGas()}">
-            </div>
-<!--            /////////////////////////////////////////-->
-
-            <div class="x-budget-section">
-                <h3 class="maxBudget">Your Max Budget:
-                    $<span class="displayMaxBudget" th:text="${lastTrip.tripBudget.maxBudget}"></span>
-                </h3>
-            </div>
-
-            <div class="x-budget-section">
-                <h3 style="text-align: center">Number of People: <span th:text="${lastTrip.numPpl}"></span></h3>
-            </div>
-
-            <div th:if="${lastTrip.numPpl > 1}" class="x-budget-section">
-                    <h3 style="text-align: center">Cost per person:
-                        $<span th:text="${costPerPerson}"></span>
-                    </h3>
-            </div>
-
-            <br>
-
-            <div class="rest_of_Expenses">
-
-                <div class="miscExp" th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
-                       <h4 th:text="${tripMiscExp.title}">
-                       </h4>
-                        <h4 th:text="${tripMiscExp.cost}">
-                       </h4>
+                <!-- This is data for the chart -->
+                <div id="dataFromUser"
+                     th:data-misc-Expense="${miscExpTotal}"
+                     th:data-budget="${lastTrip.tripBudget.maxBudget}"
+                     th:data-gas="${lastTrip.tripBudget.getGas()}">
                 </div>
 
+                <div class="x-budget-section">
+                    <h3 class="maxBudget">Your Max Budget:
+                        <span class="displayMaxBudget currency-format" th:text="${lastTrip.tripBudget.maxBudget}"></span>
+                    </h3>
+                </div>
+
+                <div class="x-budget-section">
+                    <h3 style="text-align: center">Number of People: <span th:text="${lastTrip.numPpl}"></span></h3>
+                </div>
+
+                <div th:if="${lastTrip.numPpl > 1}" class="x-budget-section">
+                        <h3 style="text-align: center">Cost per person:
+                            <span class="currency-format" th:text="${costPerPerson}"></span>
+                        </h3>
+                </div>
+                <br>
+                <div class="rest_of_Expenses">
+                    <div class="miscExp" th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">
+                           <h4 th:text="${tripMiscExp.title}">
+                           </h4>
+                            <h4 class="currency-format" th:text="${tripMiscExp.cost}">
+                           </h4>
+                    </div>
+                </div>
+                <div class="recalculate-button-main">
+                                       <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>
+                </div>
+                    <a th:href="@{/profile}">Continue</a>
+                <br>
             </div>
-            <div class="recalculate-button-main">
-                                   <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>
-            </div>
-
-                <a th:href="@{/profile}">Continue</a>
-
-
-            <br>
-            <!--               <div>-->
-            <!--                   <h3 class="displayTotalMiscExp" th:text="${miscExpTotal}"></h3>-->
-            <!--               </div>-->
-        </div>
-    </div><!-- END OF x-col -->
-
-
-</div><!-- END OF PAGE WRAPPER -->
-
-
-
-
-
-
-
-
-
-
-<!--    //////////////////////Redo  for the chart  //////////////////////-->
-
-
-<!--    <div class="page-wrapper">-->
-<!--        <nav th:replace="partials/navbar-auth.html :: site-bar"></nav>-->
-<!--        <h1 class="calc-title">Your trip to <span th:text="${endPoint}"></span></h1>-->
-<!--        <div class="chart">-->
-<!--            <div class="chartOverlay">-->
-<!--                <div id="chartContainer" style="height: 500px; width: 60%;"></div>-->
-<!--                <h1 class="totalBalance" th:text="${lastTrip.tripBudget.maxBudget}"></h1>-->
-<!--            </div>&lt;!&ndash; END OF CHART OVERLAY&ndash;&gt;-->
-<!--            <div class="chartContent">-->
-<!--                <div class="hiddenDivRight"></div>-->
-<!--                <div class="hiddenDivLeft"></div>-->
-<!--            </div> &lt;!&ndash; END OF CHART CONTENT &ndash;&gt;-->
-<!--            <div class="hiddenDivRight"></div>-->
-<!--            <div class="hiddenDivLeft"></div>-->
-<!--        </div>&lt;!&ndash; END OF CHART&ndash;&gt;-->
-<!--       <div class="x-col">-->
-<!--           <div class="container__2">-->
-<!--               <div id="dataFromUser"-->
-<!--                    th:data-misc-Expense="${miscExpTotal}"-->
-<!--                    th:data-budget="${lastTrip.tripBudget.maxBudget}"-->
-<!--                    th:data-gas="${lastTrip.tripBudget.getGas()}">-->
-<!--               </div>-->
-<!--               <h3 class="maxBudget">Your Max Budget-->
-<!--                   <br>-->
-<!--                   <span class="displayMaxBudget" th:text="${lastTrip.tripBudget.maxBudget}"></span>-->
-<!--               </h3>-->
-<!--               <br>-->
-<!--               <h4 class="miscExp"th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">-->
-<!--                   <span th:text="${tripMiscExp.title}">-->
-<!--                   </span>-->
-<!--                   <span th:text="${tripMiscExp.cost}">-->
-<!--                   </span>-->
-<!--               </h4>-->
-<!--               <div class="recalculate-button-main">-->
-<!--&lt;!&ndash;                   <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>&ndash;&gt;-->
-<!--               </div>-->
-<!--               <br>-->
-<!--               &lt;!&ndash;               <div>&ndash;&gt;-->
-<!--&lt;!&ndash;                   <h3 class="displayTotalMiscExp" th:text="${miscExpTotal}"></h3>&ndash;&gt;-->
-<!--&lt;!&ndash;               </div>&ndash;&gt;-->
-<!--           </div>-->
-<!--       </div>&lt;!&ndash; END OF x-col &ndash;&gt;-->
-<!--    </div>&lt;!&ndash; END OF PAGE WRAPPER &ndash;&gt;-->
-
-<!-- ///////////////////////////////////////////////////////// -->
-
-        <button class="btn invisible" id="backButton">Back</button>
-        <div th:replace="partials/scripts-partials :: scripts"></div>
-        <script th:src="@{/js/traveling.js}"></script>
-        <script th:src="@{/js/chart.js}"></script>
-        <script th:src="@{/js/button-linking.js}"></script>
-        <!--        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>-->
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    </body>
+        </div><!-- END OF x-col -->
+    </div><!-- END OF PAGE WRAPPER -->
+    <button class="btn invisible" id="backButton">Back</button>
+    <div th:replace="partials/scripts-partials :: scripts"></div>
+    <script th:src="@{/js/traveling.js}"></script>
+    <script th:src="@{/js/chart.js}"></script>
+    <script th:src="@{/js/button-linking.js}"></script>
+    <!--        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>-->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
 </html>
-
-
-<!--<div class="chartContent">-->
-<!--    <div class="hiddenDivRight"></div>-->
-<!--    <div class="hiddenDivLeft"></div>-->
-<!--</div> &lt;!&ndash; END OF CHART CONTENT &ndash;&gt;-->
-<!--<div class="hiddenDivRight"></div>-->
-<!--<div class="hiddenDivLeft"></div>-->
 
 
