@@ -37,8 +37,12 @@
     margin-top: 2rem;
     justify-content: center;
 }
+.x-card:hover{
+    transform: scale(1.1);
+}
 .card-title {
     font-family: AWAKENNING;
+    letter-spacing: .2rem;
 }
 .app__aboutUs-cards {
     display: flex;
