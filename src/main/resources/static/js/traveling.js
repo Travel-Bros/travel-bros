@@ -18,3 +18,13 @@
 //         window.location.replace(`/trips/${$(this).attr("data-id")}/edit`);
 //     });
 // });
+let x = document.getElementsByTagName(".currency-format");
+
+function formatCurrency(className) {
+    let elements = document.getElementsByClassName(className);
+    for (let element of elements) {
+        let number = parseFloat(element.textContent); // convert string to number
+        let formatted_number = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number);
+        element.textContent = formatted_number;
+    }
+}
