@@ -1,8 +1,22 @@
 .registration-card {
+    margin: 6rem auto;
+    width: 290px;
     background: rgba(0, 151, 19, 0.8);
 }
 .signIn-card {
     margin: 6rem auto;
     width: 290px;
     background: rgba(49, 108, 244, 0.8);
+}
+.page-wrapper-reg{
+    object-fit: fill;
+    background-image: url("../img/World_map_blue.png");
+    background-position: center;
+    background-size: cover;
+}
+.page-wrapper-login {
+    object-fit: fill;
+    background-image: url("../img/World_map_green.png");
+    background-position: center;
+    background-size: cover;
 }
