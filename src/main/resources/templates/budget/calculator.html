@@ -82,12 +82,16 @@
                 <div class="recalculate-button-main">
                                        <button class="recalculate-button" th:data-id="${lastTrip.id}">Recalculate</button>
                 </div>
-                    <a th:href="@{/profile}">Continue</a>
+                <div class="continue-button-main">
+                    <button class="continue-button" th:href="@{/profile}">Continue</button>
+                </div>
+                <div class="backButton-main">
+                    <button class="btn invisible" id="backButton">Back</button>
+                </div>
                 <br>
             </div>
         </div><!-- END OF x-col -->
     </div><!-- END OF PAGE WRAPPER -->
-    <button class="btn invisible" id="backButton">Back</button>
     <div th:replace="partials/scripts-partials :: scripts"></div>
     <script th:src="@{/js/traveling.js}"></script>
     <script th:src="@{/js/chart.js}"></script>
