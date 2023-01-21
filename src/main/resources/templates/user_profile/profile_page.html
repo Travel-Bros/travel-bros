@@ -52,9 +52,9 @@
                             <button th:data-id="${currentUser.trips[i].id}" class="deleteButton ">Delete Trip</button>
                         </p>
 
-                        <hr class="hrLine">
 
-                        <div class="lisOfNotesWrapper">
+                        <div th:if="${currentUser.trips[i].comments.size() > 0}" class="lisOfNotesWrapper">
+                        <hr class="hrLine">
                             <div class="listOfNotes">
                                 <div class="w-85" th:each="comment : ${currentUser.trips[i].comments}">
                                     <div class="d-flex justify-content-between notes-wrapper">
