@@ -109,3 +109,9 @@ $(document).ready(function() {
         })
     ;
 });
+
+$(document).ready(function (){
+    $(".continue-button").on("click", function () {
+        window.location.href = "/profile";
+    })
+})

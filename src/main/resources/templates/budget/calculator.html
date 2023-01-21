@@ -70,6 +70,12 @@
                             <span class="currency-format" th:text="${costPerPerson}"></span>
                         </h3>
                 </div>
+                <div th:if="${lastTrip.getStops() > 0}" class="x-budget-section">
+                    <h3 style="text-align: center">Number of expected stops:
+                        <span th:text="${lastTrip.getStops()}"></span>
+                    </h3>
+                </div>
+
                 <br>
                 <div class="rest_of_Expenses">
                     <div class="miscExp" th:each="tripMiscExp: ${lastTrip.tripBudget.getMiscExpenses()}">

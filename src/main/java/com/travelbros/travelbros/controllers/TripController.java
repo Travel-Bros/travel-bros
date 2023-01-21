@@ -124,7 +124,7 @@ public class TripController {
             trip.setUser(user);
             tripDao.save(trip);
         }
-        return "redirect:/profile";
+        return "redirect:/trips/{id}/calculator";
     }
 
 

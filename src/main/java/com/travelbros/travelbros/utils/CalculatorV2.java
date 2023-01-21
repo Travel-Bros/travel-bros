@@ -24,6 +24,7 @@ public class CalculatorV2 {
     // This method is to calculate the number of stops based on trip distance, vehicle mpg and vehicle tank size
 
          public static int numberOfStops(double distance, double mpg, double tankSize) {
+             System.out.printf("%s your distance", distance);
             int numberOfStopsAnswer = (int) (distance / (0.8* (mpg * tankSize)));
             System.out.printf("%nYour expected number of stops: %s%n", numberOfStopsAnswer);
             return numberOfStopsAnswer;
@@ -35,7 +36,8 @@ public class CalculatorV2 {
          public static double expectedGasConsumptionForTrip(double distance, double mpg, double tankSize, String location){
 
             StateGasPrice gasPrice = new StateGasPrice();
-            double avgGasPrice = gasPrice.findStateGasPrice(location);
+//            double avgGasPrice = gasPrice.findStateGasPrice(location);
+            double avgGasPrice = gasPrice.nationalAverage(gasPrice.fiftyStateGasPrices);
             double tripStops = 0;
             int numberOfStops = numberOfStops(distance, mpg, tankSize);
             double range = findRange(tankSize);
